@@ -658,6 +658,7 @@ struct VoiceReceiverInfo : public MediaReceiverInfo {
         expand_rate(0),
         speech_expand_rate(0),
         secondary_decoded_rate(0),
+        secondary_discarded_rate(0),
         accelerate_rate(0),
         preemptive_expand_rate(0),
         decoding_calls_to_silence_generator(0),
@@ -693,6 +694,8 @@ struct VoiceReceiverInfo : public MediaReceiverInfo {
   float speech_expand_rate;
   // fraction of data out of secondary decoding, including FEC and RED.
   float secondary_decoded_rate;
+  // fraction of secondary data that are discarded.
+  float secondary_discarded_rate;
   // Fraction of data removed through time compression.
   float accelerate_rate;
   // Fraction of data inserted through time stretching.
