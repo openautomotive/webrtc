@@ -116,6 +116,24 @@
       "revId": "ab7f9506fc92e890eb374853cfb25282a94ec091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04bb9156_97030c40",
+        "filename": "webrtc/call/rtp_demuxer.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-08-15T20:50:09Z",
+      "side": 1,
+      "message": "The RRID of one packet is the RSID of another.  I think just calling everything RSID is fine.\n\nRID is an SDP-level thing and so I\u0027d prefer not to use that here.",
+      "parentUuid": "3a6ce415_6161e33d",
+      "revId": "ab7f9506fc92e890eb374853cfb25282a94ec091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
