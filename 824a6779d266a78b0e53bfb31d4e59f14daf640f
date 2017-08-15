@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d6f2346_42508ae6",
+        "filename": "webrtc/modules/desktop_capture/window_under_point.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-15T21:27:57Z",
+      "side": 1,
+      "message": "As discussed, I don\u0027t think a comment is sufficient to enforce this. Better to use an interface and have the various capturer implementations instantiate the correct platform-specific implementation; in particular, that means that the X11 capturer can pass in the correct Display*, but other platforms don\u0027t need to do anything analogous.",
+      "range": {
+        "startLine": 22,
+        "startChar": 74,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "824a6779d266a78b0e53bfb31d4e59f14daf640f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
