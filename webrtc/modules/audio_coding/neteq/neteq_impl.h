@@ -185,6 +185,8 @@ class NetEqImpl : public webrtc::NetEq {
   // and a new report period is started with the call.
   void GetRtcpStatistics(RtcpStatistics* stats) override;
 
+  NetEqLifetimeStatistics GetLifetimeStatistics() const override;
+
   // Same as RtcpStatistics(), but does not reset anything.
   void GetRtcpStatisticsNoReset(RtcpStatistics* stats) override;
 
@@ -401,6 +403,7 @@ class NetEqImpl : public webrtc::NetEq {
   std::unique_ptr<ComfortNoise> comfort_noise_ GUARDED_BY(crit_sect_);
   Rtcp rtcp_ GUARDED_BY(crit_sect_);
   StatisticsCalculator stats_ GUARDED_BY(crit_sect_);
+  NetEqLifetimeStatistics lifetime_stats_ GUARDED_BY(crit_sect_);
   int fs_hz_ GUARDED_BY(crit_sect_);
   int fs_mult_ GUARDED_BY(crit_sect_);
   int last_output_sample_rate_hz_ GUARDED_BY(crit_sect_);

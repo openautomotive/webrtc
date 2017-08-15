@@ -348,7 +348,9 @@ RTCMediaStreamStats::RTCMediaStreamStats(
 RTCMediaStreamStats::~RTCMediaStreamStats() {
 }
 
-WEBRTC_RTCSTATS_IMPL(RTCMediaStreamTrackStats, RTCStats, "track",
+WEBRTC_RTCSTATS_IMPL(RTCMediaStreamTrackStats,
+                     RTCStats,
+                     "track",
                      &track_identifier,
                      &remote_source,
                      &ended,
@@ -368,7 +370,9 @@ WEBRTC_RTCSTATS_IMPL(RTCMediaStreamTrackStats, RTCStats, "track",
                      &total_audio_energy,
                      &total_samples_duration,
                      &echo_return_loss,
-                     &echo_return_loss_enhancement);
+                     &echo_return_loss_enhancement,
+                     &total_samples_received,
+                     &concealed_samples);
 
 RTCMediaStreamTrackStats::RTCMediaStreamTrackStats(
     const std::string& id, int64_t timestamp_us, const char* kind)
@@ -398,7 +402,9 @@ RTCMediaStreamTrackStats::RTCMediaStreamTrackStats(std::string&& id,
       total_audio_energy("totalAudioEnergy"),
       total_samples_duration("totalSamplesDuration"),
       echo_return_loss("echoReturnLoss"),
-      echo_return_loss_enhancement("echoReturnLossEnhancement") {
+      echo_return_loss_enhancement("echoReturnLossEnhancement"),
+      total_samples_received("totalSamplesReceived"),
+      concealed_samples("concealedSamples") {
   RTC_DCHECK(kind == RTCMediaStreamTrackKind::kAudio ||
              kind == RTCMediaStreamTrackKind::kVideo);
 }
@@ -425,7 +431,9 @@ RTCMediaStreamTrackStats::RTCMediaStreamTrackStats(
       total_audio_energy(other.total_audio_energy),
       total_samples_duration(other.total_samples_duration),
       echo_return_loss(other.echo_return_loss),
-      echo_return_loss_enhancement(other.echo_return_loss_enhancement) {}
+      echo_return_loss_enhancement(other.echo_return_loss_enhancement),
+      total_samples_received(other.total_samples_received),
+      concealed_samples(other.concealed_samples) {}
 
 RTCMediaStreamTrackStats::~RTCMediaStreamTrackStats() {
 }

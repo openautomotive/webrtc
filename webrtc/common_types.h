@@ -367,6 +367,11 @@ struct NetworkStatistics {
   uint16_t preferredBufferSize;
   // adding extra delay due to "peaky jitter"
   bool jitterPeaksFound;
+  // Total number of audio samples received, including synthesized samples.
+  uint64_t totalSamplesReceived;
+  // Total number of inbound audio samples that are based on synthesized data to
+  // conceal packet loss.
+  uint64_t concealedSamples;
   // Loss rate (network + late); fraction between 0 and 1, scaled to Q14.
   uint16_t currentPacketLossRate;
   // Late loss rate; fraction between 0 and 1, scaled to Q14.
