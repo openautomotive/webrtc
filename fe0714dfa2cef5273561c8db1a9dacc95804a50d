@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3464da7d_3c6e3165",
+        "filename": "webrtc/api/peerconnectioninterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-08-15T23:04:53Z",
+      "side": 1,
+      "message": "I think this should be called tls_alpn_protocols.",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdd9487_779b4356",
+        "filename": "webrtc/api/peerconnectioninterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-08-15T23:04:53Z",
+      "side": 1,
+      "message": "Why a comma-separated list instead of a std::vector\u003cstd::string\u003e?",
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01dd54f7_52b0e6bf",
+        "filename": "webrtc/rtc_base/openssladapter.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-08-15T23:04:53Z",
+      "side": 1,
+      "message": "This doubly convinces me that we should just pass in a std::vector\u003cstd::string\u003e in the first place.",
+      "range": {
+        "startLine": 180,
+        "startChar": 46,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ad5328_437cafb6",
+        "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-08-15T23:04:53Z",
+      "side": 1,
+      "message": "I don\u0027t get it. \n\n\"h2\" \u003d\u003e \"h2\"\n\"h2,http/1.1\" \u003d\u003e \"http/1.1\"\n\nWhy?  What happened to the \"h2,\" at the beginning?",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
