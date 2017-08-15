@@ -22,6 +22,30 @@
       "revId": "ec0e9f807e630cb47c04a315796052827770e45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4169f896_625c5923",
+        "filename": "webrtc/sdk/android/api/org/webrtc/SurfaceTextureHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1195226
+      },
+      "writtenOn": "2017-08-15T19:44:06Z",
+      "side": 1,
+      "message": "Added a check for API \u003e\u003d 21",
+      "parentUuid": "3fe31ed6_a6c96679",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "ec0e9f807e630cb47c04a315796052827770e45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
