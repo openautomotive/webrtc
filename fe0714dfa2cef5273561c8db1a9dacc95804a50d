@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26b40f0a_69c555c8",
+        "filename": "webrtc/api/peerconnectioninterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-16T22:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3464da7d_3c6e3165",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cdd9487_779b4356",
         "filename": "webrtc/api/peerconnectioninterface.h",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb796f2_289818e8",
+        "filename": "webrtc/api/peerconnectioninterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-16T22:13:04Z",
+      "side": 1,
+      "message": "I partially answer this in Justin\u0027s comment in https://chromium-review.googlesource.com/c/611150/1/webrtc/api/peerconnectioninterface.h. In short, it simplifies the API and logic for passing down ALPN protocols from a server.\n\nThose are likely not too relevant though, so given the multiple comments, I\u0027ve changed it to a vector.",
+      "parentUuid": "6cdd9487_779b4356",
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "eb456d0e_efade139",
+        "filename": "webrtc/rtc_base/openssladapter.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-16T22:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01dd54f7_52b0e6bf",
+      "range": {
+        "startLine": 180,
+        "startChar": 46,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ad5328_437cafb6",
         "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd1854b_b55cd40d",
+        "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-16T22:13:04Z",
+      "side": 1,
+      "message": "It\u0027s still checking against \"h2\" and \"http/1.1\", but just adding \"http/1.1\" onto the previous expected_response with \"h2\". I\u0027m completely okay with making it clearer if you\u0027d like.",
+      "parentUuid": "d5ad5328_437cafb6",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "fe0714dfa2cef5273561c8db1a9dacc95804a50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
