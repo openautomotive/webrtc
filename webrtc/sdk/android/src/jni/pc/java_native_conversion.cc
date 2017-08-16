@@ -343,6 +343,17 @@ webrtc::PeerConnectionInterface::TlsCertPolicy JavaToNativeTlsCertPolicy(
   return webrtc::PeerConnectionInterface::kTlsCertPolicySecure;
 }
 
+std::vector<std::string> JavaToStdVectorStrings(JNIEnv* jni, jobject list) {
+  std::vector<std::string> converted_list;
+  if (list != nullptr) {
+    for (jobject str : Iterable(jni, list)) {
+      converted_list.push_back(
+          JavaToStdString(jni, reinterpret_cast<jstring>(str)));
+    }
+  }
+  return converted_list;
+}
+
 void JavaToNativeIceServers(
     JNIEnv* jni,
     jobject j_ice_servers,
@@ -362,6 +373,8 @@ void JavaToNativeIceServers(
         GetObjectField(jni, j_ice_server, j_ice_server_tls_cert_policy_id);
     jfieldID j_ice_server_hostname_id =
         GetFieldID(jni, j_ice_server_class, "hostname", "Ljava/lang/String;");
+    jfieldID j_ice_server_tls_alpn_protocols_id = GetFieldID(
+        jni, j_ice_server_class, "tlsAlpnProtocols", "Ljava/util/List;");
     jstring uri = reinterpret_cast<jstring>(
         GetObjectField(jni, j_ice_server, j_ice_server_uri_id));
     jstring username = reinterpret_cast<jstring>(
@@ -372,12 +385,15 @@ void JavaToNativeIceServers(
         JavaToNativeTlsCertPolicy(jni, j_ice_server_tls_cert_policy);
     jstring hostname = reinterpret_cast<jstring>(
         GetObjectField(jni, j_ice_server, j_ice_server_hostname_id));
+    jstring tls_alpn_protocols = GetNullableObjectField(
+        jni, j_ice_server, j_ice_server_tls_alpn_protocols_id);
     webrtc::PeerConnectionInterface::IceServer server;
     server.uri = JavaToStdString(jni, uri);
     server.username = JavaToStdString(jni, username);
     server.password = JavaToStdString(jni, password);
     server.tls_cert_policy = tls_cert_policy;
     server.hostname = JavaToStdString(jni, hostname);
+    server.tls_alpn_protocols = JavaToStdVectorStrings(jni, tls_alpn_protocols);
     ice_servers->push_back(server);
   }
 }
