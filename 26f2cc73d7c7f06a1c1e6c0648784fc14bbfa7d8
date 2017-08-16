@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3661018_f295a77c",
+        "filename": "webrtc/modules/audio_device/ios/audio_device_ios.mm",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-16T15:56:05Z",
+      "side": 1,
+      "message": "I really hope to understand why 0 can be logged.\n\nIt looks that even the definition makes min to 1\nhttps://cs.chromium.org/chromium/src/third_party/webrtc/system_wrappers/include/metrics.h?type\u003dcs\u0026q\u003dRTC_HISTOGRAM_COUNTS_100000\u0026sq\u003dpackage:chromium\u0026l\u003d83\n\nLet me do some investigation tmr.",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 29
+      },
+      "revId": "26f2cc73d7c7f06a1c1e6c0648784fc14bbfa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
