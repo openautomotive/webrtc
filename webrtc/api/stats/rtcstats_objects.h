@@ -276,6 +276,8 @@ class RTCMediaStreamTrackStats final : public RTCStats {
   RTCStatsMember<double> total_samples_duration;
   RTCStatsMember<double> echo_return_loss;
   RTCStatsMember<double> echo_return_loss_enhancement;
+  RTCStatsMember<uint64_t> total_samples_received;
+  RTCStatsMember<uint64_t> concealed_samples;
 };
 
 // https://w3c.github.io/webrtc-stats/#pcstats-dict*

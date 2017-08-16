@@ -1555,6 +1555,8 @@ TEST_F(RTCStatsCollectorTest,
   voice_receiver_info.audio_level = 16383;
   voice_receiver_info.total_output_energy = 0.125;
   voice_receiver_info.total_output_duration = 0.25;
+  voice_receiver_info.concealed_samples = 123;
+  voice_receiver_info.total_samples_received = 4567;
 
   test_->CreateMockRtpSendersReceiversAndChannels(
       { std::make_pair(local_audio_track.get(), voice_sender_info_ssrc1),
@@ -1629,6 +1631,8 @@ TEST_F(RTCStatsCollectorTest,
   expected_remote_audio_track.audio_level = 16383.0 / 32767.0;
   expected_remote_audio_track.total_audio_energy = 0.125;
   expected_remote_audio_track.total_samples_duration = 0.25;
+  expected_remote_audio_track.concealed_samples = 123;
+  expected_remote_audio_track.total_samples_received = 4567;
   ASSERT_TRUE(report->Get(expected_remote_audio_track.id()));
   EXPECT_EQ(expected_remote_audio_track,
             report->Get(expected_remote_audio_track.id())->cast_to<

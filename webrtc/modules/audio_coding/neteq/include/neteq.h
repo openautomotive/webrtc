@@ -57,6 +57,16 @@ struct NetEqNetworkStatistics {
   int max_waiting_time_ms;
 };
 
+// NetEq statistics that persist over the lifetime of the class.
+// These metrics are never reset.
+struct NetEqLifetimeStatistics {
+  // Total number of audio samples received, including synthesized samples.
+  uint64_t total_samples_received = 0;
+  // Total number of inbound audio samples that are based on synthesized data to
+  // conceal packet loss.
+  uint64_t concealed_samples = 0;
+};
+
 enum NetEqPlayoutMode {
   kPlayoutOn,
   kPlayoutOff,
@@ -218,6 +228,10 @@ class NetEq {
   // Writes the current network statistics to |stats|. The statistics are reset
   // after the call.
   virtual int NetworkStatistics(NetEqNetworkStatistics* stats) = 0;
+
+  // Returns a copy of this class's lifetime statistics. These statistics are
+  // never reset.
+  virtual NetEqLifetimeStatistics GetLifetimeStatistics() const = 0;
 
   // Writes the current RTCP statistics to |stats|. The statistics are reset
   // and a new report period is started with the call.
