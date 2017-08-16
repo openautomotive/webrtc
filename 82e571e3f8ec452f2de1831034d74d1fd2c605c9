@@ -22,6 +22,30 @@
       "revId": "82e571e3f8ec452f2de1831034d74d1fd2c605c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0f1457_f0e6091f",
+        "filename": "webrtc/modules/congestion_controller/send_side_congestion_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-16T12:06:36Z",
+      "side": 1,
+      "message": "It appears so, and then the header file can be deleted too, there\u0027s no other use.\n\nStefan, does that mean that something is missing in the receive-side tests? I think RemoteBitrateObserver is something used on the receive side only, but I\u0027m kind-of lost with all the various observers involved with the CongestionController class being deleted.",
+      "parentUuid": "c9e9f652_b8280712",
+      "range": {
+        "startLine": 18,
+        "startChar": 94,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "82e571e3f8ec452f2de1831034d74d1fd2c605c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
