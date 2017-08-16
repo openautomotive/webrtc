@@ -264,8 +264,12 @@ int32_t AudioDeviceIOS::StopPlayout() {
   // Derive average number of calls to OnGetPlayoutData() between detected
   // audio glitches and add the result to a histogram.
   int average_number_of_playout_callbacks_between_glitches = 100000;
+  const int total_play_time_ms =
+      num_playout_callbacks_ * playout_parameters_.GetBufferSizeInMilliseconds();
   RTC_DCHECK_GE(num_playout_callbacks_, num_detected_playout_glitches_);
-  if (num_detected_playout_glitches_ > 0) {
+  // Exclude calls when no glitches were detected and calls shorter than
+  // 15 seconds to ensure that only "real" calls are monitored.
+  if (num_detected_playout_glitches_ > 0 && total_play_time_ms > 15000) {
     average_number_of_playout_callbacks_between_glitches =
         num_playout_callbacks_ / num_detected_playout_glitches_;
   }
