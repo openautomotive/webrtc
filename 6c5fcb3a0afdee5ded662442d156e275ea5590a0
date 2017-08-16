@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3038518_779347c9",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-16T18:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d09837a9_db27de67",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc27c9cb_f37f5818",
         "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bfc3277b_a62e04c7",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-16T18:50:26Z",
+      "side": 1,
+      "message": "In general, spinning like this should be avoid, which seriously hurts performance. Instead, an advanced OS signal event should be used, usually it\u0027s a wait() / notify() pattern. But AFAICT, we do not have this kind of event in webrtc (like https://cs.chromium.org/chromium/src/base/synchronization/waitable_event.h?sq\u003dpackage:chromium\u0026dr in chromium).\nEven without signal event, this is also achievable by using a cross-thread lock: the lock should be able to be locked and unlocked in different threads. But unfortunately CriticalSection does not meet the requirement.\nSince this is just a test case, I won\u0027t bother writing more code to achieve the wait() / notify() pattern. Instead a spin wait is used here.\n\nIf you think it\u0027s useful, I can copy-paste the above explanation to the comment. Before that, I updated the comment to \"Wait for the lock to be created\" as you suggested.",
+      "parentUuid": "dc27c9cb_f37f5818",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b414120a_7474207b",
         "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
         "patchSetId": 13
@@ -59,6 +107,24 @@
       "writtenOn": "2017-08-16T01:23:14Z",
       "side": 1,
       "message": "In theory, the thread could spin up and exit before you call this, in which case you\u0027re not actually testing that anything was locked. I think another ASSERT to ensure that \u003c100ms has passed before you call ctor() would address that.",
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cf8d80_d1bbdf55",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-16T18:50:26Z",
+      "side": 1,
+      "message": "Ah, yes, that\u0027s expected. I believe tests of synchronization logic usually cannot catch all failures. But adding another ASSERT here is not safe: on low performance system, we cannot predict how much time needed before reaching this line.\nBut as long as we execute this test each time in presubmit, we will eventually catch the failure if there is one.",
+      "parentUuid": "b414120a_7474207b",
       "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -85,6 +151,30 @@
       "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa0c3e7a_bab9de48",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-16T18:50:26Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "07ef29b5_e1166bf9",
+      "range": {
+        "startLine": 134,
+        "startChar": 24,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
