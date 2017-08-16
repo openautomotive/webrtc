@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a9367a0_f801b2e6",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/data_access.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "\u0027metadata_path\u0027 -\u003e \u0027filepath\u0027?",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2629219e_c9fc8936",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/data_access.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "\u0027metadata_path\u0027 -\u003e \u0027filepath\u0027",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529afeb1_add0114e",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/eval_scores.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "tested_signal is a python object that pretends to be a list? By defining custom __len__ and indexing/slicing special functions? Or is some frame-rate dependent conversion needed here?",
+      "range": {
+        "startLine": 293,
+        "startChar": 19,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149b1659_6630d87e",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/eval_scores.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "nitpicking: this isn\u0027t particularly low-level code where we need to be aware of bit patterns and such. I think \u0027/ 2\u0027 is more appropriate.",
+      "range": {
+        "startLine": 295,
+        "startChar": 46,
+        "endLine": 295,
+        "endChar": 50
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252f2b36_4b1fc85b",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/eval_scores.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "It seems to match the colab, but it\u0027s difficult code and simple to get wrong (and also important to get right). How can we be sure it works as intended? \n\nI like testTotalHarmonicDistorsionScore. Can we extend it / add a test that compares the output with a theoretically calculated answer? E.g. for white noise, we can compute the THD+noise exactly.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 57
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d20a37_ff125533",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/eval_scores.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-08-16T08:41:37Z",
+      "side": 1,
+      "message": "Seems right, I don\u0027t understand the comment.",
+      "range": {
+        "startLine": 316,
+        "startChar": 22,
+        "endLine": 316,
+        "endChar": 33
+      },
+      "revId": "59334cc96f007bd1f6591d1cf2aed68dd9cff355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
