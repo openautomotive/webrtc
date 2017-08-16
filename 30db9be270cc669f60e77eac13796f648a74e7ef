@@ -22,6 +22,30 @@
       "revId": "30db9be270cc669f60e77eac13796f648a74e7ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26628de_6651e4f6",
+        "filename": "webrtc/sdk/android/api/org/webrtc/SurfaceTextureHelper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1195226
+      },
+      "writtenOn": "2017-08-16T20:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79339944_cae82c9a",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "30db9be270cc669f60e77eac13796f648a74e7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
