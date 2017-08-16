@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d09837a9_db27de67",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T01:23:14Z",
+      "side": 1,
+      "message": "Please add a comment explaining why you need something more complex than SleepMs(100) here.",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc27c9cb_f37f5818",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T01:23:14Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. CriticalSection isn\u0027t mentioned in this CL, and if it\u0027s an implementation detail of the code under test, you shouldn\u0027t be structuring your test around assumptions about anything that isn\u0027t part of the public interface.\n\nTBH, I think you can change this comment to read \"Wait for the lock to be created\", and perhaps add a timeout so it won\u0027t run forever (although there\u0027s already a test timeout so maybe that\u0027s not needed).",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b414120a_7474207b",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T01:23:14Z",
+      "side": 1,
+      "message": "In theory, the thread could spin up and exit before you call this, in which case you\u0027re not actually testing that anything was locked. I think another ASSERT to ensure that \u003c100ms has passed before you call ctor() would address that.",
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ef29b5_e1166bf9",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T01:23:14Z",
+      "side": 1,
+      "message": "What platforms is this not supported on? I think it would be better to explicitly ifdef this to run on the platforms on which it is supported, and perhaps add a test to ensure that ScreenDrawerLock::Create() returns null on other platforms (so that if it\u0027s ever implemented, the test will need to be updated to include it). Otherwise, Create could start returning null on a platform that is supposed to be supported, and there will be no test failure.",
+      "range": {
+        "startLine": 134,
+        "startChar": 24,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
