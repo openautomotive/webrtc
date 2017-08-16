@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "0413b3d2_d2935dc4",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-16T22:34:50Z",
+      "side": 1,
+      "message": "I think that still won\u0027t be able to catch all the failures, but only reducing the ratio of false positive: imagining that ctor-\u003eoperator() itself uses over 100 ms to start the constructor of the second lock.\n\nTo reduce the potential failures from both of the problems (false-positive and false-negative), I added a second atomic_bool to reduce the count of instructions within the 100 ms.",
+      "parentUuid": "82a39cc1_845d51a9",
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07ef29b5_e1166bf9",
         "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
         "patchSetId": 13
