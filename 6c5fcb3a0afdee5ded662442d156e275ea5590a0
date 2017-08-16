@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "82a39cc1_845d51a9",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T20:20:31Z",
+      "side": 1,
+      "message": "It\u0027s not perfect, but it is safe. It\u0027s the difference between a false negative (which is easily detectable and can have an actionable fix such as \"Thread creation took too long; please increase kLockDuration.\") and a false positive, which is indistinguishable from a correctly passing test could conceivably result in bugs creeping into the code. Given that this test is guaranteed to flake occasionally unless the lock duration is increased significantly (which you should feel free to do if you have concerns), I think it\u0027s worth adding the extra assert to ensure that if the test gets broken it will definitely fail.",
+      "parentUuid": "e5cf8d80_d1bbdf55",
+      "revId": "6c5fcb3a0afdee5ded662442d156e275ea5590a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07ef29b5_e1166bf9",
         "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
         "patchSetId": 13

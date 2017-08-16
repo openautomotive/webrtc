@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb29d01_386d0889",
+        "filename": "webrtc/modules/desktop_capture/screen_drawer_unittest.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-16T20:20:31Z",
+      "side": 1,
+      "message": "Use a constant for this (and below) so that you can provide easy instructions in case the test becomes unacceptably flaky.",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "04b1002ac64c05adabd19e0ce8a3b8f98dbd6dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
