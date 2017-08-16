@@ -61,19 +61,19 @@ class RtcpDemuxerTest : public testing::Test {
   }
 
   void AddMidSink(const std::string& mid, RtcpPacketSinkInterface* sink) {
-    demuxer.AddMidSink(mid, sink);
+    demuxer_.AddMidSink(mid, sink);
     sinks_to_tear_down_.insert(sink);
   }
 
   void AddMidRsidSink(const std::string& mid,
                       const std::string& rsid,
                       RtcpPacketSinkInterface* sink) {
-    demuxer.AddMidRsidSink(mid, rsid, sink);
+    demuxer_.AddMidRsidSink(mid, rsid, sink);
     sinks_to_tear_down_.insert(sink);
   }
 
   void AddPayloadTypeSink(uint8_t payload_type, RtcpPacketSinkInterface* sink) {
-    demuxer.AddPayloadTypeSink(payload_type, sink);
+    demuxer_.AddPayloadTypeSink(payload_type, sink);
     sinks_to_tear_down_.insert(sink);
   }
 
@@ -167,12 +167,12 @@ TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledOnResolvedMidSink) {
   MockRtcpPacketSink sink;
   AddMidSink(mid, &sink);
 
-  demuxer.OnSsrcBoundToMid(mid, ssrc);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc);
 
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE_PACKET(sink, packet).Times(1);
+  EXPECT_CALL(sink, OnRtcpPacket(SamePacketAs(packet))).Times(1);
 
-  demuxer.OnRtcpPacket(packet);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledOnResolvedMidRsidSink) {
@@ -183,12 +183,12 @@ TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledOnResolvedMidRsidSink) {
   MockRtcpPacketSink sink;
   AddMidRsidSink(mid, rsid, &sink);
 
-  demuxer.OnSsrcBoundToMidRsid(mid, rsid, ssrc);
+  demuxer_.OnSsrcBoundToMidRsid(mid, rsid, ssrc);
 
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE_PACKET(sink, packet).Times(1);
+  EXPECT_CALL(sink, OnRtcpPacket(SamePacketAs(packet))).Times(1);
 
-  demuxer.OnRtcpPacket(packet);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledOnResolvedPayloadTypeSink) {
@@ -198,12 +198,12 @@ TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledOnResolvedPayloadTypeSink) {
   MockRtcpPacketSink sink;
   AddPayloadTypeSink(payload_type, &sink);
 
-  demuxer.OnSsrcBoundToPayloadType(payload_type, ssrc);
+  demuxer_.OnSsrcBoundToPayloadType(payload_type, ssrc);
 
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE_PACKET(sink, packet).Times(1);
+  EXPECT_CALL(sink, OnRtcpPacket(SamePacketAs(packet))).Times(1);
 
-  demuxer.OnRtcpPacket(packet);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest,
@@ -380,12 +380,12 @@ TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledForSsrcWhenFirstBoundToMid) {
   MockRtcpPacketSink sink;
   AddMidSink(mid, &sink);
 
-  demuxer.OnSsrcBoundToMid(mid, ssrc1);
-  demuxer.OnSsrcBoundToMid(mid, ssrc2);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc1);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc2);
 
   auto packet1 = CreateRtcpPacket(ssrc1);
-  EXPECT_SINK_RECEIVE_PACKET(sink, packet1).Times(1);
-  demuxer.OnRtcpPacket(packet1);
+  EXPECT_CALL(sink, OnRtcpPacket(SamePacketAs(packet1))).Times(1);
+  demuxer_.OnRtcpPacket(packet1);
 }
 
 TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledForSsrcWhenSecondBoundToMid) {
@@ -396,12 +396,12 @@ TEST_F(RtcpDemuxerTest, OnRtcpPacketCalledForSsrcWhenSecondBoundToMid) {
   MockRtcpPacketSink sink;
   AddMidSink(mid, &sink);
 
-  demuxer.OnSsrcBoundToMid(mid, ssrc1);
-  demuxer.OnSsrcBoundToMid(mid, ssrc2);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc1);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc2);
 
   auto packet2 = CreateRtcpPacket(ssrc2);
-  EXPECT_SINK_RECEIVE_PACKET(sink, packet2).Times(1);
-  demuxer.OnRtcpPacket(packet2);
+  EXPECT_CALL(sink, OnRtcpPacket(SamePacketAs(packet2))).Times(1);
+  demuxer_.OnRtcpPacket(packet2);
 }
 
 // TEST GROUP: Test that sinks are completely removed when calling RemoveSink,
@@ -477,12 +477,12 @@ TEST_F(RtcpDemuxerTest, NoCallbackOnMidSinkRemovedBeforeMidResolution) {
 
   // Remove before binding.
   RemoveSink(&sink);
-  demuxer.OnSsrcBoundToMid(mid, ssrc);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc);
 
   // The removed sink does not get callbacks.
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE(sink).Times(0);
-  demuxer.OnRtcpPacket(packet);
+  EXPECT_CALL(sink, OnRtcpPacket(_)).Times(0);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest, NoCallbackOnMidSinkRemovedAfterMidResolution) {
@@ -493,13 +493,13 @@ TEST_F(RtcpDemuxerTest, NoCallbackOnMidSinkRemovedAfterMidResolution) {
   AddMidSink(mid, &sink);
 
   // Remove after binding.
-  demuxer.OnSsrcBoundToMid(mid, ssrc);
+  demuxer_.OnSsrcBoundToMid(mid, ssrc);
   RemoveSink(&sink);
 
   // The removed sink does not get callbacks.
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE(sink).Times(0);
-  demuxer.OnRtcpPacket(packet);
+  EXPECT_CALL(sink, OnRtcpPacket(_)).Times(0);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest, NoCallbackOnMidRsidSinkRemovedBeforeMisRsidResolution) {
@@ -512,12 +512,12 @@ TEST_F(RtcpDemuxerTest, NoCallbackOnMidRsidSinkRemovedBeforeMisRsidResolution) {
 
   // Remove before binding.
   RemoveSink(&sink);
-  demuxer.OnSsrcBoundToMidRsid(mid, rsid, ssrc);
+  demuxer_.OnSsrcBoundToMidRsid(mid, rsid, ssrc);
 
   // The removed sink does not get callbacks.
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE(sink).Times(0);
-  demuxer.OnRtcpPacket(packet);
+  EXPECT_CALL(sink, OnRtcpPacket(_)).Times(0);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest,
@@ -530,12 +530,12 @@ TEST_F(RtcpDemuxerTest,
 
   // Remove before binding.
   RemoveSink(&sink);
-  demuxer.OnSsrcBoundToPayloadType(payload_type, ssrc);
+  demuxer_.OnSsrcBoundToPayloadType(payload_type, ssrc);
 
   // The removed sink does not get callbacks.
   auto packet = CreateRtcpPacket(ssrc);
-  EXPECT_SINK_RECEIVE(sink).Times(0);
-  demuxer.OnRtcpPacket(packet);
+  EXPECT_CALL(sink, OnRtcpPacket(_)).Times(0);
+  demuxer_.OnRtcpPacket(packet);
 }
 
 TEST_F(RtcpDemuxerTest, NoCallbackOnBroadcastSinkRemovedBeforeFirstPacket) {
@@ -671,6 +671,22 @@ TEST_F(RtcpDemuxerTest, RsidMustNotExceedMaximumLength) {
   MockRtcpPacketSink sink;
   std::string rsid(StreamId::kMaxSize + 1, 'a');
   EXPECT_DEATH(AddRsidSink(rsid, &sink), "");
+}
+
+TEST_F(RtcpDemuxerTest, MidMustBeNonEmpty) {
+  MockRtcpPacketSink sink;
+  EXPECT_DEATH(AddMidSink("", &sink), "");
+}
+
+TEST_F(RtcpDemuxerTest, MidMustBeAlphaNumeric) {
+  MockRtcpPacketSink sink;
+  EXPECT_DEATH(AddMidSink("a_3", &sink), "");
+}
+
+TEST_F(RtcpDemuxerTest, MidMustNotExceedMaximumLength) {
+  MockRtcpPacketSink sink;
+  std::string mid(StreamId::kMaxSize + 1, 'a');
+  EXPECT_DEATH(AddMidSink(mid, &sink), "");
 }
 
 #endif
