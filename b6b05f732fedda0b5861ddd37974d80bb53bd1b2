@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65c5a51_20fb2466",
+        "filename": "webrtc/api/stats/rtcstats_objects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "Place these fields in the same order as in the spec\nhttp://rawgit.com/w3c/webrtc-stats/master/webrtc-stats.html#dom-rtcmediastreamtrackstats.\n\nThe order doesn\u0027t matter but I\u0027d like to keep this file as close to 1:1 with the spec as possible :) (We\u0027re missing a few recently added members but other than that this file looks more or less like the spec.)\n\nThe stats are automatically surfaced to javascript in the chromium repo. In order not to expose new stats to the web platform without a corresponding chromium repo CL a whitelist has to be updated or else the [platform]_chromium_rel_ng chromium repo bots will fail on encountering non-whitelisted stats in a call between two tabs. I made the change, wait for this to land: https://chromium-review.googlesource.com/c/618574. (These bots can manually be added to run with this webrtc repo CL if you like.)",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd90f59_b9977f55",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "Spec link here too would be nice.",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89347fb_0a86bba8",
+        "filename": "webrtc/modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "We\u0027re relying on StatisticsCalculator, I don\u0027t think NetEqImpl::lifetime_stats_ is used and can be removed?",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca2ba43_5446417e",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "Out of curiosity, is this perhaps the same thing as concealedAudibleSamples?\nhttps://github.com/w3c/webrtc-stats/issues/202 (proposed but not added to the spec and issue went stale)",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8466c117_96b9bd02",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "This might be a tricky question, but the webrtc spec has a concept of a MediaStream and a MediaStreamTrack that is a bit different than our meaning of a \"audio stream\". A MediaStream is simply a collection of MediaStreamTracks, whereas here a stream is something which is receiving media. Is an audio MediaStreamTrack the same thing as an audio stream here?\n\nMy concern is what happens if a track jumps between streams. Does the track\u0027s samples counter (corresponding MediaStreamTrackStats.totalSamplesReceived, etc) keep increasing or is the samples counter replaced by a different \"stream\u0027s\" GetLifetimeStatistics?\n\nI\u0027m guessing this is correct but hard to say without more knowledge of webrtc codebase.",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbf98b2_44751e28",
+        "filename": "webrtc/pc/rtcstatscollector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "nit: Move to above |total_samples_duration| to have an order more similar to the spec.",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6fdfa70_9b723507",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "Put RTCMediaStreamTracKStats, RTCStats, \"track\", on the same first line.\n\"git cl format .\" will mess with this.",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03272744_4dd6acce",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-17T12:37:02Z",
+      "side": 1,
+      "message": "Here and elsewhere: place these fields in the same order as in the spec\nhttp://rawgit.com/w3c/webrtc-stats/master/webrtc-stats.html#dom-rtcmediastreamtrackstats",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
