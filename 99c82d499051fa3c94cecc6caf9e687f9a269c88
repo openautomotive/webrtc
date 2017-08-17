@@ -46,6 +46,30 @@
       "revId": "99c82d499051fa3c94cecc6caf9e687f9a269c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8adad305_28a7a9e8",
+        "filename": "webrtc/modules/remote_bitrate_estimator/aimd_rate_control.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-17T11:43:08Z",
+      "side": 1,
+      "message": "Sure. But instead of DCHECK fraction against kFractionAfterOveruse, I apply a multiplier on top of kFractionAfterOveruse. I hope you like it.",
+      "parentUuid": "dcd60cc6_c89ff88d",
+      "range": {
+        "startLine": 214,
+        "startChar": 23,
+        "endLine": 214,
+        "endChar": 43
+      },
+      "revId": "99c82d499051fa3c94cecc6caf9e687f9a269c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
