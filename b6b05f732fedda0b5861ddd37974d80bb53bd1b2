@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2558863f_8f35cb62",
+        "filename": "webrtc/api/stats/rtcstats_objects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "OK, reordered. Thanks for taking care of the whitelist. I\u0027ll wait on that before landing this.",
+      "parentUuid": "a65c5a51_20fb2466",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd90f59_b9977f55",
         "filename": "webrtc/common_types.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d41cc8_c1ccdbeb",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd90f59_b9977f55",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b2e25293_d488a944",
+        "filename": "webrtc/modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "f89347fb_0a86bba8",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eca2ba43_5446417e",
         "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.cc",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2017-08-17T12:37:02Z",
       "side": 1,
       "message": "Out of curiosity, is this perhaps the same thing as concealedAudibleSamples?\nhttps://github.com/w3c/webrtc-stats/issues/202 (proposed but not added to the spec and issue went stale)",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64b9bb1_e6810110",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Yes, it looks like it is. I guess the difference between concealedSamples and concealedAudibleSamples would be including the ExpandedNoiseSamples below.",
+      "parentUuid": "eca2ba43_5446417e",
       "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5a176ed9_7c8ff19c",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "I\u0027ll try digging into the code a bit/asking around.",
+      "parentUuid": "8466c117_96b9bd02",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afbf98b2_44751e28",
         "filename": "webrtc/pc/rtcstatscollector.cc",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5128546_480b05f8",
+        "filename": "webrtc/pc/rtcstatscollector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afbf98b2_44751e28",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "5ecbeb03_8e68891e",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Done. Also added directives to disable clang format on this block.",
+      "parentUuid": "b6fdfa70_9b723507",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03272744_4dd6acce",
         "filename": "webrtc/stats/rtcstats_objects.cc",
         "patchSetId": 2
@@ -135,6 +261,24 @@
       "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b213f1_d5d715f5",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-17T20:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03272744_4dd6acce",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
