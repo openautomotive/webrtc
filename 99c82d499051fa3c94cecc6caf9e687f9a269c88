@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ebe62a1_1c8b3b4c",
+        "filename": "webrtc/modules/remote_bitrate_estimator/aimd_rate_control.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1126892
+      },
+      "writtenOn": "2017-08-17T09:06:08Z",
+      "side": 1,
+      "message": "To better document, maybe we could do something like this?\n\nconst float fraction \u003d 0.75;\nRTC_DCHECK_LT(fraction, kFractionAfterOveruse);\nif (new_bitrate_bps \u003c fraction * current_bitrate_bps_)\n...",
+      "range": {
+        "startLine": 214,
+        "startChar": 23,
+        "endLine": 214,
+        "endChar": 43
+      },
+      "revId": "99c82d499051fa3c94cecc6caf9e687f9a269c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
