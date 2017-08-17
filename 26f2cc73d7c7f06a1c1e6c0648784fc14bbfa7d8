@@ -22,6 +22,30 @@
       "revId": "26f2cc73d7c7f06a1c1e6c0648784fc14bbfa7d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa5f4eb_9a5ba4db",
+        "filename": "webrtc/modules/audio_device/ios/audio_device_ios.mm",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001300
+      },
+      "writtenOn": "2017-08-17T07:53:24Z",
+      "side": 1,
+      "message": "Thanks. That is REALLY strange. I will do more thinking as well.\nBut I think that 1 is the min value of the bin and 0 is mapped to that bin. Same here:\n\nhttps://uma.googleplex.com/p/tachyon/histograms/?endDate\u003d20170815\u0026dayCount\u003d1\u0026histograms\u003dWebRTC.Audio.AverageExcessBufferDelayMs\u0026fixupData\u003dtrue\u0026showMax\u003dtrue\u0026filters\u003disofficial%2Ceq%2CTrue\u0026implicitFilters\u003disofficial",
+      "parentUuid": "e3661018_f295a77c",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 29
+      },
+      "revId": "26f2cc73d7c7f06a1c1e6c0648784fc14bbfa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
