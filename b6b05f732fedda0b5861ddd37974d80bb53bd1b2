@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "8f4c0bb3_dad1473b",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-18T12:03:45Z",
+      "side": 1,
+      "message": "I could give it another push and create a pull request, get the discussion around it going. I can set up another meeting with Varun. It\u0027s on my todo list but I\u0027m currently working on RTP Media API stuff.",
+      "parentUuid": "e3bbae3d_7ec17ad9",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8466c117_96b9bd02",
         "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
         "patchSetId": 2
