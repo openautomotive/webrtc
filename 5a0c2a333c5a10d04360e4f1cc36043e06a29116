@@ -16,6 +16,24 @@
       "revId": "5a0c2a333c5a10d04360e4f1cc36043e06a29116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f88b97_d8aafca4",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-18T16:50:04Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve made a separate CL for that and rebased this on top of that: https://chromium-review.googlesource.com/c/621409",
+      "parentUuid": "ed7cf6f2_c13ce09c",
+      "revId": "5a0c2a333c5a10d04360e4f1cc36043e06a29116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
