@@ -70,6 +70,30 @@
       "revId": "82e571e3f8ec452f2de1831034d74d1fd2c605c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e1f7fd_f479bfcb",
+        "filename": "webrtc/modules/congestion_controller/send_side_congestion_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-18T08:09:39Z",
+      "side": 1,
+      "message": "\u003e Seems reasonable that it should be removed form the send-side.\n\u003e \n\u003e On the recv-side we seem to make sure that this method is being called:\n\u003e   EXPECT_CALL(packet_router, OnReceiveBitrateChanged(_, _))\n\u003e       .WillRepeatedly(SaveArg\u003c0\u003e(\u0026ssrcs));\n\u003e \n\u003e Which probably is enough?\n\nYes, it seems PacketRouter also implements the RemoteBitrateObserver interface, and that\u0027s tested above. Can/should we test that the passed |bitrate_bps| is sane too? For another cl, though, I intend to get this landed now, just want to give the internal bot another run first.",
+      "parentUuid": "d9b45d85_dadbc150",
+      "range": {
+        "startLine": 18,
+        "startChar": 94,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "82e571e3f8ec452f2de1831034d74d1fd2c605c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
