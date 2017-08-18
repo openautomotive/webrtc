@@ -204,10 +204,6 @@ void RampUpTester::ModifyVideoConfigs(
           send_config->rtp.ulpfec.red_payload_type;
       recv_config.rtp.ulpfec.ulpfec_payload_type =
           send_config->rtp.ulpfec.ulpfec_payload_type;
-      if (rtx_) {
-        recv_config.rtp.ulpfec.red_rtx_payload_type =
-            send_config->rtp.ulpfec.red_rtx_payload_type;
-      }
     }
 
     if (rtx_) {
@@ -215,6 +211,11 @@ void RampUpTester::ModifyVideoConfigs(
       recv_config.rtp
           .rtx_payload_types[send_config->encoder_settings.payload_type] =
           send_config->rtp.rtx.payload_type;
+      if (red_) {
+        recv_config.rtp
+            .rtx_payload_types[test::CallTest::kRtxRedPayloadType] =
+            send_config->rtp.ulpfec.red_payload_type;
+      }
     }
     ++i;
   }

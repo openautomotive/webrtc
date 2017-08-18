@@ -1381,7 +1381,10 @@ void WebRtcVideoChannel::OnPacketReceived(
   // for these.
   for (auto& codec : recv_codecs_) {
     if (payload_type == codec.rtx_payload_type ||
+        // TODO(nisse): How to check for RTX, without red_rtx_payload_type?
+#if 0
         payload_type == codec.ulpfec.red_rtx_payload_type ||
+#endif
         payload_type == codec.ulpfec.ulpfec_payload_type) {
       return;
     }
@@ -2587,6 +2590,7 @@ WebRtcVideoChannel::MapCodecs(const std::vector<VideoCodec>& codecs) {
       return std::vector<VideoCodecSettings>();
     }
 
+    // TODO(nisse): Delete?
     if (it->first == ulpfec_config.red_payload_type) {
       ulpfec_config.red_rtx_payload_type = it->second;
     }
