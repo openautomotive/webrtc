@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "e3bbae3d_7ec17ad9",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-18T11:40:11Z",
+      "side": 1,
+      "message": "That is correct. Is there anything we can do to get that issue moving again (unrelated to this CL)?",
+      "parentUuid": "d64b9bb1_e6810110",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8466c117_96b9bd02",
         "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
         "patchSetId": 2
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "I\u0027ll try digging into the code a bit/asking around.",
       "parentUuid": "8466c117_96b9bd02",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ae0770_f263d563",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-18T11:40:11Z",
+      "side": 1,
+      "message": "FWIW, I have no idea if/how NetEq instances can jump around between MediaStreams.",
+      "parentUuid": "5a176ed9_7c8ff19c",
       "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
