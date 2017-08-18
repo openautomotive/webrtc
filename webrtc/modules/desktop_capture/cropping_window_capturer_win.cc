@@ -60,19 +60,19 @@ BOOL CALLBACK TopWindowVerifier(HWND hwnd, LPARAM param) {
     return TRUE;
   }
 
-  // Ignore descendant/owned windows since we want to capture them.
-  // This check does not work for tooltips and context menus. Drop down menus
-  // and popup windows are fine.
-  if (GetAncestor(hwnd, GA_ROOTOWNER) == context->selected_window) {
-    return TRUE;
-  }
-
+  // GetAncestor(hwnd, GA_ROOTOWNER) does not return the application window. So
+  // fall back to use GetWindowThreadProcessId() instead. See
+  // https://social.msdn.microsoft.com/Forums/windowsdesktop/en-US/ba529086-6d2d-483f-adfe-29b4cd5e8dd7/tooltip-owner?forum=windowssdk
   // If |hwnd| has no title and belongs to the same process, assume it's a
   // tooltip or context menu from the selected window and ignore it.
+  // TODO(zijiehe): This check cannot detect the tooltip or context menu of the
+  // child window.
   const size_t kTitleLength = 32;
   WCHAR window_title[kTitleLength];
   GetWindowText(hwnd, window_title, kTitleLength);
   if (wcsnlen_s(window_title, kTitleLength) == 0) {
+    // GetWindowThreadProcessId() is pretty fast, caching its result is not
+    // worthy. See, https://codereview.chromium.org/2990403002/.
     DWORD enumerated_window_process_id;
     DWORD selected_window_process_id;
     GetWindowThreadProcessId(hwnd, &enumerated_window_process_id);
@@ -192,6 +192,15 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
   TopWindowVerifierContext context(
       selected, reinterpret_cast<HWND>(excluded_window()), window_region_rect_);
   EnumWindows(&TopWindowVerifier, reinterpret_cast<LPARAM>(&context));
+  if (!context.is_top_window) {
+    return false;
+  }
+
+  // If |selected| is not covered by other windows, check whether it is
+  // covered by its own child windows. Note: EnumChildWindows() enumerates all
+  // generations child windows.
+  EnumChildWindows(
+      selected, &TopWindowVerifier, reinterpret_cast<LPARAM>(&context));
   return context.is_top_window;
 }
 
