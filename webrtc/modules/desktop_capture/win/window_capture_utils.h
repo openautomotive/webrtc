@@ -25,6 +25,12 @@ bool GetCroppedWindowRect(HWND window,
                           DesktopRect* cropped_rect,
                           DesktopRect* original_rect);
 
+// Retrieves the rectangle of the content area of |window|. The content area
+// does not include borders or shadow. The returned DesktopRect is in system
+// coordinates, i.e. the primary monitor on the system always starts from
+// (0, 0). This function returns false if native APIs fail.
+bool GetWindowContentRect(HWND window, DesktopRect* result);
+
 typedef HRESULT (WINAPI *DwmIsCompositionEnabledFunc)(BOOL* enabled);
 class AeroChecker {
  public:

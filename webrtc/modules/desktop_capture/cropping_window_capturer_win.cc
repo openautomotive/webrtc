@@ -63,16 +63,24 @@ BOOL CALLBACK TopWindowVerifier(HWND hwnd, LPARAM param) {
   // Ignore descendant/owned windows since we want to capture them.
   // This check does not work for tooltips and context menus. Drop down menus
   // and popup windows are fine.
-  if (GetAncestor(hwnd, GA_ROOTOWNER) == context->selected_window) {
+  if (GetAncestor(hwnd, GA_ROOT) == context->selected_window) {
     return TRUE;
   }
 
+  // GetAncestor(hwnd, GA_ROOT) does not return the root window of tooltips or
+  // context menu. So fall back to use GetWindowThreadProcessId() instead. See
+  // https://social.msdn.microsoft.com/Forums/windowsdesktop/en-US/ba529086-6d2d-483f-adfe-29b4cd5e8dd7/tooltip-owner?forum=windowssdk
   // If |hwnd| has no title and belongs to the same process, assume it's a
   // tooltip or context menu from the selected window and ignore it.
+  // TODO(zijiehe): This check cannot cover the case where tooltip or context
+  // menu of the child-window is covering the main window. See
+  // https://bugs.chromium.org/p/webrtc/issues/detail?id=8062 for details.
   const size_t kTitleLength = 32;
   WCHAR window_title[kTitleLength];
   GetWindowText(hwnd, window_title, kTitleLength);
   if (wcsnlen_s(window_title, kTitleLength) == 0) {
+    // GetWindowThreadProcessId() is pretty fast, caching its result is not
+    // worthy. See, https://codereview.chromium.org/2990403002/.
     DWORD enumerated_window_process_id;
     DWORD selected_window_process_id;
     GetWindowThreadProcessId(hwnd, &enumerated_window_process_id);
@@ -83,24 +91,20 @@ BOOL CALLBACK TopWindowVerifier(HWND hwnd, LPARAM param) {
     }
   }
 
-  // Check if the enumerated window intersects with the selected window.
-  RECT enumerated_rect;
-  if (!GetWindowRect(hwnd, &enumerated_rect)) {
+  DesktopRect content_rect;
+  // We prefer to use client rectangle instead of the window area, i.e. we allow
+  // that the border of |selected| to be covered by other windows. This can fix
+  // the issue that two fullscreen windows on two monitors cover each other.
+  if (!GetWindowContentRect(hwnd, &content_rect)) {
     // Bail out if failed to get the window area.
     context->is_top_window = false;
     return FALSE;
   }
 
-  DesktopRect intersect_rect = context->selected_window_rect;
-  DesktopRect enumerated_desktop_rect =
-      DesktopRect::MakeLTRB(enumerated_rect.left,
-                            enumerated_rect.top,
-                            enumerated_rect.right,
-                            enumerated_rect.bottom);
-  intersect_rect.IntersectWith(enumerated_desktop_rect);
+  content_rect.IntersectWith(context->selected_window_rect);
 
   // If intersection is not empty, the selected window is not on top.
-  if (!intersect_rect.is_empty()) {
+  if (!content_rect.is_empty()) {
     context->is_top_window = false;
     return FALSE;
   }
@@ -126,8 +130,9 @@ class CroppingWindowCapturerWin : public CroppingWindowCapturer {
 };
 
 bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
-  if (!rtc::IsWindows8OrLater() && aero_checker_.IsAeroEnabled())
+  if (!rtc::IsWindows8OrLater() && aero_checker_.IsAeroEnabled()) {
     return false;
+  }
 
   HWND selected = reinterpret_cast<HWND>(selected_window());
   // Check if the window is hidden or minimized.
@@ -151,17 +156,19 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
     // UpdateLayeredWindow is the only way to set per-pixel alpha and will cause
     // the previous GetLayeredWindowAttributes to fail. So we only need to check
     // the window wide color key or alpha.
-    if ((flags & LWA_COLORKEY) || ((flags & LWA_ALPHA) && (alpha < 255)))
+    if ((flags & LWA_COLORKEY) || ((flags & LWA_ALPHA) && (alpha < 255))) {
       return false;
+    }
   }
 
-  RECT selected_window_rect;
-  if (!GetWindowRect(selected, &selected_window_rect)) {
+  if (!GetCroppedWindowRect(selected, nullptr, &window_region_rect_)) {
     return false;
   }
-  window_region_rect_ = DesktopRect::MakeLTRB(
-      selected_window_rect.left, selected_window_rect.top,
-      selected_window_rect.right, selected_window_rect.bottom);
+
+  DesktopRect content_rect;
+  if (!GetWindowContentRect(selected, &content_rect)) {
+    return false;
+  }
 
   // Get the window region and check if it is rectangular.
   win::ScopedGDIObject<HRGN, win::DeleteObjectTraits<HRGN> >
@@ -169,8 +176,9 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
   int region_type = GetWindowRgn(selected, scoped_hrgn.Get());
 
   // Do not use the screen capturer if the region is empty or not rectangular.
-  if (region_type == COMPLEXREGION || region_type == NULLREGION)
+  if (region_type == COMPLEXREGION || region_type == NULLREGION) {
     return false;
+  }
 
   if (region_type == SIMPLEREGION) {
     RECT region_rect;
@@ -180,18 +188,37 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
                               region_rect.top,
                               region_rect.right,
                               region_rect.bottom);
-    rgn_rect.Translate(window_region_rect_.left(), window_region_rect_.top());
-    window_region_rect_.IntersectWith(rgn_rect);
+    DesktopRect translated_rect = rgn_rect;
+    translated_rect.Translate(window_region_rect_.left(),
+                              window_region_rect_.top());
+    window_region_rect_.IntersectWith(translated_rect);
+
+    translated_rect = rgn_rect;
+    translated_rect.Translate(content_rect.left(), content_rect.top());
+    content_rect.IntersectWith(rgn_rect);
+  }
+
+  // Check if the client area is out of the screen area. When the window is
+  // maximized, only its client area is visible in the screen, the border will
+  // be hidden. So we are using |content_rect| here.
+  if (!GetFullscreenRect().ContainsRect(content_rect)) {
+    return false;
   }
 
   // Check if the window is occluded by any other window, excluding the child
   // windows, context menus, and |excluded_window_|.
-  // TODO(zijiehe): EnumWindows enumerates root window only, so the window may
-  // be covered by its own child window. See bug
-  // https://bugs.chromium.org/p/webrtc/issues/detail?id=8062
   TopWindowVerifierContext context(
-      selected, reinterpret_cast<HWND>(excluded_window()), window_region_rect_);
-  EnumWindows(&TopWindowVerifier, reinterpret_cast<LPARAM>(&context));
+      selected, reinterpret_cast<HWND>(excluded_window()), content_rect);
+  const LPARAM enum_param = reinterpret_cast<LPARAM>(&context);
+  EnumWindows(&TopWindowVerifier, enum_param);
+  if (!context.is_top_window) {
+    return false;
+  }
+
+  // If |selected| is not covered by other windows, check whether it is
+  // covered by its own child windows. Note: EnumChildWindows() enumerates child
+  // windows in all generations.
+  EnumChildWindows(selected, &TopWindowVerifier, enum_param);
   return context.is_top_window;
 }
 

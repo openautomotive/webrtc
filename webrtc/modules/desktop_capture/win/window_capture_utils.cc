@@ -22,14 +22,18 @@ GetCroppedWindowRect(HWND window,
   if (!GetWindowRect(window, &rect)) {
     return false;
   }
+  *original_rect = DesktopRect::MakeLTRB(
+      rect.left, rect.top, rect.right, rect.bottom);
+
+  if (cropped_rect == nullptr) {
+    return true;
+  }
+
   WINDOWPLACEMENT window_placement;
   window_placement.length = sizeof(window_placement);
   if (!GetWindowPlacement(window, &window_placement)) {
     return false;
   }
-
-  *original_rect = DesktopRect::MakeLTRB(
-      rect.left, rect.top, rect.right, rect.bottom);
 
   // After Windows8, transparent borders will be added by OS at
   // left/bottom/right sides of a window. If the cropped window
@@ -46,6 +50,35 @@ GetCroppedWindowRect(HWND window,
   } else {
     *cropped_rect = *original_rect;
   }
+  return true;
+}
+
+bool GetWindowContentRect(HWND window, DesktopRect* result) {
+  RECT rect;
+  if (!GetWindowRect(window, &rect)) {
+    return false;
+  }
+  *result = DesktopRect::MakeLTRB(
+      rect.left, rect.top, rect.right, rect.bottom);
+
+  // If GetClientRect() failed, do nothing and return window area instead.
+  if (GetClientRect(window, &rect)) {
+    const int width = rect.right - rect.left;
+    const int height = rect.bottom - rect.top;
+    // The GetClientRect() is not expected to return a larger area than
+    // GetWindowRect().
+    if (width > 0 && width < result->width()) {
+      // GetClientRect() always set the left / top of RECT to 0. So we shrink
+      // half of the size from both sides.
+      const int shrink = ((width - result->width()) >> 1);
+      result->Extend(shrink, 0, shrink, 0);
+    }
+    if (height > 0 && height < result->height()) {
+      const int shrink = ((height - result->height()) >> 1);
+      result->Extend(0, shrink, 0, shrink);
+    }
+  }
+
   return true;
 }
 
