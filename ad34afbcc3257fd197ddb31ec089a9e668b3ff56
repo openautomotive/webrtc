@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff5782ad_0dcf4b42",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-20T21:39:07Z",
+      "side": 1,
+      "message": "Thank you Brave to catch the issue of tabbed applications.\nHere GA_ROOT returns the root window, but GA_ROOTOWNER returns the application window.\nI.e. for a dialog window, GA_ROOT returns the dialog window itself.\nGA_ROOTOWNER returns the application main window which opens the dialog window.\nSince we are sharing the application main window, GA_ROOT should be used here.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 63
+      },
+      "revId": "ad34afbcc3257fd197ddb31ec089a9e668b3ff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac606eca_86068236",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-20T21:39:07Z",
+      "side": 1,
+      "message": "On Windows 8.1 or upper, IsWindows8OrLater() may not correctly return the windows version.\nSee, https://msdn.microsoft.com/en-us/library/windows/desktop/ms724451(v\u003dvs.85).aspx. So we always prefer to check window_placement.showCmd.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "ad34afbcc3257fd197ddb31ec089a9e668b3ff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
