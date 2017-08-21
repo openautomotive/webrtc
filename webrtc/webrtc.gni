@@ -275,6 +275,12 @@ template("rtc_test") {
       android_manifest = webrtc_root + "test/android/AndroidManifest.xml"
       deps += [ webrtc_root + "test:native_test_java" ]
     }
+
+    # if(defined(USING_TASK_QUEUE)) {
+    # Somehow only add this deps if USING_TASK_QUEUE
+    deps += [ "//webrtc/rtc_base:rtc_task_queue_libevent" ]
+
+    # }
   }
 }
 
@@ -314,6 +320,12 @@ template("rtc_executable") {
       "//build/config:exe_and_shlib_deps",
     ]
     deps += invoker.deps
+
+    # if(defined(USING_TASK_QUEUE)) {
+    # Somehow only add this deps if USING_TASK_QUEUE
+    deps += [ "//webrtc/rtc_base:rtc_task_queue_libevent" ]
+
+    # }
     public_configs = [ rtc_common_inherited_config ]
     if (defined(invoker.public_configs)) {
       public_configs += invoker.public_configs

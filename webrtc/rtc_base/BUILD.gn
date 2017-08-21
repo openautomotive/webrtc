@@ -298,6 +298,7 @@ rtc_static_library("rtc_task_queue") {
   public_deps = [
     ":rtc_base_approved",
   ]
+  defines = [ "USING_TASK_QUEUE" ]
 
   if (build_with_chromium) {
     sources = [
@@ -309,29 +310,45 @@ rtc_static_library("rtc_task_queue") {
       "task_queue.h",
       "task_queue_posix.h",
     ]
-    if (rtc_build_libevent) {
-      deps = [
-        "//base/third_party/libevent",
-      ]
-    }
 
-    if (rtc_enable_libevent) {
+    #    if (rtc_build_libevent) {
+    #      deps = [
+    #        "//base/third_party/libevent",
+    #      ]
+    #    }
+
+    #    if (rtc_enable_libevent) {
+    #      sources += [
+    #        "task_queue_libevent.cc",
+    #        "task_queue_posix.cc",
+    #      ]
+    #      all_dependent_configs = [ ":enable_libevent_config" ]
+    #    } else {
+    if (is_mac || is_ios) {
       sources += [
-        "task_queue_libevent.cc",
+        "task_queue_gcd.cc",
         "task_queue_posix.cc",
       ]
-      all_dependent_configs = [ ":enable_libevent_config" ]
-    } else {
-      if (is_mac || is_ios) {
-        sources += [
-          "task_queue_gcd.cc",
-          "task_queue_posix.cc",
-        ]
-      }
-      if (is_win) {
-        sources += [ "task_queue_win.cc" ]
-      }
     }
+    if (is_win) {
+      sources += [ "task_queue_win.cc" ]
+    }
+  }
+
+  #  }
+}
+
+rtc_static_library("rtc_task_queue_libevent") {
+  if (rtc_enable_libevent) {
+    sources = [
+      "task_queue_libevent.cc",
+      "task_queue_posix.cc",
+    ]
+    all_dependent_configs = [ ":enable_libevent_config" ]
+    deps = [
+      ":rtc_task_queue",
+      "//base/third_party/libevent",
+    ]
   }
 }
 
