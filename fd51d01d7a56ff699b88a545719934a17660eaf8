@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78cb9192_7d2a7e8c",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-21T20:53:02Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this comment. Comments are useful for documenting why an optimization is worthwhile, not why it isn\u0027t, otherwise every other line of code would be a comment explaining why something isn\u0027t being cached :)",
+      "range": {
+        "startLine": 83,
+        "startChar": 64,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "fd51d01d7a56ff699b88a545719934a17660eaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27d3b37_1210ca5b",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-21T20:53:02Z",
+      "side": 1,
+      "message": "Do you mean \"context-\u003eselected_window\"? There\u0027s no variable called |selected| in scope here AFAICT.\n\nAlso, why do you want to do this? I can imagine that shadows should be excluded, but it\u0027s not clear to me that window borders should be. IIRC, the rationale for this is that we can\u0027t get the right cursor shape, which is true of borders and the window client area (but not shadows).\n\nEven if you do want to do this, it should be in a separate CL to the one handling child windows. There\u0027s enough subtlety going on here with different coordinate transforms that it\u0027s hard to review this when the two things are conflated in a single CL.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "fd51d01d7a56ff699b88a545719934a17660eaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
