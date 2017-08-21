@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edca6ed0_aff574fd",
+        "filename": "webrtc/video/rtp_video_stream_receiver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-21T11:02:47Z",
+      "side": 0,
+      "message": "does RtxReceiveStream have safe-guards in place to avoid long recursions? E.g, if the RTX packet contains another RTX packet, that contains another RTX packet? Or is this impossible for RTX, since we have the RTX SSRC\u003c-\u003emedia SSRC mapping?",
+      "range": {
+        "startLine": 526,
+        "startChar": 4,
+        "endLine": 526,
+        "endChar": 27
+      },
+      "revId": "1ea631f4a769305a372cfb8fcf455c10f8f0a8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

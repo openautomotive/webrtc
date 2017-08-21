@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca4d4fa0_d9f407f4",
+        "filename": "webrtc/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-21T11:02:47Z",
+      "side": 1,
+      "message": "I believe this population is done in webrtcvideoengine.cc.",
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b27b56_0f7eb4bc",
+        "filename": "webrtc/video/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-21T11:02:47Z",
+      "side": 1,
+      "message": "nit: period.",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb76ce7a_33d60d7c",
+        "filename": "webrtc/video/video_receive_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-21T11:02:47Z",
+      "side": 1,
+      "message": "Related to the comment above, I think it would be clearer if the RtxReceiveStreams were created at the WebRtcVideoChannel layer, similar to how VideoReceiveStream and FlexfecReceiveStream are currently created. Then maybe you could also clean up the code that populates the payload type mappings, as that is also done in WebRtcVideoChannel. Then I don\u0027t think that the VideoReceiveStream::Config::Rtp would have to know about RTX at all?",
+      "range": {
+        "startLine": 235,
+        "startChar": 26,
+        "endLine": 235,
+        "endChar": 59
+      },
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97548565_7608fa0d",
+        "filename": "webrtc/video/video_receive_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-21T11:02:47Z",
+      "side": 1,
+      "message": "Call currently owns all {Send,Receive}Stream objects. Is there a particular reason why the RtxReceiveStream should be owned by the VideoReceiveStream?",
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
