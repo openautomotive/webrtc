@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e5e4676_d186c3f3",
+        "filename": "webrtc/modules/audio_device/ios/voice_processing_audio_unit.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1130670
+      },
+      "writtenOn": "2017-08-21T10:14:11Z",
+      "side": 1,
+      "message": "Would it not make sense to have a log line here that differs from the line in 259, to be able to distinguish which it is that is being run?",
+      "range": {
+        "startLine": 276,
+        "startChar": 34,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "a2146d6a41dcc70a5b8a879db96f43e2a68a9824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b255b8_38c8cc34",
+        "filename": "webrtc/modules/audio_device/ios/voice_processing_audio_unit.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1130670
+      },
+      "writtenOn": "2017-08-21T10:14:11Z",
+      "side": 1,
+      "message": "Would it be of interest to know in how many cases the AGC is actually activated in the else if clause? Without that interest, the code in this CL would be cemented forever even though it would turn out not to make a difference. Another histogram would reveal the performance of the new code and would allow future deactivation if it would not prove effective.",
+      "revId": "a2146d6a41dcc70a5b8a879db96f43e2a68a9824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
