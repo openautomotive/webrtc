@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db1d84f0_68607aec",
+        "filename": "webrtc/call/rtp_demuxer.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2017-08-21T13:58:35Z",
+      "side": 1,
+      "message": "This code causes breakages in Chrome due to size_t to int conversion. We didn\u0027t have the right configuration of bots in place when this code was submitted so it wasn\u0027t discovered until roll time: https://findit-for-me.appspot.com/waterfall/culprit?key\u003dag9zfmZpbmRpdC1mb3ItbWVyRAsSDVdmU3VzcGVjdGVkQ0wiMWNocm9taXVtLzg4OWI1ZTdhZThjNDI1NWU2MDBjNzdiYjdiYjQ5ODBmMTAyNmIzN2UM\n\nCan you fix it? It\u0027s pretty urgent as we have to roll asap",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 63
+      },
+      "revId": "53c7ba632d587b449122e03d7c5e74b12e5d24ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
