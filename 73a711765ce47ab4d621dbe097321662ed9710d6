@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e337860_b04ec29a",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-21T08:13:23Z",
+      "side": 1,
+      "message": "Since we can\u0027t make these comments part of the macro, what do you think about doing it just once here (with an empty line after) and no \"clang-format on\"? This file will forever just be WEBRTC_RTCSTATS_IMPL/constructor/destructor, no meaty logic, so clang-format on between these sections is likely to not be that useful. I leave this up to you.",
+      "revId": "73a711765ce47ab4d621dbe097321662ed9710d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
