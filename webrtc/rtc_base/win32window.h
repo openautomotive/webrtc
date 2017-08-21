@@ -39,7 +39,7 @@ class Win32Window {
   virtual bool OnMessage(UINT uMsg, WPARAM wParam, LPARAM lParam,
                          LRESULT& result);
 
-  virtual bool OnClose() { return true; }
+  virtual bool OnClose();
   virtual void OnNcDestroy() { }
 
  private:
