@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5ab6e28_34e2887e",
+        "filename": "webrtc/sdk/objc/Framework/Classes/PeerConnection/RTCCameraVideoCapturer.m",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1194095
+      },
+      "writtenOn": "2017-08-21T22:56:04Z",
+      "side": 1,
+      "message": "This change seems to cause the first frame to appear much slower.",
+      "range": {
+        "startLine": 141,
+        "startChar": 28,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "a9b848abc9a49de15308c1299a3ea22b22d829cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
