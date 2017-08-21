@@ -1150,8 +1150,8 @@ void EndToEndTest::DecodesRetransmittedFrame(bool enable_rtx, bool enable_red) {
         send_config->rtp.rtx.ssrcs.push_back(kSendRtxSsrcs[0]);
         send_config->rtp.rtx.payload_type = kSendRtxPayloadType;
         (*receive_configs)[0].rtp.rtx_ssrc = kSendRtxSsrcs[0];
-        (*receive_configs)[0].rtp.rtx_payload_types[payload_type_] =
-            kSendRtxPayloadType;
+        (*receive_configs)[0].rtp.rtx_payload_types[kSendRtxPayloadType] =
+            payload_type_;
       }
       // Configure encoding and decoding with VP8, since generic packetization
       // doesn't support FEC with NACK.
