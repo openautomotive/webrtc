@@ -22,6 +22,29 @@
       "revId": "1ea631f4a769305a372cfb8fcf455c10f8f0a8aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71c76a5_58a50daa",
+        "filename": "webrtc/video/rtp_video_stream_receiver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-08-21T11:23:53Z",
+      "side": 0,
+      "message": "where this mapping added to the rtx payload_type -\u003e payload type for RtxReceiverStream?",
+      "range": {
+        "startLine": 173,
+        "startChar": 50,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "1ea631f4a769305a372cfb8fcf455c10f8f0a8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
