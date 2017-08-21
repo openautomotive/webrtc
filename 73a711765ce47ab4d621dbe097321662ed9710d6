@@ -16,6 +16,24 @@
       "revId": "73a711765ce47ab4d621dbe097321662ed9710d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68430be5_5f7d3757",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-21T17:49:21Z",
+      "side": 1,
+      "message": "I think keeping the clang-format tight around the WEBRTC_RTCSTATS_IMPL macros is a bit better because 1) it makes it clear why the formatter is disabled and 2) while there isn\u0027t much else in this file, we might as well keep the formatter on as much as possible.",
+      "parentUuid": "8e337860_b04ec29a",
+      "revId": "73a711765ce47ab4d621dbe097321662ed9710d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
