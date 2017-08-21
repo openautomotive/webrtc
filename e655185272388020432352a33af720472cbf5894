@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f57ba92_78bae74e",
+        "filename": "webrtc/modules/desktop_capture/desktop_frame.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-21T21:08:41Z",
+      "side": 1,
+      "message": "I don\u0027t think I have enough context to review this, but this doesn\u0027t seem like a step in the right direction. You\u0027ve split a type that encapsulates both size and position into two separate fields and the only rationale (unless I\u0027m missing something) is that you don\u0027t want the overhead of copying/moving the size because in your use-case it will always be the same. This seems like a classic case of premature optimization (would that additional overhead actually matter?), and it\u0027s fragile in the sense that these new functions could easily be used in the future in a scenario where the size is not the same. It\u0027s also made it more awkward to construct one of these because it\u0027s now necessary to call set_top_left() after construction (although I\u0027m a bit surprised you didn\u0027t need to modify more call-sites than you have done here).\n\nI think this would be clearer if the two new methods acted as assignment operators (maybe you could even overload operator\u003d), as that\u0027s a lot simpler to reason about. Having a separate MoveFrameInfoFrom might be a worthwhile optimization, since |updated_region| might be costly to copy, but I don\u0027t really have enough context to be sure.",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "e655185272388020432352a33af720472cbf5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
