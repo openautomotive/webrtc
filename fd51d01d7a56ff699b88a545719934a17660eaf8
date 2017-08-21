@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e0633e6_3b22b67f",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-21T21:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78cb9192_7d2a7e8c",
+      "range": {
+        "startLine": 83,
+        "startChar": 64,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "fd51d01d7a56ff699b88a545719934a17660eaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f27d3b37_1210ca5b",
         "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-21T20:53:02Z",
       "side": 1,
       "message": "Do you mean \"context-\u003eselected_window\"? There\u0027s no variable called |selected| in scope here AFAICT.\n\nAlso, why do you want to do this? I can imagine that shadows should be excluded, but it\u0027s not clear to me that window borders should be. IIRC, the rationale for this is that we can\u0027t get the right cursor shape, which is true of borders and the window client area (but not shadows).\n\nEven if you do want to do this, it should be in a separate CL to the one handling child windows. There\u0027s enough subtlety going on here with different coordinate transforms that it\u0027s hard to review this when the two things are conflated in a single CL.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "fd51d01d7a56ff699b88a545719934a17660eaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04420e34_8711e9fb",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-21T21:48:57Z",
+      "side": 1,
+      "message": "This relates to the way Windows renders windows in fullscreen.\nAFAICT, though the border is not visible, the window size returned by GetWindowRect() still includes the borders. E.g. On a system with two monitors, 1000 x 800 + 1000 x 800\n  - The rectangle of a fullscreen window on the primary monitor could be -10 x -10 to 1010 x 1010.\n  - The rectangle of a fullscreen window on the secondary monitor could be 990 x -10 to 2010 x 1010.\n  - The extra 10 pixels on each side of the window is not visible. Borders and shadow are included in the 10 pixels area.\n\nSo if we do not actively remove these 10-pixel areas, two fullscreen windows will cover each other. It\u0027s more common to have two fullscreen windows then two normal windows to cover each other with only border or shadow. So I believe using GetWindowContentRect() to detect the overlapping could provide a better user experience.\n\nMouse cursor is not impacted by this change, MouseCursorMonitor won\u0027t be impacted by this change.\n\nI am OK to split the change into several small ones If you think they are conflated.\n  - Check whether a child window covers the target window.\n  - Detect whether the target window is out of the screen.\n  - Use GetWindowContentRect() instead of GetWindowRect() for overlapping detection.\n\nI will leave the changes to window_capture_utils.* into this CL. They are only utility functions, and the change does not impact logic.",
+      "parentUuid": "f27d3b37_1210ca5b",
       "range": {
         "startLine": 96,
         "startChar": 5,
