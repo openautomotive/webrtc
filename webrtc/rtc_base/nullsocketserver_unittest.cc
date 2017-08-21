@@ -21,9 +21,7 @@ class NullSocketServerTest
  public:
   NullSocketServerTest() {}
  protected:
-  virtual void OnMessage(Message* message) {
-    ss_.WakeUp();
-  }
+  void OnMessage(Message* message) override { ss_.WakeUp(); }
   NullSocketServer ss_;
 };
 

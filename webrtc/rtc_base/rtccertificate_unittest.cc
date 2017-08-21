@@ -32,7 +32,7 @@ static const char* kTestCertCommonName = "RTCCertificateTest's certificate";
 class RTCCertificateTest : public testing::Test {
  public:
   RTCCertificateTest() {}
-  ~RTCCertificateTest() {}
+  ~RTCCertificateTest() override {}
 
  protected:
   scoped_refptr<RTCCertificate> GenerateECDSA() {
