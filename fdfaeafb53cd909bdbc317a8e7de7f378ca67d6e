@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d05f5e33_b0b61545",
+        "filename": "webrtc/call/rtx_receive_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689c2120_21723b41",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "fdfaeafb53cd909bdbc317a8e7de7f378ca67d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e9be4d7_070552a7",
         "filename": "webrtc/call/rtx_receive_stream.cc",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5a14bcb1_266be31c",
+        "filename": "webrtc/call/rtx_receive_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e9be4d7_070552a7",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "fdfaeafb53cd909bdbc317a8e7de7f378ca67d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "759fc4fb_b92ea903",
         "filename": "webrtc/video/video_receive_stream.cc",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-21T11:23:53Z",
       "side": 1,
       "message": "rtp.rtx_payload_types is video_type -\u003e rtx type\nbut RtxReceiveStream expects reverse mapping.",
+      "range": {
+        "startLine": 236,
+        "startChar": 37,
+        "endLine": 236,
+        "endChar": 66
+      },
+      "revId": "fdfaeafb53cd909bdbc317a8e7de7f378ca67d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10784fa5_7384371e",
+        "filename": "webrtc/video/video_receive_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "Good catch. Ouch. What\u0027s the best way to fix this, are there any convenient ways to either reverse a std::map, or do a reverse lookup?",
+      "parentUuid": "759fc4fb_b92ea903",
       "range": {
         "startLine": 236,
         "startChar": 37,

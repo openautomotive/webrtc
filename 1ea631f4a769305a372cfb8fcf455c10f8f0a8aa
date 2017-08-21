@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3486ff64_dc161ef5",
+        "filename": "webrtc/video/rtp_video_stream_receiver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 0,
+      "message": "\u003e does RtxReceiveStream have safe-guards in place to avoid long recursions? E.g, if the RTX packet contains another RTX packet, that contains another RTX packet? Or is this impossible for RTX, since we have the RTX SSRC\u003c-\u003emedia SSRC mapping?\n\nOnly packets with the RTX ssrc are passed to RtxReceiveStream. Decapsulated packets are passed on to the corresponding media stream, which shouldn\u0027t know anything about RTX. There\u0027s still some rtx-related code to delete in the RtpVideoStreamReceiver class, though. Do you want me to attempt to delete in this cl, or in a follow up?",
+      "parentUuid": "edca6ed0_aff574fd",
+      "range": {
+        "startLine": 526,
+        "startChar": 4,
+        "endLine": 526,
+        "endChar": 27
+      },
+      "revId": "1ea631f4a769305a372cfb8fcf455c10f8f0a8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f71c76a5_58a50daa",
         "filename": "webrtc/video/rtp_video_stream_receiver.cc",
         "patchSetId": 6

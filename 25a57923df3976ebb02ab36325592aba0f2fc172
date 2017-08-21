@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "589b684d_76cead7e",
+        "filename": "webrtc/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "I agree, and edited the comment accordingly.",
+      "parentUuid": "ca4d4fa0_d9f407f4",
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10b27b56_0f7eb4bc",
         "filename": "webrtc/video/BUILD.gn",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1b1f8b_dbc0f795",
+        "filename": "webrtc/video/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b27b56_0f7eb4bc",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
       "writtenOn": "2017-08-21T11:02:47Z",
       "side": 1,
       "message": "Call currently owns all {Send,Receive}Stream objects. Is there a particular reason why the RtxReceiveStream should be owned by the VideoReceiveStream?",
+      "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e72e4e_f92f4204",
+        "filename": "webrtc/video/video_receive_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-21T11:38:28Z",
+      "side": 1,
+      "message": "I view the rtx stream as a detail of the corresponding media stream. internal::VideoReceiveStream represents video media, and is what\u0027s returned by Call::CreateVideoReceiveStream. Then it registers two objects with the demuxer, RtpVideoStreamReceiver for the media ssrc, and RtxStreamReceiver for the rtx ssrc.",
+      "parentUuid": "97548565_7608fa0d",
       "revId": "25a57923df3976ebb02ab36325592aba0f2fc172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
