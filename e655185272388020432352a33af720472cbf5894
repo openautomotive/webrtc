@@ -22,6 +22,30 @@
       "revId": "e655185272388020432352a33af720472cbf5894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0568cfc_8cee861a",
+        "filename": "webrtc/modules/desktop_capture/desktop_frame.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-21T21:36:21Z",
+      "side": 1,
+      "message": "I think I have not explained this problem we are facing clearly in the description. This change is not urgent, let\u0027s discuss when you have time.",
+      "parentUuid": "8f57ba92_78bae74e",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "e655185272388020432352a33af720472cbf5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
