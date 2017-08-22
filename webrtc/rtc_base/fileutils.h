@@ -98,10 +98,6 @@ class FilesystemInterface {
   // Returns true if pathname refers to a file
   virtual bool IsFile(const Pathname& pathname) = 0;
 
-  // Returns true if pathname refers to no filesystem object, every parent
-  // directory either exists, or is also absent.
-  virtual bool IsAbsent(const Pathname& pathname) = 0;
-
   // A folder appropriate for storing temporary files (Contents are
   // automatically deleted when the program exits)
   virtual bool GetTemporaryFolder(Pathname &path, bool create,
@@ -150,10 +146,6 @@ class Filesystem {
 
   static bool IsFile(const Pathname &pathname) {
     return EnsureDefaultFilesystem()->IsFile(pathname);
-  }
-
-  static bool IsAbsent(const Pathname &pathname) {
-    return EnsureDefaultFilesystem()->IsAbsent(pathname);
   }
 
   static bool GetTemporaryFolder(Pathname &path, bool create,
