@@ -21,9 +21,8 @@ class Win32Filesystem : public FilesystemInterface {
   // If the path points to a folder, it will fail with VERIFY
   bool DeleteFile(const Pathname& filename) override;
 
-  // Creates a directory. This will call itself recursively to create /foo/bar even if
-  // /foo does not exist.
-  // Returns TRUE if function succeeds
+  // Creates a directory.  Parent directory must already exist.
+  // Returns TRUE if function succeeds.
   bool CreateFolder(const Pathname& pathname) override;
 
   // This moves a file from old_path to new_path. If the new path is on a

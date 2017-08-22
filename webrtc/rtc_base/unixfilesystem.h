@@ -38,10 +38,8 @@ class UnixFilesystem : public FilesystemInterface {
   // It will fail with VERIY if you pass it a non-existant file, or a directory.
   bool DeleteFile(const Pathname& filename) override;
 
-  // Creates a directory. This will call itself recursively to create /foo/bar
-  // even if /foo does not exist. All created directories are created with the
-  // given mode.
-  // Returns TRUE if function succeeds
+  // Creates a directory with the given mode. Parent directory must
+  // already exist. Returns TRUE if function succeeds.
   virtual bool CreateFolder(const Pathname &pathname, mode_t mode);
 
   // As above, with mode = 0755.

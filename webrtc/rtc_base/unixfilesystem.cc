@@ -106,15 +106,6 @@ bool UnixFilesystem::CreateFolder(const Pathname &path, mode_t mode) {
     return false;
   }
 
-  // Directory doesn't exist, look up one directory level
-  do {
-    --len;
-  } while ((len > 0) && (pathname[len - 1] != '/'));
-
-  if (!CreateFolder(Pathname(pathname.substr(0, len)), mode)) {
-    return false;
-  }
-
   LOG(LS_INFO) << "Creating folder: " << pathname;
   return (0 == ::mkdir(pathname.c_str(), mode));
 }

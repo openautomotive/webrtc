@@ -51,15 +51,6 @@ bool Win32Filesystem::CreateFolder(const Pathname &pathname) {
     return false;
   }
 
-  // Directory doesn't exist, look up one directory level
-  if (!pathname.parent_folder().empty()) {
-    Pathname parent(pathname);
-    parent.SetFolder(pathname.parent_folder());
-    if (!CreateFolder(parent)) {
-      return false;
-    }
-  }
-
   return (::CreateDirectory(path16.c_str(), nullptr) != 0);
 }
 

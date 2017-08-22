@@ -83,8 +83,8 @@ class FilesystemInterface {
   // non-existent file.
   virtual bool DeleteFile(const Pathname &filename) = 0;
 
-  // Creates a directory. This will call itself recursively to create /foo/bar
-  // even if /foo does not exist. Returns true if the function succeeds.
+  // Creates a directory. Parent directory must already exist. Returns
+  // true if the function succeeds.
   virtual bool CreateFolder(const Pathname &pathname) = 0;
 
   // This moves a file from old_path to new_path, where "old_path" is a
