@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "981612c2_3ba7959e",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T20:55:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2d0bcdb_1dca7ff5",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c5250c_434a9ac5",
         "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 12
@@ -225,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "21d70884_ef765cdb",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T20:55:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t document when GetWindowRect can fail either :) I suspect in both cases it can only return invalid window handle; you might even want to consider making these functions return the rectangle instead of a boolean and have them assert that the API succeeded, but that\u0027s up to you. In any case, having these two methods provide a consistent API is better than having one of them silently fall back on something the caller isn\u0027t expecting, IMO. If you think the scenario is sufficiently common where the caller wants the content rect but will settle for the window rect if that fails, you could always add a GetContentOrWindowRect, with documented semantics, but I think it will yield code that\u0027s harder to reason about.",
+      "parentUuid": "4b346ec4_7bdbeed5",
+      "range": {
+        "startLine": 70,
+        "startChar": 74,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec0b55c0_4d7fbcc9",
         "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 12
@@ -260,6 +308,30 @@
       "side": 1,
       "message": "Title bar should also be captured.",
       "parentUuid": "ec0b55c0_4d7fbcc9",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14e1abe_fa928efa",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T20:55:29Z",
+      "side": 1,
+      "message": "Understood. So the content rect as defined by this method is different from the client rect, insofar as the content rect includes the title bar, but none of the window borders; correct? That makes sense, but please clarif in the header comment that the titlebar is included.",
+      "parentUuid": "d2b07e22_a60af9f7",
       "range": {
         "startLine": 80,
         "startChar": 28,
