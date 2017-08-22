@@ -273,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "a6c3445d_c7db6565",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T21:20:04Z",
+      "side": 1,
+      "message": "I have the same feeling that these APIs fail only when the input HWND is invalid. I may be over concerned, I have not encountered the issue on my test machine. Let\u0027s keep it like this for now, and fix it if we receive bug reports later.",
+      "parentUuid": "21d70884_ef765cdb",
+      "range": {
+        "startLine": 70,
+        "startChar": 74,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec0b55c0_4d7fbcc9",
         "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 12
@@ -341,6 +365,30 @@
       "revId": "a3c797b7245937334f1a92182f7012df62719f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e9e54af_155f6097",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T21:20:04Z",
+      "side": 1,
+      "message": "Ah, I have not realized the confusing of the term \"Content\" here. Yes, the comment has been updated.",
+      "parentUuid": "a14e1abe_fa928efa",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
