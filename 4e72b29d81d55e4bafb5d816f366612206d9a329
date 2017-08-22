@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81860ee9_9c2fd657",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-22T05:57:24Z",
+      "side": 1,
+      "message": "Very good catch! I planned to update the calculation. Now I put it in the new patch. PTAL.\n\nIt is supposed to be % of secondary data.\n\nOne additional note: now so-called data is measured as # of samples, it would be better if we can measure # of encoded bytes in the future",
+      "parentUuid": "36c4a21e_a47d900a",
+      "range": {
+        "startLine": 385,
+        "startChar": 5,
+        "endLine": 385,
+        "endChar": 13
+      },
+      "revId": "4e72b29d81d55e4bafb5d816f366612206d9a329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d2da75d_d30d306b",
         "filename": "webrtc/modules/audio_coding/neteq/neteq_unittest.cc",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e34d184e_e7cf9c43",
+        "filename": "webrtc/modules/audio_coding/neteq/neteq_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-22T05:57:24Z",
+      "side": 1,
+      "message": "That was strange to me too. Reason was I have not run Android bot to update this value :)",
+      "parentUuid": "8d2da75d_d30d306b",
+      "range": {
+        "startLine": 449,
+        "startChar": 24,
+        "endLine": 449,
+        "endChar": 64
+      },
+      "revId": "4e72b29d81d55e4bafb5d816f366612206d9a329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30194cd4_e1443225",
         "filename": "webrtc/modules/audio_coding/neteq/packet_buffer.cc",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-15T11:21:38Z",
       "side": 1,
       "message": "You are doing the same thing in at least three places. I suggest you instead extend the PacketsDiscarded method with one parameter indicating the priority of the packet.\n\nPacketsDiscarded(size_t num_packets, int priority)\n\nsuch that you can simply call\nstats-\u003ePacketsDiscarded(1, packet.priority.codec_level);\n\nIt can then be an internal matter of the StatisticsCalculator to bucketize the priorities into primary and secondary.",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 35
+      },
+      "revId": "4e72b29d81d55e4bafb5d816f366612206d9a329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c362eaca_9eadfdd5",
+        "filename": "webrtc/modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-22T05:57:24Z",
+      "side": 1,
+      "message": "agree, but a bit implementational difference as you suggested, PTAL",
+      "parentUuid": "30194cd4_e1443225",
       "range": {
         "startLine": 103,
         "startChar": 24,
