@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f5a7a8_6ecf6ce5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "It took me a while to understand what\u0027s going on here. I think the issue you\u0027re trying to address is that if a window has child windows, then we need to use the (slower) window capturer because the child window might cause the overall shape to be non-rectangular. In fact, I\u0027m not convinced that is actually what we want--if I\u0027m casting notepad and use the File \u003e Open dialog, I probably want to cast that as well. However, if non-rectangular regions are not supported, then this approach is better than the alternative of casting only the portion of the child window that lies inside its parent.",
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16de142c_aa62e769",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "If I\u0027m understanding the documentation for GetAncestor correctly, by changing ROOTOWNER to ROOT, you\u0027re no longer traversing owned windows, so I think you need to delete \"owned\" from this comment. However, it\u0027s not obvious to me why you\u0027re making that change, and there\u0027s nothing in the comment or CL description to explain.",
+      "range": {
+        "startLine": 63,
+        "startChar": 23,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b8d350_78c916fa",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "This comment seems to be saying much the same as the next two lines, but I think those are easier to understand. If you think that the link adds useful context, then feel free to keep it, but I don\u0027t think the first two lines you\u0027ve added help with understanding this code.",
+      "range": {
+        "startLine": 72,
+        "startChar": 134,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de95c5ae_b9a8e2b5",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "The documentation isn\u0027t explicit about this, but I assume that this will only enumerate actual windows, not things like buttons, which IIRC have an HWND associated with them. If it does enumerate such \"windows\" then this isn\u0027t going to work, I don\u0027t think.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c5250c_434a9ac5",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "Why not return false in this case?",
+      "range": {
+        "startLine": 70,
+        "startChar": 74,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0b55c0_4d7fbcc9",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. Surely we want to subtract more from the height than from the width, precisely because the title bar is taller than the window border.",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b595c7_8b1a2c6b",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-22T18:11:19Z",
+      "side": 1,
+      "message": "Please use /2 instead of \u003e\u003e1. It\u0027s more readable.",
+      "range": {
+        "startLine": 81,
+        "startChar": 58,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
