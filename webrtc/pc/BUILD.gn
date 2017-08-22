@@ -226,6 +226,12 @@ rtc_source_set("libjingle_peerconnection") {
     "../api:libjingle_peerconnection_api",
   ]
 
+  # This target always link with a default implementation
+  # regardless of the flag |rtc_link_task_queue_impl|.
+  deps = [
+    "../rtc_base:rtc_task_queue_impl",
+  ]
+
   if (rtc_use_quic) {
     sources += [
       "quicdatachannel.cc",
