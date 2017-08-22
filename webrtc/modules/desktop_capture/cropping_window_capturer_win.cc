@@ -165,6 +165,11 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
     return false;
   }
 
+  DesktopRect content_rect;
+  if (!GetWindowContentRect(selected, &content_rect)) {
+    return false;
+  }
+
   // Get the window region and check if it is rectangular.
   win::ScopedGDIObject<HRGN, win::DeleteObjectTraits<HRGN> >
       scoped_hrgn(CreateRectRgn(0, 0, 0, 0));
@@ -187,9 +192,18 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
     translated_rect.Translate(window_region_rect_.left(),
                               window_region_rect_.top());
     window_region_rect_.IntersectWith(translated_rect);
+
+    translated_rect = rgn_rect;
+    translated_rect.Translate(content_rect.left(), content_rect.top());
+    content_rect.IntersectWith(rgn_rect);
   }
 
-  // TODO(zijiehe): Check whether the client area is out of the screen area.
+  // Check if the client area is out of the screen area. When the window is
+  // maximized, only its client area is visible in the screen, the border will
+  // be hidden. So we are using |content_rect| here.
+  if (!GetFullscreenRect().ContainsRect(content_rect)) {
+    return false;
+  }
 
   // Check if the window is occluded by any other window, excluding the child
   // windows, context menus, and |excluded_window_|.
