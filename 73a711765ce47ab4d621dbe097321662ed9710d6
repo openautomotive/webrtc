@@ -34,6 +34,24 @@
       "revId": "73a711765ce47ab4d621dbe097321662ed9710d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "440b9083_959da561",
+        "filename": "webrtc/stats/rtcstats_objects.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-22T09:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68430be5_5f7d3757",
+      "revId": "73a711765ce47ab4d621dbe097321662ed9710d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
