@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "72473219_971a5a7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "I have forwarded you a mail thread between Brave Yao (BraveYao@) and Niklas (NiklasE@). We have discussed the issues and potential solutions, and believe capturing \"window\" instead \"application\" is a simpler solution for now.\n\nCurrently CroppingWindowCapturerWin will still return a rectangle even part of the child window covers the target window. Both child window and target window may not be fully captured, which is worse than capturing \"window\" or capturing \"application\".",
+      "parentUuid": "28f5a7a8_6ecf6ce5",
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16de142c_aa62e769",
         "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 12
@@ -39,6 +57,30 @@
       "revId": "a3c797b7245937334f1a92182f7012df62719f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a71abf_247adc82",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "A comment has been added to the code.\n\nThe original comment made for this change can be found at https://chromium-review.googlesource.com/c/external/webrtc/+/619728/8/webrtc/modules/desktop_capture/cropping_window_capturer_win.cc#66.",
+      "parentUuid": "16de142c_aa62e769",
+      "range": {
+        "startLine": 63,
+        "startChar": 23,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "cec4e72b_f5e292d3",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b8d350_78c916fa",
+      "range": {
+        "startLine": 72,
+        "startChar": 134,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de95c5ae_b9a8e2b5",
         "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 12
@@ -76,6 +142,30 @@
       "writtenOn": "2017-08-22T18:11:19Z",
       "side": 1,
       "message": "The documentation isn\u0027t explicit about this, but I assume that this will only enumerate actual windows, not things like buttons, which IIRC have an HWND associated with them. If it does enumerate such \"windows\" then this isn\u0027t going to work, I don\u0027t think.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d0bcdb_1dca7ff5",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "No, controls won\u0027t be enumerated by this function. The comment has been updated.",
+      "parentUuid": "de95c5ae_b9a8e2b5",
       "range": {
         "startLine": 208,
         "startChar": 2,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4b346ec4_7bdbeed5",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "Done.\nBut I think GetWindowContentRect() is more like a nice-to-have change, GetWindowRect() also works for most of the cases, except for a fullscreen window. So I am a little bit nervous to return false when this new function fails without adding extra benefit. Because MSDN never tells us when will this function fail. (https://msdn.microsoft.com/en-us/library/windows/desktop/ms633503(v\u003dvs.85).aspx)",
+      "parentUuid": "04c5250c_434a9ac5",
+      "range": {
+        "startLine": 70,
+        "startChar": 74,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec0b55c0_4d7fbcc9",
         "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 12
@@ -122,6 +236,30 @@
       "writtenOn": "2017-08-22T18:11:19Z",
       "side": 1,
       "message": "This doesn\u0027t seem right. Surely we want to subtract more from the height than from the width, precisely because the title bar is taller than the window border.",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b07e22_a60af9f7",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "Title bar should also be captured.",
+      "parentUuid": "ec0b55c0_4d7fbcc9",
       "range": {
         "startLine": 80,
         "startChar": 28,
@@ -154,6 +292,30 @@
       "revId": "a3c797b7245937334f1a92182f7012df62719f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629ede47_709673f3",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-22T20:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b595c7_8b1a2c6b",
+      "range": {
+        "startLine": 81,
+        "startChar": 58,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "a3c797b7245937334f1a92182f7012df62719f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
