@@ -995,7 +995,8 @@ bool ScreenCapturerMac::RegisterRefreshAndMoveHandlers() {
 }
 
 void ScreenCapturerMac::UnregisterRefreshAndMoveHandlers() {
-  display_stream_manager_->UnregisterActiveStreams();
+  if (display_stream_manager_-)
+    display_stream_manager_->UnregisterActiveStreams();
 }
 
 void ScreenCapturerMac::ScreenRefresh(CGRectCount count,
