@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ffdd60_67dd3d38",
+        "filename": "webrtc/modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-23T12:16:59Z",
+      "side": 1,
+      "message": "I would still argue that you can omit this if statement, and instead directly call\n\nLogPacketsDiscarded(packets_discarded, p.priority.codec_level \u003e 0, stats);\n\nYou can then skip the counter variables, and also the two extra if-statements after the remove_if call.",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 6
+      },
+      "revId": "78c85281a1b3ad9d6e00ec21ff213434649269fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5deba921_9177c859",
+        "filename": "webrtc/modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-23T12:16:59Z",
+      "side": 1,
+      "message": "Same here as above.",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "78c85281a1b3ad9d6e00ec21ff213434649269fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
