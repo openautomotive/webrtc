@@ -46,6 +46,30 @@
       "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b75113_98e1f58f",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-23T17:58:33Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment, but the code now LGTM modulo a couple of nits. If you think it\u0027s important I understand what you\u0027re saying here, then let\u0027s discuss offline.",
+      "parentUuid": "3bebae8f_66646d3e",
+      "range": {
+        "startLine": 198,
+        "startChar": 41,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f23aa2fd_13f12e54",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-23T17:58:33Z",
+      "side": 1,
+      "message": "This isn\u0027t true given the way you\u0027ve coded it. Please rephrase this along the lines of \"has no region or a non-rectangular region\".",
+      "range": {
+        "startLine": 182,
+        "startChar": 46,
+        "endLine": 182,
+        "endChar": 59
+      },
+      "revId": "2e770a1bb586b5251f6df0822468094fc6528979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9199a48_d2248926",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-23T17:58:33Z",
+      "side": 1,
+      "message": "I think this name is misleading, given that it\u0027s only the window\u0027s region rect if it has a simple region. It\u0027s also a bit confusing that this code uses two variables named something like  region_rect. Is this used to clip the full-screen capturer if it\u0027s determined that it can be used? If so, maybe clip_rect_ would be a better name for this. WDYT?",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "2e770a1bb586b5251f6df0822468094fc6528979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
