@@ -22,6 +22,30 @@
       "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bebae8f_66646d3e",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-23T03:29:34Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the original meaning of the GetWindowRgn() and GetRgnBox(). But according to MSDN, GetRgnBox() always returns a rectangle smaller than GetWindowRect(), so GetRgnBox() either equals to GetWindowRect() or equals to GetCroppedWindowRect(), but larger than GetClientRect(). Intersecting it with both GetWindowRect() (here) and GetCroppedWindowRect() (in GetWindowRectInVirtualScreen()) seems duplicate.\nMSDN: The window region determines the area *within* the window where the system permits drawing. Link: https://msdn.microsoft.com/en-us/library/windows/desktop/dd144950(v\u003dvs.85).aspx.\n\nBut since this logic exists for a long time and it won\u0027t make any negative impact even it does nothing, I would prefer to keep it until I understand the original intention of these lines.\n\nThe code has been updated with a helper function. The signature is a little bit different to match Windows APIs.\n\nP.S. I believe that the purpose to get window rectangle both before (here) and after (in GetWindowRectInVirtualScreen()) is to avoid exposing content below |window| when it\u0027s moving. But since capturer is always slower than window position changes -- the former one is limited by video card and update frequency of the display, the later one should be real-time --  it won\u0027t help.",
+      "parentUuid": "9e033495_0d8e393b",
+      "range": {
+        "startLine": 198,
+        "startChar": 41,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
