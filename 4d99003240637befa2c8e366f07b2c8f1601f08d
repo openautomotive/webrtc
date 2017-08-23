@@ -16,6 +16,24 @@
       "revId": "4d99003240637befa2c8e366f07b2c8f1601f08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ffa55c_e3759c54",
+        "filename": "webrtc/modules/audio_device/audio_device_buffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001300
+      },
+      "writtenOn": "2017-08-23T13:05:31Z",
+      "side": 1,
+      "message": "Thanks, I had the same feeling actually. Will  rename.",
+      "parentUuid": "e2845d04_d370cec9",
+      "revId": "4d99003240637befa2c8e366f07b2c8f1601f08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
