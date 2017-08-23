@@ -22,6 +22,30 @@
       "revId": "0ff8d4b63d9f0904646e9ae692b851c0a14ef0d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13bc0cee_b9f83973",
+        "filename": "webrtc/modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-23T10:21:09Z",
+      "side": 1,
+      "message": "NetEq has one lock only (to rule them all...). So, the right way forward is probably to split up the protected objects inside NetEq into different groups and have a finer granularity. Ultimately, I\u0027d like to make the InsertPacket method a SwapQueue insert-only operation, lock-free, and then potentially make the rest of it run under a ThreadChecker to enforce a threading model. The stats polling is an interesting outlier in this model, so it might need a bit of locking anyway.",
+      "parentUuid": "490e1a5a_43848000",
+      "range": {
+        "startLine": 384,
+        "startChar": 7,
+        "endLine": 384,
+        "endChar": 16
+      },
+      "revId": "0ff8d4b63d9f0904646e9ae692b851c0a14ef0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
