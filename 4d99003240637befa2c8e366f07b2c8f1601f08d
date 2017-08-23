@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2845d04_d370cec9",
+        "filename": "webrtc/modules/audio_device/audio_device_buffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1130670
+      },
+      "writtenOn": "2017-08-23T12:55:47Z",
+      "side": 1,
+      "message": "I think the naming of this method is a bit nonintuitive. To me, the name sounds like a question/query, and I would then expect a reply/result. \nIt does, however, function more as a notifier.\n\nPlease consider whether this method should be renamed. What about NotifyAboutNativeAudioInterruption() or NativeAudioInterruption() or NativeAudioInterrupt()?",
+      "revId": "4d99003240637befa2c8e366f07b2c8f1601f08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
