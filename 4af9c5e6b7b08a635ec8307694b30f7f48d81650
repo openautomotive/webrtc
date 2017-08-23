@@ -70,6 +70,30 @@
       "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6111f220_154253db",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-23T18:30:26Z",
+      "side": 1,
+      "message": "I may need to do several more experiments before being able to provide more information. I am confusing about why both GetWindowRect() and GetWindowRgn() are used here, my feeling is GetWindowRgn() should be sufficient. Though it looks not worthy to spend too much time on it.\n\nBut if I have not explained my meaning clearly, we can discuss it offline.",
+      "parentUuid": "a9b75113_98e1f58f",
+      "range": {
+        "startLine": 198,
+        "startChar": 41,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

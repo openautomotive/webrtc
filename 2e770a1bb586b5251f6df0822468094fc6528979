@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6482b7b_9419f81e",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-23T18:30:26Z",
+      "side": 1,
+      "message": "The original logic only executes the intersecting when the region-type is SIMPLEREGION. I should follow it. The comment says exactly the same thing as the code, so I removed it.",
+      "parentUuid": "f23aa2fd_13f12e54",
+      "range": {
+        "startLine": 182,
+        "startChar": 46,
+        "endLine": 182,
+        "endChar": 59
+      },
+      "revId": "2e770a1bb586b5251f6df0822468094fc6528979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9199a48_d2248926",
         "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2e770a1bb586b5251f6df0822468094fc6528979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63707791_00812242",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-23T18:30:26Z",
+      "side": 1,
+      "message": "Yes, that\u0027s actually what I meant in the previous comment: after these lines, |window_region_rect_| \u003d\u003d |region_rect|, which either equals to the result of GetCroppedWindowRect() or GetWindowRect(). So getting |region_rect| from GetWindowRegionTypeWithBoundary() seems not necessary.\nBut it\u0027s not |clip_rect_|: |clip_rect_| needs to be intersected with the GetCroppedWindowRect() again after capturing.\nI have added a TODO here with more comments to explain these two variables.",
+      "parentUuid": "a9199a48_d2248926",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "2e770a1bb586b5251f6df0822468094fc6528979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
