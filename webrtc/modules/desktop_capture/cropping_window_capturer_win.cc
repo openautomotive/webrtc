@@ -10,7 +10,6 @@
 
 #include "webrtc/modules/desktop_capture/cropping_window_capturer.h"
 
-#include "webrtc/modules/desktop_capture/win/scoped_gdi_object.h"
 #include "webrtc/modules/desktop_capture/win/screen_capture_utils.h"
 #include "webrtc/modules/desktop_capture/win/window_capture_utils.h"
 #include "webrtc/rtc_base/logging.h"
@@ -134,14 +133,14 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
     return false;
   }
 
-  HWND selected = reinterpret_cast<HWND>(selected_window());
+  const HWND selected = reinterpret_cast<HWND>(selected_window());
   // Check if the window is hidden or minimized.
   if (IsIconic(selected) || !IsWindowVisible(selected)) {
     return false;
   }
 
   // Check if the window is a translucent layered window.
-  LONG window_ex_style = GetWindowLong(selected, GWL_EXSTYLE);
+  const LONG window_ex_style = GetWindowLong(selected, GWL_EXSTYLE);
   if (window_ex_style & WS_EX_LAYERED) {
     COLORREF color_ref_key = 0;
     BYTE alpha = 0;
@@ -165,31 +164,38 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
     return false;
   }
 
+  DesktopRect content_rect;
+  if (!GetWindowContentRect(selected, &content_rect)) {
+    return false;
+  }
+
+  DesktopRect region_rect;
   // Get the window region and check if it is rectangular.
-  win::ScopedGDIObject<HRGN, win::DeleteObjectTraits<HRGN> >
-      scoped_hrgn(CreateRectRgn(0, 0, 0, 0));
-  int region_type = GetWindowRgn(selected, scoped_hrgn.Get());
+  const int region_type =
+      GetWindowRegionTypeWithBoundary(selected, &region_rect);
 
   // Do not use the screen capturer if the region is empty or not rectangular.
   if (region_type == COMPLEXREGION || region_type == NULLREGION) {
     return false;
   }
 
-  if (region_type == SIMPLEREGION) {
-    RECT region_rect;
-    GetRgnBox(scoped_hrgn.Get(), &region_rect);
-    DesktopRect rgn_rect =
-        DesktopRect::MakeLTRB(region_rect.left,
-                              region_rect.top,
-                              region_rect.right,
-                              region_rect.bottom);
-    DesktopRect translated_rect = rgn_rect;
-    translated_rect.Translate(window_region_rect_.left(),
-                              window_region_rect_.top());
-    window_region_rect_.IntersectWith(translated_rect);
+  // Empty |region_rect| indicates the window has no region, so we do not need
+  // to intersect it with |window_region_rect_| and |content_rect|.
+  if (!region_rect.is_empty()) {
+    // The |region_rect| returned from GetRgnBox() is always in window
+    // coordinate.
+    region_rect.Translate(
+        window_region_rect_.left(), window_region_rect_.top());
+    window_region_rect_.IntersectWith(region_rect);
+    content_rect.IntersectWith(region_rect);
   }
 
-  // TODO(zijiehe): Check whether the client area is out of the screen area.
+  // Check if the client area is out of the screen area. When the window is
+  // maximized, only its client area is visible in the screen, the border will
+  // be hidden. So we are using |content_rect| here.
+  if (!GetFullscreenRect().ContainsRect(content_rect)) {
+    return false;
+  }
 
   // Check if the window is occluded by any other window, excluding the child
   // windows, context menus, and |excluded_window_|.
