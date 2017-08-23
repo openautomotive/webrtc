@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "06d8a6f9_817ea0dd",
+        "filename": "webrtc/modules/audio_coding/neteq/statistics_calculator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-08-23T19:53:24Z",
+      "side": 1,
+      "message": "This is the same issue I was concerned about. First, some clarification on what the different stream/track things are:\n\n1. MediaStream: a collection of MediaStreamTracks that are synchronized. Practically speaking, all we support is lip sync between one video track and one audio track.\n2. MediaStreamTrack: a handle to a stream of audio or video that the application can connect to an \u003caudio\u003e or \u003cvideo\u003e tag for playout.\n3. \"audio stream\" in this level of code: An audio RTP stream, meaning all packets with a specific SSRC identifier.\n\nIt may be uncommon, but it IS possible for a MediaStreamTrack to be fed by different RTP streams in its lifetime. Endpoints may switch to a different SSRC (meaning new RTP stream, new voe::Channel, and a new instance of NetEq) for various reasons, such as the clock rate being changed, or audio being sourced from a different endpoint upstream.\n\nWhen this happens, I don\u0027t think it would be correct for the MediaStreamTrackStats to reset to 0. I was talking to hbos@ about this on a different bug (b/64413607). My idea was to calculate/store the stats in RemoteAudioSource, which is an object that corresponds to a track instead of an RTP stream. To do this with concealedSamples, we\u0027d need to add a boolean \"concealed\" flag to the AudioFrame class, and to AudioSinkInterface::Data (copied here: https://cs.chromium.org/chromium/src/third_party/webrtc/voice_engine/channel.cc?dr\u003dCSs\u0026l\u003d664). RemoteAudioSource would intercept audio data and calculate stats via the \"raw sink\" interface. That seems doable.",
+      "parentUuid": "13ae0770_f263d563",
+      "revId": "b6b05f732fedda0b5861ddd37974d80bb53bd1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afbf98b2_44751e28",
         "filename": "webrtc/pc/rtcstatscollector.cc",
         "patchSetId": 2
