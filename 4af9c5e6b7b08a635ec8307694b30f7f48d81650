@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e033495_0d8e393b",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-23T00:58:18Z",
+      "side": 1,
+      "message": "Let me see if I understand this: content_rect is the content area of the window, and rgn_rect is the portion of it that Windows renders to the screen; correct? So for most apps they are the same, but for shaped windows they will be different, and it\u0027s possible that an app chooses a rectangular shape that is not the same as its content area.\n\nI think this could benefit from being factored out of this method, perhaps into a helper function alongside GetWindowContentRect. I suggest something like:\n\n  bool GetWindowRegionBoundingRect(DesktopRect* rect, int* region_type);\n\nThis will make this code a bit more readable because the semantics of content_rect won\u0027t then be changing based on region_type like it is now.",
+      "range": {
+        "startLine": 198,
+        "startChar": 41,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "4af9c5e6b7b08a635ec8307694b30f7f48d81650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
