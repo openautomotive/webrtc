@@ -90,20 +90,17 @@ BOOL CALLBACK TopWindowVerifier(HWND hwnd, LPARAM param) {
     }
   }
 
-  DesktopRect window_rect;
-  // TODO(zijiehe): Window content rectangle should be preferred to avoid
-  // falling back to window capturer when the border or shadow of another window
-  // covering the target window.
-  if (!GetWindowRect(hwnd, &window_rect)) {
+  DesktopRect content_rect;
+  if (!GetWindowContentRect(hwnd, &content_rect)) {
     // Bail out if failed to get the window area.
     context->is_top_window = false;
     return FALSE;
   }
 
-  window_rect.IntersectWith(context->selected_window_rect);
+  content_rect.IntersectWith(context->selected_window_rect);
 
   // If intersection is not empty, the selected window is not on top.
-  if (!window_rect.is_empty()) {
+  if (!content_rect.is_empty()) {
     context->is_top_window = false;
     return FALSE;
   }
@@ -206,11 +203,8 @@ bool CroppingWindowCapturerWin::ShouldUseScreenCapturer() {
 
   // Check if the window is occluded by any other window, excluding the child
   // windows, context menus, and |excluded_window_|.
-  // TODO(zijiehe): Content rectangle should be preferred to avoid falling back
-  // to window capturer when border or shadow of another window covering the
-  // target window.
   TopWindowVerifierContext context(
-      selected, reinterpret_cast<HWND>(excluded_window()), window_region_rect_);
+      selected, reinterpret_cast<HWND>(excluded_window()), content_rect);
   const LPARAM enum_param = reinterpret_cast<LPARAM>(&context);
   EnumWindows(&TopWindowVerifier, enum_param);
   if (!context.is_top_window) {
