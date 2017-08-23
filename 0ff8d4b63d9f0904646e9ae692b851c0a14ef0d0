@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "490e1a5a_43848000",
+        "filename": "webrtc/modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1126945
+      },
+      "writtenOn": "2017-08-23T10:14:38Z",
+      "side": 1,
+      "message": "Is there a plan to get rid of these sort of methods? (i.e. ones that grab a lock and return a value that might be obsolete?)\n\nAnother thing to consider is if all stats that require the same lock, should be returned from the same function as to avoid grabbing the same lock multiple times.",
+      "range": {
+        "startLine": 384,
+        "startChar": 7,
+        "endLine": 384,
+        "endChar": 16
+      },
+      "revId": "0ff8d4b63d9f0904646e9ae692b851c0a14ef0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
