@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef3a7763_12650aec",
+        "filename": "webrtc/audio/audio_receive_stream_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-08-24T10:39:24Z",
+      "side": 1,
+      "message": "Ew. Aggregate initialization of a struct with this many members is too brittle—especially when you sometimes add new members in the middle.\n\nNot this CLs fault, though.",
+      "revId": "680e36635fb4879f666526b715bb6045b343f5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa3d9cb_9faadc56",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-08-24T10:39:24Z",
+      "side": 1,
+      "message": "Ooohh, sneaky—you\u0027re converting this to an anonymous union so that you\u0027ll be able to avoid touching it when doing aggregate initialization. I haven\u0027t seen this trick before.",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 375,
+        "endChar": 0
+      },
+      "revId": "680e36635fb4879f666526b715bb6045b343f5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
