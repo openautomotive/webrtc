@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c610d075_e8e0e30d",
+        "filename": "webrtc/modules/audio_coding/test/target_delay_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-24T10:34:21Z",
+      "side": 1,
+      "message": "I think a problem is that SetMinimumDelay(kTargetDelayMs) is called in this first call to RequiredDelayAtCorrectRange(). I think the min delay should be reset before the next call.",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 29
+      },
+      "revId": "4fe31d21c18c362890ee05f7343da2d4c0fa891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
