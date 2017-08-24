@@ -141,7 +141,8 @@ bool IsWindowFullScreen(
 bool IsWindowMinimized(CFDictionaryRef window) {
   CFBooleanRef on_screen = reinterpret_cast<CFBooleanRef>(
       CFDictionaryGetValue(window, kCGWindowIsOnscreen));
-  return !CFBooleanGetValue(on_screen);
+  // If |on_screen| cannot be retrieved from |window|, treat it as minimized.
+  return on_screen == NULL || !CFBooleanGetValue(on_screen);
 }
 
 // Returns true if the window is minimized.
