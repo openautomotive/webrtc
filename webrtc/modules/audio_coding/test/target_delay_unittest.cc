@@ -22,19 +22,35 @@ namespace webrtc {
 
 class TargetDelayTest : public ::testing::Test {
  protected:
-  TargetDelayTest() : acm_(AudioCodingModule::Create(0)) {}
+  TargetDelayTest()
+      : sample_rate_hz_(16000), acm_(AudioCodingModule::Create(0)) {
+    SetNum10msPerFrame(2);
+  }
 
   ~TargetDelayTest() {}
+
+  void SetNum10msPerFrame(size_t num_10ms_per_frame) {
+    num_10ms_per_frame_ = num_10ms_per_frame;
+    frame_size_samples_ = sample_rate_hz_ * num_10ms_per_frame_ / 100;
+    payload_size_bytes_ = frame_size_samples_ * 2;
+    payload_.reset(new uint8_t[payload_size_bytes_]);
+
+    int16_t audio[frame_size_samples_];
+    const int kRange = 0x7FF;  // 2047, easy for masking.
+    for (size_t n = 0; n < frame_size_samples_; ++n)
+      audio[n] = (rand() & kRange) - kRange / 2;
+    WebRtcPcm16b_Encode(audio, frame_size_samples_, payload_.get());
+  }
 
   void SetUp() {
     EXPECT_TRUE(acm_.get() != NULL);
 
     ASSERT_EQ(0, acm_->InitializeReceiver());
-    constexpr int pltype = 108;
-    ASSERT_EQ(true,
-              acm_->RegisterReceiveCodec(pltype, {"L16", kSampleRateHz, 1}));
+    constexpr int kPayloadType = 108;
+    ASSERT_EQ(true, acm_->RegisterReceiveCodec(kPayloadType,
+                                               {"L16", sample_rate_hz_, 1}));
 
-    rtp_info_.header.payloadType = pltype;
+    rtp_info_.header.payloadType = kPayloadType;
     rtp_info_.header.timestamp = 0;
     rtp_info_.header.ssrc = 0x12345678;
     rtp_info_.header.markerBit = false;
@@ -42,12 +58,6 @@ class TargetDelayTest : public ::testing::Test {
     rtp_info_.type.Audio.channel = 1;
     rtp_info_.type.Audio.isCNG = false;
     rtp_info_.frameType = kAudioFrameSpeech;
-
-    int16_t audio[kFrameSizeSamples];
-    const int kRange = 0x7FF;  // 2047, easy for masking.
-    for (size_t n = 0; n < kFrameSizeSamples; ++n)
-      audio[n] = (rand() & kRange) - kRange / 2;
-    WebRtcPcm16b_Encode(audio, kFrameSizeSamples, payload_);
   }
 
   void OutOfRangeInput() {
@@ -69,8 +79,8 @@ class TargetDelayTest : public ::testing::Test {
 
   void WithTargetDelayBufferNotChanging() {
     // A target delay that is one packet larger than jitter.
-    const int kTargetDelayMs = (kInterarrivalJitterPacket + 1) *
-        kNum10msPerFrame * 10;
+    const int kTargetDelayMs =
+        (kInterarrivalJitterPacket + 1) * num_10ms_per_frame_ * 10;
     ASSERT_EQ(0, SetMinimumDelay(kTargetDelayMs));
     for (int n = 0; n < 30; ++n)  // Run enough iterations to fill the buffer.
       Run(true);
@@ -87,8 +97,8 @@ class TargetDelayTest : public ::testing::Test {
     int clean_optimal_delay = GetCurrentOptimalDelayMs();
 
     // A relatively large delay.
-    const int kTargetDelayMs = (kInterarrivalJitterPacket + 10) *
-        kNum10msPerFrame * 10;
+    const int kTargetDelayMs =
+        (kInterarrivalJitterPacket + 10) * num_10ms_per_frame_ * 10;
     ASSERT_EQ(0, SetMinimumDelay(kTargetDelayMs));
     for (int n = 0; n < 300; ++n)  // Run enough iterations to fill the buffer.
       Run(true);
@@ -106,21 +116,21 @@ class TargetDelayTest : public ::testing::Test {
 
     // A tighter check for the value of |required_delay|.
     // The jitter forces a delay of
-    // |kInterarrivalJitterPacket * kNum10msPerFrame * 10| milliseconds. So we
-    // expect |required_delay| be close to that.
-    EXPECT_NEAR(kInterarrivalJitterPacket * kNum10msPerFrame * 10,
+    // |kInterarrivalJitterPacket * num_10ms_per_frame_ * 10| milliseconds. So
+    // we expect |required_delay| be close to that.
+    EXPECT_NEAR(kInterarrivalJitterPacket * num_10ms_per_frame_ * 10,
                 required_delay, 1);
   }
 
   void TargetDelayBufferMinMax() {
-    const int kTargetMinDelayMs = kNum10msPerFrame * 10;
+    const int kTargetMinDelayMs = num_10ms_per_frame_ * 10;
     ASSERT_EQ(0, SetMinimumDelay(kTargetMinDelayMs));
     for (int m = 0; m < 30; ++m)  // Run enough iterations to fill the buffer.
       Run(true);
     int clean_optimal_delay = GetCurrentOptimalDelayMs();
     EXPECT_EQ(kTargetMinDelayMs, clean_optimal_delay);
 
-    const int kTargetMaxDelayMs = 2 * (kNum10msPerFrame * 10);
+    const int kTargetMaxDelayMs = 2 * (num_10ms_per_frame_ * 10);
     ASSERT_EQ(0, SetMaximumDelay(kTargetMaxDelayMs));
     for (int n = 0; n < 30; ++n)  // Run enough iterations to fill the buffer.
       Run(false);
@@ -130,19 +140,18 @@ class TargetDelayTest : public ::testing::Test {
   }
 
  private:
-  static const int kSampleRateHz = 16000;
-  static const int kNum10msPerFrame = 2;
-  static const size_t kFrameSizeSamples = 320;  // 20 ms @ 16 kHz.
-  // payload-len = frame-samples * 2 bytes/sample.
-  static const int kPayloadLenBytes = 320 * 2;
+  int sample_rate_hz_;
+  size_t num_10ms_per_frame_;
+  size_t frame_size_samples_;
+  int payload_size_bytes_;
   // Inter-arrival time in number of packets in a jittery channel. One is no
   // jitter.
   static const int kInterarrivalJitterPacket = 2;
 
   void Push() {
-    rtp_info_.header.timestamp += kFrameSizeSamples;
+    rtp_info_.header.timestamp += frame_size_samples_;
     rtp_info_.header.sequenceNumber++;
-    ASSERT_EQ(0, acm_->IncomingPacket(payload_, kFrameSizeSamples * 2,
+    ASSERT_EQ(0, acm_->IncomingPacket(payload_.get(), payload_size_bytes_,
                                       rtp_info_));
   }
 
@@ -150,13 +159,13 @@ class TargetDelayTest : public ::testing::Test {
   void Pull() {
     AudioFrame frame;
     bool muted;
-    for (int k = 0; k < kNum10msPerFrame; ++k) {  // Pull one frame.
+    for (size_t k = 0; k < num_10ms_per_frame_; ++k) {  // Pull one frame.
       ASSERT_EQ(0, acm_->PlayoutData10Ms(-1, &frame, &muted));
       ASSERT_FALSE(muted);
-      // Had to use ASSERT_TRUE, ASSERT_EQ generated error.
-      ASSERT_TRUE(kSampleRateHz == frame.sample_rate_hz_);
+      ASSERT_EQ(sample_rate_hz_, frame.sample_rate_hz_);
       ASSERT_EQ(1u, frame.num_channels_);
-      ASSERT_TRUE(kSampleRateHz / 100 == frame.samples_per_channel_);
+      ASSERT_EQ(sample_rate_hz_ / 100,
+                static_cast<int>(frame.samples_per_channel_));
     }
   }
 
@@ -195,9 +204,9 @@ class TargetDelayTest : public ::testing::Test {
     return acm_->LeastRequiredDelayMs();
   }
 
+  std::unique_ptr<uint8_t[]> payload_;
   std::unique_ptr<AudioCodingModule> acm_;
   WebRtcRTPHeader rtp_info_;
-  uint8_t payload_[kPayloadLenBytes];
 };
 
 // Flaky on iOS: webrtc:7057.
@@ -250,6 +259,13 @@ TEST_F(TargetDelayTest, MAYBE_RequiredDelayAtCorrectRange) {
 #endif
 TEST_F(TargetDelayTest, MAYBE_TargetDelayBufferMinMax) {
   TargetDelayBufferMinMax();
+}
+
+TEST_F(TargetDelayTest,
+       MAYBE_RequiredDelayAtCorrectRangeAfterFrameLengthChange) {
+  RequiredDelayAtCorrectRange();
+  SetNum10msPerFrame(12);
+  RequiredDelayAtCorrectRange();
 }
 
 }  // namespace webrtc
