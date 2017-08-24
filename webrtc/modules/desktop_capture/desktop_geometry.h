@@ -142,6 +142,12 @@ class DesktopRect {
               int32_t right_offset,
               int32_t bottom_offset);
 
+  // Scales current DesktopRect by multiple |vertical| to |width()| and
+  // |horizontal| to |height()|. This function does not impact the |top_| and
+  // |left_|. Since floating number is used, pay attention to the potential
+  // error.
+  void Scale(double vertical, double horizontal);
+
  private:
   DesktopRect(int32_t left, int32_t top, int32_t right, int32_t bottom)
       : left_(left), top_(top), right_(right), bottom_(bottom) {
