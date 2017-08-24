@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c03fd98_ae173966",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-24T17:31:52Z",
+      "side": 1,
+      "message": "I think this is a key insight that I was missing. Please add something along these lines to the Move and Copy methods to make it clear when they\u0027re intended to be used.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "df5e0de67a1604b0721fd23ace12b99c7826b1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6becd3_780a413d",
+        "filename": "webrtc/modules/desktop_capture/shared_desktop_frame.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-24T17:31:52Z",
+      "side": 1,
+      "message": "I don\u0027t think std::move is needed for scoped_refptr (and I think it\u0027s clearer without it; that way std::move and MoveFrameInfoFrom always go together, vs. a simple assignment and CopyFrameInfoFrom).",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "df5e0de67a1604b0721fd23ace12b99c7826b1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
