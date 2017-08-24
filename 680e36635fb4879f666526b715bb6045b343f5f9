@@ -39,6 +39,30 @@
       "revId": "680e36635fb4879f666526b715bb6045b343f5f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454b4f08_1e1c28fc",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-08-24T12:13:36Z",
+      "side": 1,
+      "message": "This union was as introduced to allow the aggregate initialization, but to allow \"__deprecated__\", since otherwise, __deprecated__ cannot compile.",
+      "parentUuid": "6aa3d9cb_9faadc56",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 375,
+        "endChar": 0
+      },
+      "revId": "680e36635fb4879f666526b715bb6045b343f5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
