@@ -22,6 +22,30 @@
       "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c40909_1df5076a",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T17:44:33Z",
+      "side": 1,
+      "message": "Yes, we never capture a window if it\u0027s minimized on Mac due to the OS limitation. And if a window does not have kCGWindowIsOnscreen property, it\u0027s more likely this window does not exist anymore. Or in another word, it\u0027s not on screen.\n\nI think both IsWindowMinimized() overloads should return true if window does not exist. But the following one does not follow this rule either.\n\nI have updated this function to match the behavior you suggested, and will provide another change to flip the behavior of both functions and rename them to \"IsWindowNotOnScreen()\". With this name, it should be more reasonable to return true if window does not exist.",
+      "parentUuid": "79a95447_a315aac4",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
