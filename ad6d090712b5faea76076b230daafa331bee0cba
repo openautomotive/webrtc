@@ -46,6 +46,30 @@
       "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5dc7da_9533c8c9",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T17:58:05Z",
+      "side": 1,
+      "message": "That sounds reasonable, as long as your comment about a window having been deleted being the most likely cause of a missing dictionary key. I\u0027m not sure where to look in the documentation to confirm that though.",
+      "parentUuid": "99c40909_1df5076a",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
