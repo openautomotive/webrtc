@@ -123,6 +123,7 @@ int DelayManager::Update(uint16_t sequence_number,
       iat_packets += static_cast<uint16_t>(last_seq_no_ + 1 - sequence_number);
     }
 
+    const auto old_target_level = target_level_;
     // Saturate IAT at maximum value.
     const int max_iat = kMaxIat;
     iat_packets = std::min(iat_packets, max_iat);
@@ -134,6 +135,8 @@ int DelayManager::Update(uint16_t sequence_number,
     }
 
     LimitTargetLevel();
+    if (old_target_level != target_level_)
+      printf("target_level_ = %d\n", target_level_);
   }  // End if (packet_len_ms > 0).
 
   // Prepare for next packet arrival.
