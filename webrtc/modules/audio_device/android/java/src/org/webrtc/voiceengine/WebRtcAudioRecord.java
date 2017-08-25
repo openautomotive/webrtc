@@ -18,6 +18,7 @@ import android.media.MediaRecorder.AudioSource;
 import android.os.Process;
 import java.lang.System;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.concurrent.TimeUnit;
 import org.webrtc.ContextUtils;
 import org.webrtc.Logging;
@@ -190,6 +191,7 @@ public class WebRtcAudioRecord {
     final int bytesPerFrame = channels * (BITS_PER_SAMPLE / 8);
     final int framesPerBuffer = sampleRate / BUFFERS_PER_SECOND;
     byteBuffer = ByteBuffer.allocateDirect(bytesPerFrame * framesPerBuffer);
+    byteBuffer.order(ByteOrder.nativeOrder());
     Logging.d(TAG, "byteBuffer.capacity: " + byteBuffer.capacity());
     emptyBytes = new byte[byteBuffer.capacity()];
     // Rather than passing the ByteBuffer with every callback (requiring
