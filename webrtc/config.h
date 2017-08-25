@@ -49,6 +49,15 @@ struct UlpfecConfig {
   // Payload type used for ULPFEC packets.
   int ulpfec_payload_type;
 
+  // TODO(nisse): Unclear to me if the next two values belong here?
+  // Currently, red_rtx_payload_type is used mainly only on the send
+  // side. On the receive side, configuration of the per-packet
+  // processing is done via
+  // VideoReceiveStream::Config::Rtp::rtx_payload_types, but that
+  // mapping is populated by
+  // WebRtcVideoChannel::WebRtcVideoReceiveStream in
+  // webrtcvideoengine.cc based on the values in this struct.
+
   // Payload type used for RED packets.
   int red_payload_type;
 
