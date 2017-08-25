@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33ba5db6_6c3ee133",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T19:09:11Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood the words \"vertical\" and \"horizontal\".",
+      "parentUuid": "23225b18_c885f536",
+      "range": {
+        "startLine": 145,
+        "startChar": 44,
+        "endLine": 146,
+        "endChar": 31
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23e4db39_28805e0f",
         "filename": "webrtc/modules/desktop_capture/desktop_geometry.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-25T01:21:45Z",
       "side": 1,
       "message": "I don\u0027t understand what you mean by this.",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff0c0d8_a436deaf",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T19:09:11Z",
+      "side": 1,
+      "message": "This function uses static_cast\u003cint\u003e to convert double to int, which uses truncation instead of rounding. So 100001 * 0.99999 \u003d 99999 instead of 100000.\nIf you do not think this is important, I will remove them.",
+      "parentUuid": "23e4db39_28805e0f",
       "range": {
         "startLine": 147,
         "startChar": 14,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ec6235bf_ee470a33",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T19:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca081f62_d834595e",
+      "range": {
+        "startLine": 82,
+        "startChar": 30,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8213319_56d87bc9",
         "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-25T01:21:45Z",
       "side": 1,
       "message": "I don\u0027t understand this comment. If I\u0027m understanding the bug correctly Windows doesn\u0027t render the window borders when captured using PrintWindow or BitBlt if it is not the foreground window. GetCroppedWindowRect returns the window size excluding the borders, which isn\u0027t the root cause of the issue. Or are you saying that the only way to fix that issue is to adjust GetCroppedWindowRect to behave differently for non-foreground windows? If so, then I think this comment belongs with GetCroppedWindowRect, not here.",
+      "range": {
+        "startLine": 177,
+        "startChar": 78,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b251631_fb800e7c",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T19:09:11Z",
+      "side": 1,
+      "message": "1. On Windows 8+, a partial transparent shadow effect is added to any windows. So the actual window size is a little bit smaller than what we have got from GetWindowRect().\n2. When using CroppingWindowCapturer, the shadow effect will expose some content under the window.\n3. When the window is fullscreen, its borders will be hidden, so we have the similar issue: exposing content out of the window scope.\n\nThis is not true when using WindowCapturer, because we are always targeting its |window_dc|, so no content will be exposed \"under\" the window. So I believe GetWindowRect() should be used here.\n\nBut I need to try several combinations to ensure every aspect is covered. So I added a TODO here.",
+      "parentUuid": "f8213319_56d87bc9",
       "range": {
         "startLine": 177,
         "startChar": 78,
