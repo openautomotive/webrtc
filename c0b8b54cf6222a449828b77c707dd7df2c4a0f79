@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23225b18_c885f536",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:21:45Z",
+      "side": 1,
+      "message": "Why are you applying vertical to width and horizontal to height? It seems the wrong way round to me. If you do change it, you can remove the comment clarifying which parameter is applied to which direction, as it will be obvious.",
+      "range": {
+        "startLine": 145,
+        "startChar": 44,
+        "endLine": 146,
+        "endChar": 31
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e4db39_28805e0f",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:21:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean by this.",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca081f62_d834595e",
+        "filename": "webrtc/modules/desktop_capture/desktop_geometry_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:21:45Z",
+      "side": 1,
+      "message": "Add a test where horizontal and vertical are not the same?",
+      "range": {
+        "startLine": 82,
+        "startChar": 30,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8213319_56d87bc9",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:21:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. If I\u0027m understanding the bug correctly Windows doesn\u0027t render the window borders when captured using PrintWindow or BitBlt if it is not the foreground window. GetCroppedWindowRect returns the window size excluding the borders, which isn\u0027t the root cause of the issue. Or are you saying that the only way to fix that issue is to adjust GetCroppedWindowRect to behave differently for non-foreground windows? If so, then I think this comment belongs with GetCroppedWindowRect, not here.",
+      "range": {
+        "startLine": 177,
+        "startChar": 78,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "c0b8b54cf6222a449828b77c707dd7df2c4a0f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
