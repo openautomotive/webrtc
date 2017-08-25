@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2972c1e6_bf643b7b",
+        "filename": "webrtc/media/base/mediachannel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-25T15:26:26Z",
+      "side": 1,
+      "message": "Please clarify, is this discarded due to late/early arrival, due to packet duplication or due to any reason? For what interval does the rate apply - out of all packets of this stream or last x packets or seconds, etc? I would suggest documenting this in |NetworkStatistics::currentSecondaryDiscardedRate| too. (Figuring out the differences between old and new stats was made very difficult due to lack of documentation.)",
+      "revId": "884b17bb3c7b1e6d8e9f15bb6e2532a45041e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9fabb38_6b1bb449",
+        "filename": "webrtc/pc/statscollector.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1126884
+      },
+      "writtenOn": "2017-08-25T15:26:26Z",
+      "side": 1,
+      "message": "nit: Re-add the space before this line.",
+      "revId": "884b17bb3c7b1e6d8e9f15bb6e2532a45041e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
