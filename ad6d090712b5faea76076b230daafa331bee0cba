@@ -70,6 +70,30 @@
       "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ec74d1f_0d704a71",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-25T18:11:45Z",
+      "side": 1,
+      "message": "No, I have not seen any document about this. But since this happens on the users\u0027 machine (otherwise we won\u0027t have bug report), I doubt when the crash happens, it\u0027s possible the |window| CFDictionaryRef does not represent a window at all. Since it\u0027s a Ref, I suppose it works like an HWND on Windows.\n\nP.S. I am even more surprised about the briefness of the documentation on Apple website. (https://developer.apple.com/documentation/coregraphics/kcgwindowisonscreen)\nCFDictionaryGetValue() (https://developer.apple.com/documentation/corefoundation/1516757-cfdictionarygetvalue) is also not helpful.",
+      "parentUuid": "2e5dc7da_9533c8c9",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
