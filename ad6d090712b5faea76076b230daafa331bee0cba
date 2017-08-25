@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79a95447_a315aac4",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:26:27Z",
+      "side": 1,
+      "message": "Why treat it as minimized in this case? It seems more logical to treat null as false. Is this function used in a context where treating a window as minimized is safer? Perhaps allowing the caller to pass in a default value would be the best approach; this is fairly common in functions that extract a value from an optional type.",
+      "range": {
+        "startLine": 144,
+        "startChar": 77,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "ad6d090712b5faea76076b230daafa331bee0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
