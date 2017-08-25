@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "786aebc0_d2ee73cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-25T01:34:08Z",
+      "side": 1,
+      "message": "I think this summary could be more precise; something like: \"Use windows\u0027 content rectangles rather than their borders to determine overlapping.\" I\u0027m not 100% sure that \"borders\" is the right term here, but I think it\u0027s clear enough. Feel free to substitute something else if you can think of it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "9e2f5311e930f16905dfe889a51e74ea6f98495b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
