@@ -210,6 +210,7 @@ rtc_static_library("null_media_jni") {
 rtc_static_library("peerconnection_jni") {
   sources = [
     "src/jni/androidnetworkmonitor_jni.h",
+    "src/jni/audioprocessing_jni.h",
     "src/jni/pc/androidnetworkmonitor_jni.cc",
     "src/jni/pc/androidnetworkmonitor_jni.h",
     "src/jni/pc/audiotrack_jni.cc",
@@ -362,6 +363,7 @@ dist_jar("libwebrtc") {
 
 android_library("libjingle_peerconnection_java") {
   java_files = [
+    "api/org/webrtc/AudioProcessing.java",
     "api/org/webrtc/AudioSource.java",
     "api/org/webrtc/AudioTrack.java",
     "api/org/webrtc/CallSessionFileRotatingLogSink.java",
