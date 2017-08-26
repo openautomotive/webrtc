@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8eecb535_6c790b0a",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "Done for the 2nd one. I\u0027m unsure who to assign the first TODO to as it is copied from the above TODO without an owner. Please let me know if/who I should list an owner.",
+      "parentUuid": "423b4cee_129866bb",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 10
+      },
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03a9a828_076c33ae",
         "filename": "webrtc/p2p/base/packetsocketfactory.h",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab68059_c153f876",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "There\u0027s a non-webrtc class in google3 which is derived from AsyncPacketSocket. If it\u0027s easy to synchronize the changes, or we don\u0027t care about also changing the other signatures, it can certainly be done in this CL. If not, might be best to leave it to another CL.",
+      "parentUuid": "03a9a828_076c33ae",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d3a6343c_851e4005",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "Done. I\u0027ve assigned it to you, but please let me know if you\u0027d prefer it to be assigned to someone else.",
+      "parentUuid": "7324b864_96315c88",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a4f627_2264ec39",
         "filename": "webrtc/rtc_base/openssladapter.cc",
         "patchSetId": 6
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "10a57098_b79fd94f",
+        "filename": "webrtc/rtc_base/openssladapter.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "You\u0027re right. I\u0027ve changed it to instead log each protocol string, without the size character. Let me know if you\u0027d prefer to get rid of the log altogether.",
+      "parentUuid": "93a4f627_2264ec39",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a414ad_381bfe14",
         "filename": "webrtc/rtc_base/openssladapter.h",
         "patchSetId": 6
@@ -87,6 +165,24 @@
       "writtenOn": "2017-08-26T00:12:01Z",
       "side": 1,
       "message": "This is being tested explicitly (rather than being used as a helper method for another test), so I\u0027d actually just call it \"TransformAlpnProtocols\"",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40023a99_196ffcf6",
+        "filename": "webrtc/rtc_base/openssladapter.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "I\u0027m unclear on how you intend for it to be used. As it\u0027s replacing a static function, would you also like it to be a private member function, or are you okay with it staying a non-member?",
+      "parentUuid": "34a414ad_381bfe14",
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "4fb0af05_d1e20124",
+        "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39540b0_34dc92b5",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7b630a9_7bf335f1",
         "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
         "patchSetId": 6
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "d544ff72_ca6e209a",
+        "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b630a9_7bf335f1",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2d318f9_db1a48ac",
         "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
         "patchSetId": 6
@@ -141,6 +273,24 @@
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef1324d_108692b3",
+        "filename": "webrtc/rtc_base/openssladapter_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-26T01:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d318f9_db1a48ac",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
