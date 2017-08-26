@@ -34,6 +34,10 @@ bool DesktopCapturer::FocusOnSelectedSource() {
   return false;
 }
 
+bool DesktopCapturer::IsSpotHid(const DesktopVector& pos) {
+  return false;
+}
+
 // static
 std::unique_ptr<DesktopCapturer> DesktopCapturer::CreateWindowCapturer(
     const DesktopCaptureOptions& options) {
