@@ -54,6 +54,24 @@ class PacketSocketFactory {
       const std::string& user_agent,
       int opts) = 0;
 
+  // TODO: |proxy_info| and |user_agent| should be set
+  // per-factory and not when socket is created.
+  // TODO(diogor): Wrap |alpn_protocols| and |opts| along with any future
+  // options in a structure called PacketSocketTcpOptions.
+  // TODO(deadbeef): Implement this method in all subclasses (namely those in
+  // Chromium), make pure virtual, and remove the old CreateClientTcpSocket.
+  virtual AsyncPacketSocket* CreateClientTcpSocket(
+      const SocketAddress& local_address,
+      const SocketAddress& remote_address,
+      const ProxyInfo& proxy_info,
+      const std::string& user_agent,
+      const std::vector<std::string>& tls_alpn_protocols,
+      int opts) {
+    return CreateClientTcpSocket(local_address, remote_address, proxy_info,
+                                 user_agent, opts);
+  }
+
+
   virtual AsyncResolverInterface* CreateAsyncResolver() = 0;
 
  private:
