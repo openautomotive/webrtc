@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c66fdea9_b9ed1ecc",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-08-26T03:03:41Z",
+      "side": 1,
+      "message": "You can use me since I\u0027m an owner of the directory.",
+      "parentUuid": "8eecb535_6c790b0a",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 10
+      },
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03a9a828_076c33ae",
         "filename": "webrtc/p2p/base/packetsocketfactory.h",
         "patchSetId": 6
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "There\u0027s a non-webrtc class in google3 which is derived from AsyncPacketSocket. If it\u0027s easy to synchronize the changes, or we don\u0027t care about also changing the other signatures, it can certainly be done in this CL. If not, might be best to leave it to another CL.",
       "parentUuid": "03a9a828_076c33ae",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54fc3774_ab2e59ae",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-08-26T03:03:41Z",
+      "side": 1,
+      "message": "I meant just for the new method. We can update clients and remove the old method separately.",
+      "parentUuid": "aab68059_c153f876",
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -154,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "71cfe089_7f6415e3",
+        "filename": "webrtc/rtc_base/openssladapter.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-08-26T03:03:41Z",
+      "side": 1,
+      "message": "It\u0027s verbose level and even then won\u0027t be logged often, so it\u0027s fine.",
+      "parentUuid": "10a57098_b79fd94f",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a414ad_381bfe14",
         "filename": "webrtc/rtc_base/openssladapter.h",
         "patchSetId": 6
@@ -183,6 +243,24 @@
       "side": 1,
       "message": "I\u0027m unclear on how you intend for it to be used. As it\u0027s replacing a static function, would you also like it to be a private member function, or are you okay with it staying a non-member?",
       "parentUuid": "34a414ad_381bfe14",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6ab3cf_9a65ae73",
+        "filename": "webrtc/rtc_base/openssladapter.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-08-26T03:03:41Z",
+      "side": 1,
+      "message": "I\u0027m ok with it being a non-member. It\u0027s fine to have non-member functions that are tested (and it is). But \"ForTesting\" means \"this should ONLY be used for testing\". It\u0027s usually used to leak the implementation details of a class, which is an anti-pattern, or to allow injecting a mock/fake object into a class, which is fine. But this is neither.",
+      "parentUuid": "40023a99_196ffcf6",
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
