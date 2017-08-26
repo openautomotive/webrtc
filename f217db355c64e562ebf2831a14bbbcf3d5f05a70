@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41425349_cdc8511e",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-26T00:28:41Z",
+      "side": 1,
+      "message": "s/true/false/",
+      "range": {
+        "startLine": 106,
+        "startChar": 24,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "f217db355c64e562ebf2831a14bbbcf3d5f05a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6efb214_79732f4c",
+        "filename": "webrtc/modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-26T00:28:41Z",
+      "side": 1,
+      "message": "s/faver/favor/",
+      "range": {
+        "startLine": 107,
+        "startChar": 73,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "f217db355c64e562ebf2831a14bbbcf3d5f05a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
