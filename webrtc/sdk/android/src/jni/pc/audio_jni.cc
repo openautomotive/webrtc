@@ -12,6 +12,7 @@
 
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
 #include "webrtc/api/audio_codecs/builtin_audio_encoder_factory.h"
+#include "webrtc/modules/audio_processing/include/audio_processing.h"
 
 namespace webrtc_jni {
 
@@ -21,6 +22,10 @@ rtc::scoped_refptr<webrtc::AudioDecoderFactory> CreateAudioDecoderFactory() {
 
 rtc::scoped_refptr<webrtc::AudioEncoderFactory> CreateAudioEncoderFactory() {
   return webrtc::CreateBuiltinAudioEncoderFactory();
+}
+
+webrtc::AudioProcessing* CreateAudioProcessing() {
+  return webrtc::AudioProcessing::Create();
 }
 
 }  // namespace webrtc_jni
