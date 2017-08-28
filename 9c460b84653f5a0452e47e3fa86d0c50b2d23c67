@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "d615fcbe_9f31ef3a",
+        "filename": "webrtc/p2p/base/packetsocketfactory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-28T20:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fc3774_ab2e59ae",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7324b864_96315c88",
         "filename": "webrtc/p2p/base/packetsocketfactory.h",
         "patchSetId": 6
@@ -264,6 +282,24 @@
       "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d9ed33_cbb62846",
+        "filename": "webrtc/rtc_base/openssladapter.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-28T20:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6ab3cf_9a65ae73",
+      "revId": "9c460b84653f5a0452e47e3fa86d0c50b2d23c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
