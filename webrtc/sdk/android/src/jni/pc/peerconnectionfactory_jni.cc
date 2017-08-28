@@ -139,7 +139,8 @@ JNI_FUNCTION_DECLARATION(
     jclass,
     jobject joptions,
     jobject jencoder_factory,
-    jobject jdecoder_factory) {
+    jobject jdecoder_factory,
+    jlong jaudio_processing) {
   // talk/ assumes pretty widely that the current Thread is ThreadManager'd, but
   // ThreadManager only WrapCurrentThread()s the thread where it is first
   // created.  Since the semantics around when auto-wrapping happens in
@@ -186,13 +187,15 @@ JNI_FUNCTION_DECLARATION(
 
   webrtc::AudioDeviceModule* adm = nullptr;
   rtc::scoped_refptr<webrtc::AudioMixer> audio_mixer = nullptr;
+  webrtc::AudioProcessing* audio_processing =
+      reinterpret_cast<webrtc::AudioProcessing*>(jaudio_processing);
   std::unique_ptr<webrtc::CallFactoryInterface> call_factory(
       CreateCallFactory());
   std::unique_ptr<webrtc::RtcEventLogFactoryInterface> rtc_event_log_factory(
       CreateRtcEventLogFactory());
   std::unique_ptr<cricket::MediaEngineInterface> media_engine(CreateMediaEngine(
       adm, audio_encoder_factory, audio_decoder_factory, video_encoder_factory,
-      video_decoder_factory, audio_mixer));
+      video_decoder_factory, audio_mixer, audio_processing));
 
   rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface> factory(
       CreateModularPeerConnectionFactory(
