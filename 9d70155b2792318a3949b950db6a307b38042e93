@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "79efa684_afa37804",
+        "filename": "webrtc/p2p/base/turnport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1126895
+      },
+      "writtenOn": "2017-08-28T05:51:05Z",
+      "side": 1,
+      "message": "We will want to remove TlsCertPolicy, but that can be for another CL.\nWe should also remove |origin| everywhere (also later). There\u0027s a fair amount of cleanup that can be done here.",
+      "parentUuid": "725ec389_c69b0cec",
+      "revId": "9d70155b2792318a3949b950db6a307b38042e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4acf771_b62edd54",
         "filename": "webrtc/rtc_base/openssladapter.cc",
         "patchSetId": 1
