@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b8b27e_52b128a2",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-28T11:37:56Z",
+      "side": 1,
+      "message": "I would say that \"is discarded\" is correct, since it refers to \u0027fraction\u0027 (singular).",
+      "range": {
+        "startLine": 389,
+        "startChar": 61,
+        "endLine": 389,
+        "endChar": 64
+      },
+      "revId": "117f76fce0d79ae7b4a1c55f303da3f942feab52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2734c936_a4a8f768",
+        "filename": "webrtc/common_types.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1122982
+      },
+      "writtenOn": "2017-08-28T11:37:56Z",
+      "side": 1,
+      "message": "Alternative wording:\n\"Discarding of secondary data can be caused by the reception of the primary data, obsoleting the secondary data.\"\nBut both are good.",
+      "range": {
+        "startLine": 391,
+        "startChar": 5,
+        "endLine": 391,
+        "endChar": 56
+      },
+      "revId": "117f76fce0d79ae7b4a1c55f303da3f942feab52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
