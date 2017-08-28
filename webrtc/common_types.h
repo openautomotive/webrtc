@@ -386,7 +386,10 @@ struct NetworkStatistics {
   uint16_t currentAccelerateRate;
   // fraction of data coming from secondary decoding (in Q14)
   uint16_t currentSecondaryDecodedRate;
-  // fraction of secondary data that is discarded (in Q14).
+  // Fraction of secondary data, including FEC and RED, that are discarded (in
+  // Q14). Discarding of secondary data can be caused by the reception of the
+  // primary data that the secondary data try to protect. It can also be caused
+  // by early or late arrival.
   uint16_t currentSecondaryDiscardedRate;
   // clock-drift in parts-per-million (negative or positive)
   int32_t clockDriftPPM;

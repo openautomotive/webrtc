@@ -656,6 +656,7 @@ struct VoiceReceiverInfo : public MediaReceiverInfo {
         expand_rate(0),
         speech_expand_rate(0),
         secondary_decoded_rate(0),
+        secondary_discarded_rate(0),
         accelerate_rate(0),
         preemptive_expand_rate(0),
         decoding_calls_to_silence_generator(0),
@@ -683,6 +684,12 @@ struct VoiceReceiverInfo : public MediaReceiverInfo {
   float speech_expand_rate;
   // fraction of data out of secondary decoding, including FEC and RED.
   float secondary_decoded_rate;
+  // Fraction of secondary data, including FEC and RED, that are discarded.
+  // Discarding of secondary data can be caused by the reception of the primary
+  // data that the secondary data try to protect. It can also be caused by early
+  // or late arrival. This metric is the percentage of discarded secondary data
+  // since last query of receiver info.
+  float secondary_discarded_rate;
   // Fraction of data removed through time compression.
   float accelerate_rate;
   // Fraction of data inserted through time stretching.
