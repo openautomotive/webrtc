@@ -18,7 +18,7 @@ WindowFinderWin::WindowFinderWin() = default;
 WindowFinderWin::~WindowFinderWin() = default;
 
 WindowId WindowFinderWin::GetWindowUnderPoint(DesktopVector point) {
-  HWND window = WindowFromPoint(POINT { point.x(), point.y() });
+  const HWND window = WindowFromPoint(POINT { point.x(), point.y() });
   if (!window) {
     return kNullWindowId;
   }
@@ -27,9 +27,9 @@ WindowId WindowFinderWin::GetWindowUnderPoint(DesktopVector point) {
   // https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/Hirr_DkuZdw.
   // In short, we should use GA_ROOT, since we only care about the root window
   // but not the owner.
-  window = GetAncestor(window, GA_ROOT);
-  if (!window) {
-    return kNullWindowId;
+  const HWND root_window = GetAncestor(window, GA_ROOT);
+  if (root_window) {
+    return reinterpret_cast<WindowId>(root_window);
   }
 
   return reinterpret_cast<WindowId>(window);
