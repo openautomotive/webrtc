@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3850def7_cc442c9a",
+        "filename": "webrtc/modules/desktop_capture/desktop_capturer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-28T22:44:23Z",
+      "side": 1,
+      "message": "The naming here could be made more precise. I think \"Point\" is more commonly used than \"Spot\", and \"Occluded\" would be a better word than \"Hidden\", since there are multiple ways something could be hidden. So, I recommend changing this to IsPointOccluded (or just IsOccluded, since the fact that it operates on a single point is implicit in the method signature--your call though).\n\nCan this be made pure-virtual (and the implementation moved to the full-screen capturer). Your comment, above, explaining why the other methods can\u0027t be doesn\u0027t apply here, since it\u0027s a new method. If you have a concrete clean-up plan for pure-virtual-izing the other methods, then it\u0027s fine to leave this non-pure for consistency.",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3069275b_2f2ca22e",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_mac.mm",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-28T22:44:23Z",
+      "side": 1,
+      "message": "Under what circumstances will configuration_monitor be null? You should document it in the header for the ctor if it\u0027s a valid use-case; if not then get rid of the conditional here (replace it with a DCHECK if you prefer).",
+      "range": {
+        "startLine": 140,
+        "startChar": 31,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
