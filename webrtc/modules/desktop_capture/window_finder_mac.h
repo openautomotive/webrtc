@@ -15,7 +15,9 @@
 
 namespace webrtc {
 
-// The implementation of WindowFinder for Windows.
+class DesktopConfigurationMonitor;
+
+// The implementation of WindowFinder for Mac OSX.
 class WindowFinderMac final : public WindowFinder {
  public:
   WindowFinderMac();
@@ -23,6 +25,9 @@ class WindowFinderMac final : public WindowFinder {
 
   // WindowFinder implementation.
   WindowId GetWindowUnderPoint(DesktopVector point) override;
+
+ private:
+  const rtc::scoped_refptr<DesktopConfigurationMonitor> configuration_monitor_;
 };
 
 }  // namespace webrtc
