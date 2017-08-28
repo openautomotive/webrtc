@@ -221,6 +221,8 @@ bool GetWindowRect(::Display* display,
                    DesktopRect* rect,
                    XWindowAttributes* attributes /* = nullptr */) {
   XWindowAttributes local_attributes;
+  int offset_x;
+  int offset_y;
   if (attributes == nullptr) {
     attributes = &local_attributes;
   }
@@ -231,9 +233,22 @@ bool GetWindowRect(::Display* display,
         error_trap.GetLastErrorAndDisable() != 0) {
       return false;
     }
+    ::Window child;
+    if (!XTranslateCoordinates(display,
+                               window,
+                               attributes->root,
+                               0,
+                               0,
+                               &offset_x,
+                               &offset_y,
+                               &child) ||
+        error_trap.GetLastErrorAndDisable() != 0) {
+      return false;
+    }
   }
 
   *rect = DesktopRectFromXAttributes(*attributes);
+  rect->Translate(offset_x, offset_y);
   return true;
 }
 
