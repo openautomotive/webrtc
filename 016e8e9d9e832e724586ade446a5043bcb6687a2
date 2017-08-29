@@ -46,6 +46,30 @@
       "revId": "016e8e9d9e832e724586ade446a5043bcb6687a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a7bc93_6178eb42",
+        "filename": "webrtc/modules/desktop_capture/desktop_capture_options.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-29T18:32:17Z",
+      "side": 1,
+      "message": "I think that makes sense.",
+      "parentUuid": "1ab68470_f9a630d5",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "016e8e9d9e832e724586ade446a5043bcb6687a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
