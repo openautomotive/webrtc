@@ -49,6 +49,8 @@ class DesktopCaptureOptions {
 #endif
 
 #if defined(WEBRTC_MAC) && !defined(WEBRTC_IOS)
+  // If nullptr is returned, ScreenCapturer won't work and WindowCapturer may
+  // return inaccurate result from IsOccluted() function.
   DesktopConfigurationMonitor* configuration_monitor() const {
     return configuration_monitor_;
   }
