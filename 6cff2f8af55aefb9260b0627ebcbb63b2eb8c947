@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "151b7abd_55baea45",
+        "filename": "webrtc/modules/desktop_capture/desktop_capturer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-29T00:49:48Z",
+      "side": 1,
+      "message": "Done.\nBut it cannot be pure-virtual, ScreenCapturerAura is in Chromium.",
+      "parentUuid": "3850def7_cc442c9a",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3069275b_2f2ca22e",
         "filename": "webrtc/modules/desktop_capture/window_capturer_mac.mm",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-28T22:44:23Z",
       "side": 1,
       "message": "Under what circumstances will configuration_monitor be null? You should document it in the header for the ctor if it\u0027s a valid use-case; if not then get rid of the conditional here (replace it with a DCHECK if you prefer).",
+      "range": {
+        "startLine": 140,
+        "startChar": 31,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383e4f3e_85776eae",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_mac.mm",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-29T00:49:48Z",
+      "side": 1,
+      "message": "ConfigurationMonitor is coming from DesktopCaptureOptions, so it may be nullptr.\nUnlike ScreenCapturerMac, WindowCapturerMac still works fine without the ConfigurationMonitor, though IsOccluded() may not be accurate on multi-monitor system.\n\nComments have been added to the DesktopCaptureOptions.",
+      "parentUuid": "3069275b_2f2ca22e",
       "range": {
         "startLine": 140,
         "startChar": 31,
