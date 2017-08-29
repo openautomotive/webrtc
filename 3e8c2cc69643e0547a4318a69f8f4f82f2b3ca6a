@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c12f0e4a_cfb64734",
+        "filename": "webrtc/modules/desktop_capture/x11/window_list_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-29T18:30:13Z",
+      "side": 1,
+      "message": "By disabling the XErrorTrap here you\u0027re not guarding the call to XTranslateCoordinates(). There seems to be no GetLastError() that doesn\u0027t also disable the trap, so unless you want to add one, I think you\u0027ll need separate scoping blocks, each with their own XErrorTrap, which is a bit ugly.",
+      "range": {
+        "startLine": 233,
+        "startChar": 19,
+        "endLine": 233,
+        "endChar": 41
+      },
+      "revId": "3e8c2cc69643e0547a4318a69f8f4f82f2b3ca6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
