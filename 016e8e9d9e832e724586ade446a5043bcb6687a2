@@ -22,6 +22,30 @@
       "revId": "016e8e9d9e832e724586ade446a5043bcb6687a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab68470_f9a630d5",
+        "filename": "webrtc/modules/desktop_capture/desktop_capture_options.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-29T18:19:38Z",
+      "side": 1,
+      "message": "By default, set_configuration_monitor() will be called in CreateDefault() function. So it won\u0027t be null without actively set_configuration_monitor(nullptr).\n\nI think it\u0027s unreasonable to have both set_configuration_monitor() and set_full_screen_chrome_window_detector() functions. Unlike x_display(), which can be provided by external consumers to target a different X connection. I haven\u0027t seen a case consumers would prefer to provide different DesktopConfigurationMonitor or FullScreenChromeWindowDetector. Especially they are two classes without even a virtual function. The only thing I can imagine is to share instances between various DesktopCaptureOptions instances, but that has already been done by using rtc::scoped_refptr\u003c\u003e.\n\nIndeed I am not a fan of DesktopCaptureOptions::CreateDefault() pattern, it looks strange to me, all its functionality can be placed in the constructor. But it\u0027s a more complex change, and as long as CreateDefault() is used everywhere, we should be safe here.\n\nSo instead of adding a DCHECK() in getter, a better choice would be moving DesktopConfigurationMonitor and FullScreenChromeWindowDetector out of DesktopCaptureOptions.\n\nIn either cases, I think it\u0027s out of the scope of this change. Would you mind if I do the change separately?",
+      "parentUuid": "8e6fdbfa_0bb0669f",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "016e8e9d9e832e724586ade446a5043bcb6687a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
