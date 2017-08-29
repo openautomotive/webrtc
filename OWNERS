@@ -12,3 +12,4 @@ per-file BUILD.gn=kjellander@webrtc.org
 per-file DEPS=*
 per-file pylintrc=kjellander@webrtc.org
 per-file WATCHLISTS=*
+per-file style-guide-c++.md=kwiberg@webrtc.org
