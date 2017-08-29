@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60a5bd57_dd4fb414",
+        "filename": "webrtc/call/rtx_receive_stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-29T08:39:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f3b1e9_11728b56",
+      "revId": "3fd091cb9e989041394ef012228805f8e0c6f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ac5a1cd_240cd49e",
         "filename": "webrtc/config.h",
         "patchSetId": 12
@@ -30,6 +48,30 @@
       "writtenOn": "2017-08-29T07:31:26Z",
       "side": 1,
       "message": "I would be nice to delete this from the config, but that means that you have to make more changes to WebRtcVideoChannel::MapCodecs. Maybe in a followup CL?",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "3fd091cb9e989041394ef012228805f8e0c6f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8230448f_21dde40c",
+        "filename": "webrtc/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-29T08:39:42Z",
+      "side": 1,
+      "message": "\u003e I would be nice to delete this from the config, but that means that you have to make more changes to WebRtcVideoChannel::MapCodecs. Maybe in a followup CL?\n\nI think that\u0027s for a follow up. My current thinking is that they should stay in this class, since they\u0027re used on the send side and for codec metadata. But VideoReceiveStream::Config could be changed to hold an int ulpfec_payload_type rather than a struct UlpfecConfig. \n\nI would also like a follow up to delete the PayloadRegistry code which becomes unused when this is landed.",
+      "parentUuid": "1ac5a1cd_240cd49e",
       "range": {
         "startLine": 65,
         "startChar": 6,
