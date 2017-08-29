@@ -17,10 +17,15 @@
 
 namespace webrtc {
 
+// TODO(nisse): Consider renaming, RtxReceiveStream looks similar to
+// VideoReceiveStream which is associated with Call. This class
+// belongs to a different level, so RtxStreamReceiver might be a
+// better name, more similar to RtpVideoStreamReceiver which belongs
+// to the same level, and processes the media packets.
 class RtxReceiveStream : public RtpPacketSinkInterface {
  public:
   RtxReceiveStream(RtpPacketSinkInterface* media_sink,
-                   std::map<int, int> rtx_payload_type_map,
+                   std::map<int, int> associated_payload_types,
                    uint32_t media_ssrc);
   ~RtxReceiveStream() override;
   // RtpPacketSinkInterface.
@@ -28,8 +33,8 @@ class RtxReceiveStream : public RtpPacketSinkInterface {
 
  private:
   RtpPacketSinkInterface* const media_sink_;
-  // Mapping rtx_payload_type_map_[rtx] = associated.
-  const std::map<int, int> rtx_payload_type_map_;
+  // Map from rtx payload type -> media payload type.
+  const std::map<int, int> associated_payload_types_;
   // TODO(nisse): Ultimately, the media receive stream shouldn't care about the
   // ssrc, and we should delete this.
   const uint32_t media_ssrc_;

@@ -25,6 +25,7 @@ using ::testing::StrictMock;
 
 constexpr int kMediaPayloadType = 100;
 constexpr int kRtxPayloadType = 98;
+constexpr int kOtherPayloadType = 90;
 constexpr uint32_t kMediaSSRC = 0x3333333;
 constexpr uint16_t kMediaSeqno = 0x5657;
 
@@ -54,9 +55,9 @@ constexpr uint8_t kRtxPacketWithCVO[] = {
     0xee,
 };
 
-std::map<int, int> PayloadTypeMapping() {
+std::map<int, int> PayloadTypeMapping(int payload_type = kRtxPayloadType) {
   std::map<int, int> m;
-  m[kRtxPayloadType] = kMediaPayloadType;
+  m[payload_type] = kMediaPayloadType;
   return m;
 }
 
@@ -86,7 +87,8 @@ TEST(RtxReceiveStreamTest, RestoresPacketPayload) {
 
 TEST(RtxReceiveStreamTest, IgnoresUnknownPayloadType) {
   StrictMock<MockRtpPacketSink> media_sink;
-  RtxReceiveStream rtx_sink(&media_sink, std::map<int, int>(), kMediaSSRC);
+  RtxReceiveStream rtx_sink(&media_sink, PayloadTypeMapping(kOtherPayloadType),
+                            kMediaSSRC);
   RtpPacketReceived rtx_packet;
   EXPECT_TRUE(rtx_packet.Parse(rtc::ArrayView<const uint8_t>(kRtxPacket)));
   rtx_sink.OnRtpPacket(rtx_packet);
