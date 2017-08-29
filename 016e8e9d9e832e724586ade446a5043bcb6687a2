@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e6fdbfa_0bb0669f",
+        "filename": "webrtc/modules/desktop_capture/desktop_capture_options.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-29T16:55:33Z",
+      "side": 1,
+      "message": "s/IsOccluted/IsOccluded/\n\nAlso, I think this comment would be better attached to set_configuration_monitor, since that\u0027s the method that needs to be called in order to make sure that this one doesn\u0027t return null.\n\nI\u0027d still like to understand when it\u0027s acceptable not to call set_configuration_monitor, however, and why it isn\u0027t a ctor parameter (maybe because it\u0027s Mac only?) If it\u0027s needed for certain functionality to work, then it should be an error not to specify it, and the getter should DCHECK that it isn\u0027t null (even if it\u0027s reasonable that it might be null in some situations, code that needs it to be non-null should still DCHECK and the getter seems like a reasonable place to do so).\n\nFor the specific case of IsOccluded, I don\u0027t think trying to do the best we can if this is null is helpful. It will simply mean that an easy-to-find bug (DCHECK or nullptr dereference) will instead manifest as a subtle error that only occurs in certain situations such as multi-monitor configurations.",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "016e8e9d9e832e724586ade446a5043bcb6687a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

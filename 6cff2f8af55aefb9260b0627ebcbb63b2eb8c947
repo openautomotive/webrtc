@@ -93,6 +93,30 @@
       "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb8d6d8_7cf5a8a5",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_mac.mm",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-29T16:55:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "383e4f3e_85776eae",
+      "range": {
+        "startLine": 140,
+        "startChar": 31,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "6cff2f8af55aefb9260b0627ebcbb63b2eb8c947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
