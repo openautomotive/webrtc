@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "865642ea_9dcd2f6d",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T07:10:03Z",
+      "side": 1,
+      "message": "nit: We are starting to collect a lot of constructors here. Maybe we should consider refactoring to a builder pattern?",
+      "revId": "466b84a0328de8029157a79e30438ca7d405e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1921211_eae919f5",
+        "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T07:10:03Z",
+      "side": 1,
+      "message": "This should either be defined in the header file or be in an anonymous namespace / static method.",
+      "revId": "466b84a0328de8029157a79e30438ca7d405e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
