@@ -11,6 +11,7 @@
 #ifndef WEBRTC_SDK_ANDROID_SRC_JNI_PC_JAVA_NATIVE_CONVERSION_H_
 #define WEBRTC_SDK_ANDROID_SRC_JNI_PC_JAVA_NATIVE_CONVERSION_H_
 
+#include <string>
 #include <vector>
 
 #include "webrtc/api/datachannelinterface.h"
@@ -86,6 +87,8 @@ JavaToNativeContinualGatheringPolicy(JNIEnv* jni, jobject j_gathering_policy);
 PeerConnectionInterface::TlsCertPolicy JavaToNativeTlsCertPolicy(
     JNIEnv* jni,
     jobject j_ice_server_tls_cert_policy);
+
+std::vector<std::string> JavaToStdVectorStrings(JNIEnv* jni, jobject list);
 
 void JavaToNativeIceServers(JNIEnv* jni,
                             jobject j_ice_servers,
