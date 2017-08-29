@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e3e0f8e_a604d849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-29T18:24:13Z",
+      "side": 1,
+      "message": "Do you mind if I hold off on reviewing until that change has landed?",
+      "range": {
+        "startLine": 18,
+        "startChar": 69,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5c62a23d0af1c65445d7eb83164bc7bc76273553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
