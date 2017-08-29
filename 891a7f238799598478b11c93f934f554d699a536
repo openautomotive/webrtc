@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20b0c1fa_eb4d3b18",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T15:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f26e90f_fada0cf0",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98b0c70b_ca7c1a6d",
         "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
         "patchSetId": 11
@@ -39,6 +63,24 @@
       "revId": "891a7f238799598478b11c93f934f554d699a536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e96a09_73881c70",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T15:53:36Z",
+      "side": 1,
+      "message": "Done. Also made uri a required field. Please let me know if you\u0027d prefer it to still be optional.",
+      "parentUuid": "98b0c70b_ca7c1a6d",
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2d8871b5_f4da67fe",
+        "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T15:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de52970_f7a2486f",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8151c45e_b2448ae2",
         "filename": "webrtc/sdk/objc/Framework/Classes/PeerConnection/RTCIceServer.mm",
         "patchSetId": 11
@@ -85,6 +151,30 @@
       "revId": "891a7f238799598478b11c93f934f554d699a536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a373b689_483224e2",
+        "filename": "webrtc/sdk/objc/Framework/Classes/PeerConnection/RTCIceServer.mm",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T15:53:36Z",
+      "side": 1,
+      "message": "Done. git cl format fixed some other formatting issues too.",
+      "parentUuid": "8151c45e_b2448ae2",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
