@@ -52,6 +52,8 @@ class DesktopCaptureOptions {
   DesktopConfigurationMonitor* configuration_monitor() const {
     return configuration_monitor_;
   }
+  // If nullptr is set, ScreenCapturer won't work and WindowCapturer may return
+  // inaccurate result from IsOccluded() function.
   void set_configuration_monitor(
       rtc::scoped_refptr<DesktopConfigurationMonitor> m) {
     configuration_monitor_ = m;
