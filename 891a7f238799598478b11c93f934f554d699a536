@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f26e90f_fada0cf0",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T08:33:06Z",
+      "side": 1,
+      "message": "Since we are using builder pattern now, this constructor should be private.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b0c70b_ca7c1a6d",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T08:33:06Z",
+      "side": 1,
+      "message": "\"\" seems to have been the default for username, password and hostname before. Can you revert to the old behavior or verify null doesn\u0027t break existing code?",
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de52970_f7a2486f",
+        "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T08:33:06Z",
+      "side": 1,
+      "message": "Should have commented this before but this should be in jni_helpers because this file is only meant for \"converting between simple C++ and Java PeerConnection-related structures\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "891a7f238799598478b11c93f934f554d699a536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

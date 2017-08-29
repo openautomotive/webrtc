@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5a19c38d_a64b5108",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1152084
+      },
+      "writtenOn": "2017-08-29T08:33:06Z",
+      "side": 1,
+      "message": "We should mark them as deprecated, update all dependencies, notify users they are deprecated (post on webrtc-discuss). After a week or two, we should remove them.\n\nPlease mark them deprecated in this CL and file a tracking bug for the deprecation process.",
+      "parentUuid": "b33056a5_003b2bc8",
+      "revId": "466b84a0328de8029157a79e30438ca7d405e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1921211_eae919f5",
         "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.cc",
         "patchSetId": 10
