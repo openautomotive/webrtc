@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94f3b1e9_11728b56",
+        "filename": "webrtc/call/rtx_receive_stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-29T07:31:26Z",
+      "side": 1,
+      "message": "If you don\u0027t want to rename this class now, add a TODO that it should be called something like \u0027RtxStreamReceiver\u0027. (RtxReceiveStream sounds like VideoReceiveStream and FlexfecReceiveStream, which both are registered with Call.)",
+      "revId": "3fd091cb9e989041394ef012228805f8e0c6f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac5a1cd_240cd49e",
+        "filename": "webrtc/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-29T07:31:26Z",
+      "side": 1,
+      "message": "I would be nice to delete this from the config, but that means that you have to make more changes to WebRtcVideoChannel::MapCodecs. Maybe in a followup CL?",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "3fd091cb9e989041394ef012228805f8e0c6f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5218826a_b9e6875a",
+        "filename": "webrtc/media/engine/webrtcvideoengine_unittest.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-29T07:31:26Z",
+      "side": 1,
+      "message": "const auto",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "3fd091cb9e989041394ef012228805f8e0c6f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

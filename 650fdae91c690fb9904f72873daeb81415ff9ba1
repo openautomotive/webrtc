@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "331b2b26_0fca9864",
+        "filename": "webrtc/call/rampup_tests.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1155749
+      },
+      "writtenOn": "2017-08-29T07:31:26Z",
+      "side": 0,
+      "message": "Shouldn\u0027t the RTX\u003c-\u003eRED mapping be added to recv_config.rtp.rtx_associated_payload_types?",
+      "revId": "650fdae91c690fb9904f72873daeb81415ff9ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
