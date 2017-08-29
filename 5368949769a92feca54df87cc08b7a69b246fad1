@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c028b1be_d793860a",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T16:10:08Z",
+      "side": 1,
+      "message": "Good catch, thanks. Looks like the compiler didn\u0027t catch this. I\u0027ll test all the changes here with an application once I get into the office.",
+      "parentUuid": "b0b5302d_84dca0e5",
+      "revId": "5368949769a92feca54df87cc08b7a69b246fad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d9bf32f_4dafbe4b",
         "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.h",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "5368949769a92feca54df87cc08b7a69b246fad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70fecda6_fd2a58f3",
+        "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T16:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d9bf32f_4dafbe4b",
+      "revId": "5368949769a92feca54df87cc08b7a69b246fad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
