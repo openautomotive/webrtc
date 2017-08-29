@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b33056a5_003b2bc8",
+        "filename": "webrtc/sdk/android/api/org/webrtc/PeerConnection.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T08:06:05Z",
+      "side": 1,
+      "message": "Added a builder. Any suggestions for how to refactor existing users? Not sure how we can remove the existing constructors.",
+      "parentUuid": "865642ea_9dcd2f6d",
+      "revId": "466b84a0328de8029157a79e30438ca7d405e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1921211_eae919f5",
         "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.cc",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "466b84a0328de8029157a79e30438ca7d405e818",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9168bb_30826f82",
+        "filename": "webrtc/sdk/android/src/jni/pc/java_native_conversion.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-08-29T08:06:05Z",
+      "side": 1,
+      "message": "Added definition in header file as that seems to be the pattern being used for other functions.",
+      "parentUuid": "f1921211_eae919f5",
+      "revId": "466b84a0328de8029157a79e30438ca7d405e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
