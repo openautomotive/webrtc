@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3af6ecc_513ff5ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T00:07:35Z",
+      "side": 1,
+      "message": "Please include something similar to what you\u0027ve added to the delegated ctor comment explaining the plans for removing this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "3e0127b4e6087f6d206e9bb964ffa35f8a7d4bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c417acf_9192b355",
+        "filename": "webrtc/modules/desktop_capture/desktop_and_cursor_composer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T00:07:35Z",
+      "side": 1,
+      "message": "Does MouseCursorMonitor invoke both of these, using a different coordinate frame-of-reference, or only one? If the latter, than a DCHECK would be more appropriate than a conditional here.",
+      "range": {
+        "startLine": 203,
+        "startChar": 53,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "3e0127b4e6087f6d206e9bb964ffa35f8a7d4bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a4a425_718db49b",
+        "filename": "webrtc/modules/desktop_capture/desktop_and_cursor_composer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T00:07:35Z",
+      "side": 1,
+      "message": "\"absolute\" is an unfortunate choice of word here, as \"relative\" mouse positions are already well-understood to refer to deltas from the previous position, which I don\u0027t think is what you mean here. I suggest use_desktop_relative_positions (as opposed to window-relative, which I think is the distinction you want to make) instead.",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 60
+      },
+      "revId": "3e0127b4e6087f6d206e9bb964ffa35f8a7d4bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
