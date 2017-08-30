@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed47d60_3917bfa1",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T22:08:14Z",
+      "side": 1,
+      "message": "This comment is a bit confusing. On the one hand you say it should be removed once it\u0027s no longer needed by MouseCursorMonitorWin; on the other, you say it should only be used by CroppingWindowCapturerWin. So it seems like it\u0027s actually needed by two different classes.",
+      "range": {
+        "startLine": 32,
+        "startChar": 76,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "93fedede04f0c578628d42a084b26c4793c36312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ca36a1_6aef68e3",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T22:08:14Z",
+      "side": 1,
+      "message": "Any reason not to put this function in window_capture_utils? It seems similar in utility to many of the methods defined there.",
+      "range": {
+        "startLine": 92,
+        "startChar": 56,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "93fedede04f0c578628d42a084b26c4793c36312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
