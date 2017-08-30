@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6497db96_fa331c9c",
+        "filename": "style-guide-c++.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-08-30T07:14:44Z",
+      "side": 1,
+      "message": "Do we want separate files for java style, objc style, etc?\n\nSince I expect our own advice to be quite short, I think I\u0027d prefer have a single style-guide.md with one section per language. We then also get a good place to put any language-independent advice, on file organization, build rules, etc.",
+      "range": {
+        "startLine": 1,
+        "startChar": 25,
+        "endLine": 1,
+        "endChar": 0
+      },
+      "revId": "5b8820b3d86b1899ce6ebadab844be574e245ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
