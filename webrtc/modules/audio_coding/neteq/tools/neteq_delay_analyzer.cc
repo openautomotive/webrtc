@@ -164,6 +164,10 @@ void NetEqDelayAnalyzer::CreateGraphs(
       RTC_DCHECK(timing.current_delay_ms);
       const float target =
           playout_ms - *timing.current_delay_ms + *timing.target_delay_ms;
+      RTC_DCHECK_GE(target, 0.0f)
+          << "playout_ms=" << playout_ms
+          << ", current_delay_ms=" << *timing.current_delay_ms
+          << ", target_delay_ms=" << *timing.target_delay_ms;
       target_delay_ms->push_back(rtc::Optional<float>(target));
     } else {
       // This packet was never decoded. Mark target and playout delays as empty.
