@@ -22,6 +22,30 @@
       "revId": "cfc8fc8449e13c22654fdd90b1d8e08a0f53a4c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d31b699_cf725af8",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-30T22:16:53Z",
+      "side": 1,
+      "message": "I can do it in the next change, because returning true from IsWindowOnScreen() while kCGWindowIsOnscreen \u003d\u003d null is even more strange. In the next change, the behavior when kCGWindowIsOnscreen is not found will be flipped and make the default behavior more reasonable.",
+      "parentUuid": "dbe8822b_7673cfa6",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "cfc8fc8449e13c22654fdd90b1d8e08a0f53a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
