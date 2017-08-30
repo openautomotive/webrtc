@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "505e55f3_22b3b4bd",
+        "filename": "webrtc/modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-30T23:58:30Z",
+      "side": 1,
+      "message": "I should say \"Move this function to CroppingWindowCapturerWin after it has been removed from MouseCursorMonitorWin\".",
+      "parentUuid": "8ed47d60_3917bfa1",
+      "range": {
+        "startLine": 32,
+        "startChar": 76,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "93fedede04f0c578628d42a084b26c4793c36312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1ca36a1_6aef68e3",
         "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-30T22:08:14Z",
       "side": 1,
       "message": "Any reason not to put this function in window_capture_utils? It seems similar in utility to many of the methods defined there.",
+      "range": {
+        "startLine": 92,
+        "startChar": 56,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "93fedede04f0c578628d42a084b26c4793c36312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22c9dca_259de42f",
+        "filename": "webrtc/modules/desktop_capture/window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-08-30T23:58:30Z",
+      "side": 1,
+      "message": "Same reason as moving GetCroppedWindowRect(), this function is also for a specific scenario in WindowCapturerWin, and should not be randomly used out of this class. So if we decide to remove GetCroppedWindowRect() out of window_capture_utls, there is no reason to add another confusing function into it.",
+      "parentUuid": "c1ca36a1_6aef68e3",
       "range": {
         "startLine": 92,
         "startChar": 56,
