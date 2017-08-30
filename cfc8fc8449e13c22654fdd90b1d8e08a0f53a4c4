@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbe8822b_7673cfa6",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-08-30T21:57:49Z",
+      "side": 1,
+      "message": "Naming a function in the negative is a bit confusing. I think IsWindowOnScreen would be a better name, and negate the return value and all the callers.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "cfc8fc8449e13c22654fdd90b1d8e08a0f53a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
