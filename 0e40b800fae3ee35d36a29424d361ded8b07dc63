@@ -16,6 +16,24 @@
       "revId": "0e40b800fae3ee35d36a29424d361ded8b07dc63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfb15b1c_7df038a9",
+        "filename": "webrtc/pc/channelmanager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-30T22:50:14Z",
+      "side": 1,
+      "message": "I think this is slightly more readable but either way is very similar.",
+      "parentUuid": "5a70f392_76d31678",
+      "revId": "0e40b800fae3ee35d36a29424d361ded8b07dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
