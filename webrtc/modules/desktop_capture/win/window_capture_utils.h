@@ -45,6 +45,10 @@ int GetWindowRegionTypeWithBoundary(HWND window, DesktopRect* result);
 // fail.
 bool GetDcSize(HDC hdc, DesktopSize* size);
 
+// Retrieves whether the |window| is maximized and stores in |result|. This
+// function returns false if native APIs fail.
+bool IsWindowMaximized(HWND window, bool* result);
+
 typedef HRESULT (WINAPI *DwmIsCompositionEnabledFunc)(BOOL* enabled);
 class AeroChecker {
  public:
