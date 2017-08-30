@@ -31,10 +31,14 @@ cricket::MediaEngineInterface* CreateMediaEngine(
     const rtc::scoped_refptr<AudioDecoderFactory>& audio_decoder_factory,
     cricket::WebRtcVideoEncoderFactory* video_encoder_factory,
     cricket::WebRtcVideoDecoderFactory* video_decoder_factory,
-    rtc::scoped_refptr<AudioMixer> audio_mixer) {
+    rtc::scoped_refptr<AudioMixer> audio_mixer,
+    AudioProcessing* audio_processing) {
+  if (audio_processing == nullptr) {
+    audio_processing = AudioProcessing::Create();
+  }
   return cricket::WebRtcMediaEngineFactory::Create(
       adm, audio_encoder_factory, audio_decoder_factory, video_encoder_factory,
-      video_decoder_factory, audio_mixer, AudioProcessing::Create());
+      video_decoder_factory, audio_mixer, audio_processing);
 }
 
 }  // namespace jni

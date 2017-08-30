@@ -8,25 +8,25 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
+#include "webrtc/sdk/android/src/jni/jni_helpers.h"
 #include "webrtc/sdk/android/src/jni/pc/audio_jni.h"
-
-#include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
-#include "webrtc/api/audio_codecs/builtin_audio_encoder_factory.h"
-#include "webrtc/modules/audio_processing/include/audio_processing.h"
 
 namespace webrtc {
 namespace jni {
 
-rtc::scoped_refptr<AudioDecoderFactory> CreateAudioDecoderFactory() {
-  return CreateBuiltinAudioDecoderFactory();
+JNI_FUNCTION_DECLARATION(void,
+                         AudioProcessing_freeAudioProcessing,
+                         JNIEnv*,
+                         jclass,
+                         jlong j_p) {
+  delete reinterpret_cast<AudioProcessing*>(j_p);
 }
 
-rtc::scoped_refptr<AudioEncoderFactory> CreateAudioEncoderFactory() {
-  return CreateBuiltinAudioEncoderFactory();
-}
-
-AudioProcessing* CreateAudioProcessing() {
-  return AudioProcessing::Create();
+JNI_FUNCTION_DECLARATION(jlong,
+                         AudioProcessing_nativeCreateAudioProcessing,
+                         JNIEnv*,
+                         jclass) {
+  return jlongFromPointer(CreateAudioProcessing());
 }
 
 }  // namespace jni

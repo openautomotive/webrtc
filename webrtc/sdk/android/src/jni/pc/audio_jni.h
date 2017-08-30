@@ -15,6 +15,7 @@
 // We don't want this target depend on audio related targets
 #include "webrtc/api/audio_codecs/audio_decoder_factory.h"  // nogncheck
 #include "webrtc/api/audio_codecs/audio_encoder_factory.h"  // nogncheck
+#include "webrtc/modules/audio_processing/include/audio_processing.h"  // nogncheck
 #include "webrtc/rtc_base/scoped_ref_ptr.h"
 
 namespace webrtc {
@@ -23,6 +24,8 @@ namespace jni {
 rtc::scoped_refptr<AudioDecoderFactory> CreateAudioDecoderFactory();
 
 rtc::scoped_refptr<AudioEncoderFactory> CreateAudioEncoderFactory();
+
+AudioProcessing* CreateAudioProcessing();
 
 }  // namespace jni
 }  // namespace webrtc
