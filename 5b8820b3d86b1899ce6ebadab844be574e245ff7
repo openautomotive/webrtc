@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d3a69c6_e90fee16",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-08-30T08:18:28Z",
+      "side": 1,
+      "message": "may be make new 2 lines consistent with previous 5:\n* C++ coding style: [style-guide-c++.md]",
+      "range": {
+        "startLine": 24,
+        "startChar": 41,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "5b8820b3d86b1899ce6ebadab844be574e245ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6497db96_fa331c9c",
         "filename": "style-guide-c++.md",
         "patchSetId": 2
