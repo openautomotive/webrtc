@@ -1,0 +1,449 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ef603ed_bb13617d",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "I would move this file into the quality_assessment module.",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb14a10_32d634b2",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Remove line",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcff19c3_da9d7d52",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "We should always add a file header section, for instance (from apm_quality_assessment_export.py):\n\"\"\"Export the scores computed by the apm_quality_assessment.py script into an\n   HTML file.\n\"\"\"",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f66ac57_c9b62805",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "if you move this file as suggested above, change the imports using \"from . import X as Y\"",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b4c640_bbe8c692",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Add a string for the ArgumentParser description param and then update apm_quality_assessment_export.py and apm_quality_assessment_optimize.py accordingly.",
+      "range": {
+        "startLine": 42,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ec308a_ccba1def",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Add extra line",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37945a87_2869fee2",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_collect_data.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Add extra line",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c8bdd4_618c9f31",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Just double-checking. Since there\u0027s no UT for this script and this file has changed, give a try just using a couple of test data generators (say, \u0027identity\u0027 and \u0027white_noise\u0027), one score (not POLQA), and one input file. Then check that the HTML file works as expected.",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ff2687_a6189251",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "alessiob (my bad :D)",
+      "range": {
+        "startLine": 38,
+        "startChar": 51,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4fe7ec_53ea53a4",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Change collect_data.InstanceArgumentsParser() (see comments in other files) and pass \u0027Exports pre-computed APM module quality assessment results into HTML tables.\u0027",
+      "range": {
+        "startLine": 39,
+        "startChar": 49,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28189423_5b8d4ee3",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "We should always add a file header section, for instance (from apm_quality_assessment_export.py):\n\"\"\"Export the scores computed by the apm_quality_assessment.py script into an\n   HTML file.\n\"\"\"",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b5b7dca_089ce9e4",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Instead of redefining this, I would use InstanceArgumentsParser() from apm_quality_assessment_collect_data.py passing the description string with which ArgumentParser is initialized.",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9619410_52a3dccc",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Move below into a Returns statement",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0685a4e0_9c222360",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "this must be the first in the Args list",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f20354_5812fe07",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Returns statement missing",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93c91c7_e75f4cbf",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "[Premise: I\u0027m not a pandas expert] If I\u0027m not wrong, df[field_name].drop_duplicates().values.tolist() and df.field_name.unique().tolist() are equivalent. If so, it\u0027s better to use them consistently.\nI just checked in quality_assessment/export.py and even in that file (which I wrote), I was not consistent. Could you maybe check and fix here and in export.py?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49056aee_2dccfc59",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "result \u003d {\u0027scores\u0027: score, \u0027params\u0027: {\n    param: config_json[param] for param in params}",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa477cbf_92f2d723",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "no need to define a local variable, just append what I\u0027ve written above",
+      "range": {
+        "startLine": 94,
+        "startChar": 19,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ef2b5d_3f1f3c93",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "add another empty line",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5dcd614_6f5c030f",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "alessiob (my bad :D)",
+      "range": {
+        "startLine": 121,
+        "startChar": 51,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80daef52_51b04c29",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Replace with collect_data.InstanceArgumentsParser(\u0027Rudimentary optimization of a function over different parameter combinations.\u0027) (see my other comments).",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83de457d_fb76cd03",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Nice! I like an injectable objective function :)",
+      "range": {
+        "startLine": 134,
+        "startChar": 72,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7b635c7_e5c41078",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/data_access.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-08-31T14:36:00Z",
+      "side": 1,
+      "message": "Sorry, I was slow with replying to your comments to https://chromium-review.googlesource.com/c/external/webrtc/+/609840\n\nAre the changes below present because you made this CL dependent on https://chromium-review.googlesource.com/c/external/webrtc/+/609840?",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
