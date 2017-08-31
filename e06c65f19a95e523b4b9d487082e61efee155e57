@@ -16,6 +16,24 @@
       "revId": "e06c65f19a95e523b4b9d487082e61efee155e57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0c26c2_e9c697ab",
+        "filename": "webrtc/pc/webrtcsession.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2388,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-08-31T00:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "489b1e47_be77c53e",
+      "revId": "e06c65f19a95e523b4b9d487082e61efee155e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
