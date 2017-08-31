@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21065100_22e7da46",
+        "filename": "webrtc/sdk/objc/Framework/Classes/PeerConnection/RTCIceServer.mm",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126939
+      },
+      "writtenOn": "2017-08-31T22:04:28Z",
+      "side": 1,
+      "message": "while this is technically usable, would not recommend this pattern\n[NSArray array]",
+      "range": {
+        "startLine": 60,
+        "startChar": 50,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "1dca9d513ada149c444a7316e16e91d53635ab5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88aa3d8_133bf89a",
+        "filename": "webrtc/sdk/objc/Framework/Headers/WebRTC/RTCIceServer.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126939
+      },
+      "writtenOn": "2017-08-31T22:04:28Z",
+      "side": 1,
+      "message": "is this always required? Seems nullable to me.",
+      "range": {
+        "startLine": 90,
+        "startChar": 36,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "1dca9d513ada149c444a7316e16e91d53635ab5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
