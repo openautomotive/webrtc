@@ -12,6 +12,8 @@
 
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
 #include "webrtc/api/audio_codecs/builtin_audio_encoder_factory.h"
+#include "webrtc/modules/audio_processing/include/audio_processing.h"
+#include "webrtc/sdk/android/src/jni/jni_helpers.h"
 
 namespace webrtc {
 namespace jni {
@@ -22,6 +24,19 @@ rtc::scoped_refptr<AudioDecoderFactory> CreateAudioDecoderFactory() {
 
 rtc::scoped_refptr<AudioEncoderFactory> CreateAudioEncoderFactory() {
   return CreateBuiltinAudioEncoderFactory();
+}
+
+rtc::scoped_refptr<AudioProcessing> CreateAudioProcessing() {
+  return AudioProcessing::Create();
+}
+
+JNI_FUNCTION_DECLARATION(jlong,
+                         AudioProcessing_nativeCreateAudioProcessing,
+                         JNIEnv*,
+                         jclass) {
+  rtc::scoped_refptr<AudioProcessing> audio_processing =
+      CreateAudioProcessing();
+  return jlongFromPointer(audio_processing.release());
 }
 
 }  // namespace jni
