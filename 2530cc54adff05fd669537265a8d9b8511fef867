@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a7a8b84_307b4898",
+        "filename": "webrtc/voice_engine/file_player.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118997
+      },
+      "writtenOn": "2017-09-01T12:51:14Z",
+      "side": 1,
+      "message": "The problem was too large stack, and it was caused by increasing this constant.\n\nUltimately, we would move an array from stack to heap. But I think this is fine to reduce this as a quick solution.\n\nWe changed this from 60 * 32 to 120 * 48, but actually, this CL only increased the allowed max sample rate from 32 to 48. So it is fine to maintain the \"60\" and it solves the stack problem.",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "2530cc54adff05fd669537265a8d9b8511fef867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
