@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef8316f_fc1394d9",
+        "filename": "webrtc/modules/desktop_capture/window_finder_unittest.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-09-01T21:19:06Z",
+      "side": 1,
+      "message": "I think this needs more clarification. Why does creating a ScreenDrawer (which you\u0027re not using) avoid a conflict with another test?",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "6cd88d1eaaa6ccde866fde104958a908591c243d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

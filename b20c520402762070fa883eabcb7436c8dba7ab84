@@ -46,6 +46,30 @@
       "revId": "b20c520402762070fa883eabcb7436c8dba7ab84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2c545a_7b159cec",
+        "filename": "webrtc/modules/desktop_capture/window_finder_unittest.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-09-01T21:19:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e2ccb23_43f45cd0",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b20c520402762070fa883eabcb7436c8dba7ab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
