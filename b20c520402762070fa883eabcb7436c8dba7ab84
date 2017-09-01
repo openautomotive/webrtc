@@ -22,6 +22,30 @@
       "revId": "b20c520402762070fa883eabcb7436c8dba7ab84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2ccb23_43f45cd0",
+        "filename": "webrtc/modules/desktop_capture/window_finder_unittest.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-09-01T19:12:09Z",
+      "side": 1,
+      "message": "This command (\u0027mode 1000,1000\u0027) impacts only the size of the command line prompt. Since Windows command line prompt is a single-process command line interceptor, changing its size should not impact other tests. (I do not expect a test to require a specific width or height of a command line prompt window. If so, it should do the same thing here to set it itself.)\n\nAdding a message loop for ScreenDrawerWin is pretty tricky, it requires a dedicate thread, and any painting operations need to be posted to the message loop. It breaks the assumption of the ScreenDrawer: the Draw*() commands are all synchronously.\n\nSo comparing to the complexity and the potential risk of using this command, I think using current console window should be a simpler approach.",
+      "parentUuid": "ad47a09d_15a4c6e1",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b20c520402762070fa883eabcb7436c8dba7ab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
