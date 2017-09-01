@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e2e996a_bf13aa07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-09-01T19:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba97796_dbd5feee",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "793576e589403bd5c502681aa2e363e7b8183c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00b1b0bd_50cc3384",
         "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "793576e589403bd5c502681aa2e363e7b8183c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b1c50c_47f0f82a",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-09-01T19:09:50Z",
+      "side": 1,
+      "message": "No, unfortunately. But this class seems not necessary. I should remove it.",
+      "parentUuid": "00b1b0bd_50cc3384",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "793576e589403bd5c502681aa2e363e7b8183c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1d192ef5_fbd330bc",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-09-01T19:09:50Z",
+      "side": 1,
+      "message": "Sorry, I should mentioned in the description or the comment, this part is copy-paste from the original IsWindowMinimized() function. Except for the \"if (window_array)\" check before CFRelease.\nWe can definitely update it, but I would prefer to do it in a separate change.\n\nTODO has been added.",
+      "parentUuid": "1c9fcc61_cfa0bb31",
+      "range": {
+        "startLine": 47,
+        "startChar": 73,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "793576e589403bd5c502681aa2e363e7b8183c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f473ab85_aa3b8e30",
         "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2017-09-01T01:32:35Z",
       "side": 1,
       "message": "I\u0027m not a fan of implicit bool. I think \"CFArrayGetCount(window_array) \u003e 0\" would be better. Actually, checking that it equals 1 is probably best, since if for some reason it returns more than one, there\u0027s no reason to think that the first is the one you want, right?",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 51
+      },
+      "revId": "793576e589403bd5c502681aa2e363e7b8183c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca85c890_f9ae7cf5",
+        "filename": "webrtc/modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2017-09-01T19:09:50Z",
+      "side": 1,
+      "message": "Yes, I have the same feeling, \"CFArrayGetCount(window_array) !\u003d 1\" should be unexpected. But same as above, I would prefer to do it in a separate change.",
+      "parentUuid": "f473ab85_aa3b8e30",
       "range": {
         "startLine": 53,
         "startChar": 22,
