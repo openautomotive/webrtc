@@ -13,6 +13,9 @@
 #include <vector>
 
 #include "webrtc/audio/audio_send_stream.h"
+
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_encoder.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_encoder_factory.h"
 #include "webrtc/audio/audio_state.h"
 #include "webrtc/audio/conversion.h"
 #include "webrtc/call/fake_rtp_transport_controller_send.h"
@@ -28,8 +31,6 @@
 #include "webrtc/rtc_base/ptr_util.h"
 #include "webrtc/rtc_base/task_queue.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_encoder.h"
-#include "webrtc/test/mock_audio_encoder_factory.h"
 #include "webrtc/test/mock_voe_channel_proxy.h"
 #include "webrtc/test/mock_voice_engine.h"
 #include "webrtc/voice_engine/transmit_mixer.h"

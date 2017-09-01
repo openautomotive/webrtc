@@ -15,6 +15,8 @@
 
 #include "webrtc/api/audio_codecs/audio_encoder.h"
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_encoder.h"
 #include "webrtc/modules/audio_coding/acm2/acm_receive_test.h"
 #include "webrtc/modules/audio_coding/acm2/acm_send_test.h"
 #include "webrtc/modules/audio_coding/codecs/audio_format_conversion.h"
@@ -42,8 +44,6 @@
 #include "webrtc/system_wrappers/include/event_wrapper.h"
 #include "webrtc/system_wrappers/include/sleep.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder.h"
-#include "webrtc/test/mock_audio_encoder.h"
 #include "webrtc/test/testsupport/fileutils.h"
 
 using ::testing::AtLeast;

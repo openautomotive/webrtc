@@ -514,6 +514,7 @@ if (rtc_include_tests) {
       "../api:video_frame_api",
       "../api/audio_codecs:builtin_audio_decoder_factory",
       "../api/audio_codecs:builtin_audio_encoder_factory",
+      "../api/audio_codecs/test:audio_codec_mocks",
       "../api/video_codecs:video_codecs_api",
       "../audio",
       "../call:call_interfaces",
@@ -530,7 +531,6 @@ if (rtc_include_tests) {
       "../rtc_base:rtc_base_tests_main",
       "../rtc_base:rtc_base_tests_utils",
       "../system_wrappers:metrics_default",
-      "../test:audio_codec_mocks",
       "../test:test_support",
       "../voice_engine:voice_engine",
     ]

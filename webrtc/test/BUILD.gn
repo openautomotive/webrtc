@@ -682,26 +682,6 @@ rtc_source_set("test_renderer_generic") {
   }
 }
 
-rtc_source_set("audio_codec_mocks") {
-  testonly = true
-  sources = [
-    "mock_audio_decoder.cc",
-    "mock_audio_decoder.h",
-    "mock_audio_decoder_factory.h",
-    "mock_audio_encoder.cc",
-    "mock_audio_encoder.h",
-    "mock_audio_encoder_factory.h",
-  ]
-
-  deps = [
-    ":test_support",
-    "../api/audio_codecs:audio_codecs_api",
-    "../api/audio_codecs:builtin_audio_decoder_factory",
-    "../rtc_base:rtc_base_approved",
-    "//testing/gmock",
-  ]
-}
-
 if (!build_with_chromium && is_android) {
   android_library("native_test_java") {
     testonly = true

@@ -11,6 +11,8 @@
 #include <memory>
 
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
 #include "webrtc/common_types.h"
 #include "webrtc/modules/audio_coding/neteq/accelerate.h"
 #include "webrtc/modules/audio_coding/neteq/expand.h"
@@ -31,8 +33,6 @@
 #include "webrtc/rtc_base/safe_conversions.h"
 #include "webrtc/test/gmock.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
 
 using ::testing::AtLeast;
 using ::testing::Return;

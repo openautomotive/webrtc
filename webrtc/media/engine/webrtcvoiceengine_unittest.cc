@@ -12,6 +12,8 @@
 
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
 #include "webrtc/api/audio_codecs/builtin_audio_encoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_encoder_factory.h"
 #include "webrtc/call/call.h"
 #include "webrtc/logging/rtc_event_log/rtc_event_log.h"
 #include "webrtc/media/base/fakemediaengine.h"
@@ -30,8 +32,6 @@
 #include "webrtc/rtc_base/scoped_ref_ptr.h"
 #include "webrtc/test/field_trial.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
-#include "webrtc/test/mock_audio_encoder_factory.h"
 #include "webrtc/voice_engine/transmit_mixer.h"
 
 using testing::_;

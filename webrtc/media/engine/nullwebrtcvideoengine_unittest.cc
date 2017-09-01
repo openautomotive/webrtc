@@ -9,11 +9,12 @@
  */
 
 #include "webrtc/media/engine/nullwebrtcvideoengine.h"
+
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_encoder_factory.h"
 #include "webrtc/media/engine/webrtcvoiceengine.h"
 #include "webrtc/modules/audio_processing/include/audio_processing.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
-#include "webrtc/test/mock_audio_encoder_factory.h"
 
 namespace cricket {
 

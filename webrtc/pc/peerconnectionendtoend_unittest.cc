@@ -12,6 +12,8 @@
 
 #include "webrtc/api/audio_codecs/builtin_audio_decoder_factory.h"
 #include "webrtc/api/audio_codecs/builtin_audio_encoder_factory.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
 #include "webrtc/rtc_base/gunit.h"
 #include "webrtc/rtc_base/logging.h"
 #include "webrtc/rtc_base/ptr_util.h"
@@ -26,8 +28,6 @@
 #include "webrtc/pc/test/peerconnectiontestwrapper.h"
 // Notice that mockpeerconnectionobservers.h must be included after the above!
 #include "webrtc/pc/test/mockpeerconnectionobservers.h"
-#include "webrtc/test/mock_audio_decoder.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
 
 using testing::AtLeast;
 using testing::Invoke;

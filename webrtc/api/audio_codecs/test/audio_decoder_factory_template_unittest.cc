@@ -9,6 +9,7 @@
  */
 
 #include "webrtc/api/audio_codecs/audio_decoder_factory_template.h"
+
 #include "webrtc/api/audio_codecs/L16/audio_decoder_L16.h"
 #include "webrtc/api/audio_codecs/g711/audio_decoder_g711.h"
 #include "webrtc/api/audio_codecs/g722/audio_decoder_g722.h"
@@ -16,10 +17,10 @@
 #include "webrtc/api/audio_codecs/isac/audio_decoder_isac_fix.h"
 #include "webrtc/api/audio_codecs/isac/audio_decoder_isac_float.h"
 #include "webrtc/api/audio_codecs/opus/audio_decoder_opus.h"
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder.h"
 #include "webrtc/rtc_base/ptr_util.h"
 #include "webrtc/test/gmock.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder.h"
 
 namespace webrtc {
 

@@ -13,6 +13,26 @@ if (is_android) {
 }
 
 if (rtc_include_tests) {
+  rtc_source_set("audio_codec_mocks") {
+    testonly = true
+    sources = [
+      "mock/mock_audio_decoder.cc",
+      "mock/mock_audio_decoder.h",
+      "mock/mock_audio_decoder_factory.h",
+      "mock/mock_audio_encoder.cc",
+      "mock/mock_audio_encoder.h",
+      "mock/mock_audio_encoder_factory.h",
+    ]
+
+    deps = [
+      "..:audio_codecs_api",
+      "..:builtin_audio_decoder_factory",
+      "../../../rtc_base:rtc_base_approved",
+      "../../../test:test_support",
+      "//testing/gmock",
+    ]
+  }
+
   rtc_source_set("audio_codecs_api_unittests") {
     testonly = true
     sources = [
@@ -20,9 +40,9 @@ if (rtc_include_tests) {
       "audio_encoder_factory_template_unittest.cc",
     ]
     deps = [
+      ":audio_codec_mocks",
       "..:audio_codecs_api",
       "../../../rtc_base:rtc_base_approved",
-      "../../../test:audio_codec_mocks",
       "../../../test:test_support",
       "../L16:audio_decoder_L16",
       "../L16:audio_encoder_L16",

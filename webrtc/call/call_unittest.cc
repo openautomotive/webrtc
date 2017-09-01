@@ -13,6 +13,7 @@
 #include <memory>
 #include <utility>
 
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
 #include "webrtc/api/test/mock_audio_mixer.h"
 #include "webrtc/call/audio_state.h"
 #include "webrtc/call/call.h"
@@ -26,7 +27,6 @@
 #include "webrtc/rtc_base/ptr_util.h"
 #include "webrtc/test/fake_encoder.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
 #include "webrtc/test/mock_transport.h"
 #include "webrtc/test/mock_voice_engine.h"
 

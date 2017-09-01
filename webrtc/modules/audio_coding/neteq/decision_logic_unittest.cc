@@ -11,6 +11,8 @@
 // Unit tests for DecisionLogic class and derived classes.
 
 #include "webrtc/modules/audio_coding/neteq/decision_logic.h"
+
+#include "webrtc/api/audio_codecs/test/mock/mock_audio_decoder_factory.h"
 #include "webrtc/modules/audio_coding/neteq/buffer_level_filter.h"
 #include "webrtc/modules/audio_coding/neteq/decoder_database.h"
 #include "webrtc/modules/audio_coding/neteq/delay_manager.h"
@@ -18,7 +20,6 @@
 #include "webrtc/modules/audio_coding/neteq/packet_buffer.h"
 #include "webrtc/modules/audio_coding/neteq/tick_timer.h"
 #include "webrtc/test/gtest.h"
-#include "webrtc/test/mock_audio_decoder_factory.h"
 
 namespace webrtc {
 
