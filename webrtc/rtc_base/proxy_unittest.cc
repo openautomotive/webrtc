@@ -37,7 +37,7 @@ class ProxyTest : public testing::Test {
     https_.reset(new rtc::HttpListenServer());
     https_->Listen(kHttpsProxyIntAddr);
   }
-  ~ProxyTest() {}
+  ~ProxyTest() override {}
 
   rtc::SocketServer* ss() { return ss_.get(); }
 

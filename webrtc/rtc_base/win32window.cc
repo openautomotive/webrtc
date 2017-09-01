@@ -87,6 +87,10 @@ bool Win32Window::OnMessage(UINT uMsg, WPARAM wParam, LPARAM lParam,
   return false;
 }
 
+bool Win32Window::OnClose() {
+  return true;
+}
+
 LRESULT Win32Window::WndProc(HWND hwnd, UINT uMsg,
                              WPARAM wParam, LPARAM lParam) {
   Win32Window* that = reinterpret_cast<Win32Window*>(
