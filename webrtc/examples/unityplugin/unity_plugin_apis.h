@@ -47,7 +47,9 @@ extern "C" {
 WEBRTC_PLUGIN_API int CreatePeerConnection(const char** turn_urls,
                                            const int no_of_urls,
                                            const char* username,
-                                           const char* credential);
+                                           const char* credential,
+                                           bool mandatory_receive_video,
+                                           bool audio_spatialization);
 // Close a peerconnection.
 WEBRTC_PLUGIN_API bool ClosePeerConnection(int peer_connection_id);
 // Add a audio stream. If audio_only is true, the stream only has an audio
@@ -100,6 +102,26 @@ WEBRTC_PLUGIN_API bool RegisterOnLocalSdpReadytoSend(
 WEBRTC_PLUGIN_API bool RegisterOnIceCandiateReadytoSend(
     int peer_connection_id,
     ICECANDIDATEREADYTOSEND_CALLBACK callback);
+
+// Spatial audio API functions.
+WEBRTC_PLUGIN_API bool SetHeadPosition(int peer_connection_id,
+                                       float x,
+                                       float y,
+                                       float z);
+WEBRTC_PLUGIN_API bool SetHeadRotation(int peer_connection_id,
+                                       float rx,
+                                       float ry,
+                                       float rz,
+                                       float rw);
+WEBRTC_PLUGIN_API bool SetRemoteAudioPosition(int peer_connection_id,
+                                              float x,
+                                              float y,
+                                              float z);
+WEBRTC_PLUGIN_API bool SetRemoteAudioRotation(int peer_connection_id,
+                                              float rx,
+                                              float ry,
+                                              float rz,
+                                              float rw);
 }
 
 #endif  // WEBRTC_EXAMPLES_UNITYPLUGIN_UNITY_PLUGIN_APIS_H_

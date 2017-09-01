@@ -1,3 +1,6 @@
 include_rules = [
+  "+webrtc/audio/utility",
+  "+webrtc/modules/audio_coding/neteq",
+  "+webrtc/modules/audio_processing",
   "+webrtc/sdk",
 ]

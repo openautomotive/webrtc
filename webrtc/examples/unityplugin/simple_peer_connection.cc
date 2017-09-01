@@ -14,6 +14,7 @@
 
 #include "webrtc/api/test/fakeconstraints.h"
 #include "webrtc/api/videosourceproxy.h"
+#include "webrtc/examples/unityplugin/vraudio/vraudio_wrap.h"
 #include "webrtc/media/engine/webrtcvideocapturerfactory.h"
 #include "webrtc/modules/video_capture/video_capture_factory.h"
 
@@ -34,6 +35,7 @@ static std::unique_ptr<rtc::Thread> g_worker_thread;
 static std::unique_ptr<rtc::Thread> g_signaling_thread;
 static rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface>
     g_peer_connection_factory;
+static rtc::scoped_refptr<VrAudioWrap> g_spatializer;
 #if defined(WEBRTC_ANDROID)
 // Android case: the video track does not own the capturer, and it
 // relies on the app to dispose the capturer when the peerconnection
@@ -76,11 +78,13 @@ class DummySetSessionDescriptionObserver
 
 }  // namespace
 
-bool SimplePeerConnection::InitializePeerConnection(const char** turn_urls,
-                                                    const int no_of_urls,
-                                                    const char* username,
-                                                    const char* credential,
-                                                    bool is_receiver) {
+bool SimplePeerConnection::InitializePeerConnection(
+    const char** turn_urls,
+    const int no_of_urls,
+    const char* username,
+    const char* credential,
+    bool mandatory_receive_video,
+    bool audio_spatialization) {
   RTC_DCHECK(peer_connection_.get() == nullptr);
 
   if (g_peer_connection_factory == nullptr) {
@@ -89,9 +93,13 @@ bool SimplePeerConnection::InitializePeerConnection(const char** turn_urls,
     g_signaling_thread.reset(new rtc::Thread());
     g_signaling_thread->Start();
 
-    g_peer_connection_factory = webrtc::CreatePeerConnectionFactory(
-        g_worker_thread.get(), g_worker_thread.get(), g_signaling_thread.get(),
-        nullptr, nullptr, nullptr);
+    if (audio_spatialization)
+      g_spatializer = new rtc::RefCountedObject<VrAudioWrap>(false);
+
+    g_peer_connection_factory =
+        webrtc::CreatePeerConnectionFactoryWithAudioMixer(
+            g_worker_thread.get(), g_worker_thread.get(),
+            g_signaling_thread.get(), nullptr, nullptr, nullptr, g_spatializer);
   }
   if (!g_peer_connection_factory.get()) {
     DeletePeerConnection();
@@ -100,7 +108,7 @@ bool SimplePeerConnection::InitializePeerConnection(const char** turn_urls,
 
   g_peer_count++;
   if (!CreatePeerConnection(turn_urls, no_of_urls, username, credential,
-                            is_receiver)) {
+                            mandatory_receive_video)) {
     DeletePeerConnection();
     return false;
   }
@@ -111,7 +119,7 @@ bool SimplePeerConnection::CreatePeerConnection(const char** turn_urls,
                                                 const int no_of_urls,
                                                 const char* username,
                                                 const char* credential,
-                                                bool is_receiver) {
+                                                bool mandatory_receive_video) {
   RTC_DCHECK(g_peer_connection_factory.get() != nullptr);
   RTC_DCHECK(peer_connection_.get() == nullptr);
 
@@ -148,7 +156,7 @@ bool SimplePeerConnection::CreatePeerConnection(const char** turn_urls,
   webrtc::FakeConstraints constraints;
   constraints.SetAllowDtlsSctpDataChannels();
 
-  if (is_receiver) {
+  if (mandatory_receive_video) {
     constraints.SetMandatoryReceiveAudio(true);
     constraints.SetMandatoryReceiveVideo(true);
   }
@@ -183,6 +191,7 @@ void SimplePeerConnection::DeletePeerConnection() {
 
   if (g_peer_count == 0) {
     g_peer_connection_factory = nullptr;
+    g_spatializer = nullptr;
     g_signaling_thread.reset();
     g_worker_thread.reset();
   }
@@ -350,6 +359,42 @@ void SimplePeerConnection::SetAudioControl() {
     else
       track->set_enabled(true);
   }
+}
+
+bool SimplePeerConnection::SetHeadPosition(float x, float y, float z) {
+  if (g_spatializer == nullptr)
+    return false;
+  return g_spatializer->SetListenerHeadPosition(x, y, z);
+}
+
+bool SimplePeerConnection::SetHeadRotation(float rx,
+                                           float ry,
+                                           float rz,
+                                           float rw) {
+  if (g_spatializer == nullptr)
+    return false;
+  return g_spatializer->SetListenerHeadRotation(rx, ry, rz, rw);
+}
+
+bool SimplePeerConnection::SetRemoteAudioPosition(float x, float y, float z) {
+  if (g_spatializer == nullptr)
+    return false;
+  const std::vector<uint32_t> ssrcs = GetRemoteAudioTrackSsrcs();
+  if (ssrcs.size() == 0)
+    return false;
+  return g_spatializer->SetAudioSourcePosition(ssrcs[0], x, y, z);
+}
+
+bool SimplePeerConnection::SetRemoteAudioRotation(float rx,
+                                                  float ry,
+                                                  float rz,
+                                                  float rw) {
+  if (g_spatializer == nullptr)
+    return false;
+  const std::vector<uint32_t> ssrcs = GetRemoteAudioTrackSsrcs();
+  if (ssrcs.size() == 0)
+    return false;
+  return g_spatializer->SetAudioSourceRotation(ssrcs[0], rx, ry, rz, rw);
 }
 
 void SimplePeerConnection::OnAddStream(
