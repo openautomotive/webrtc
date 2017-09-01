@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad47a09d_15a4c6e1",
+        "filename": "webrtc/modules/desktop_capture/window_finder_unittest.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-09-01T01:14:25Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this function on Windows. It sounds like it will have side-effects on the system on which the test is running, which isn\u0027t good practise. Could you add a message loop to ScreenDrawerWin instead of using a console window? Presumably then you could use the same test for all platforms.",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b20c520402762070fa883eabcb7436c8dba7ab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
