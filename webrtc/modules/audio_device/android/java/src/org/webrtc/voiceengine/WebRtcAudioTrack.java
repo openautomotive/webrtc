@@ -49,6 +49,8 @@ public class WebRtcAudioTrack {
 
   // This method overrides the default usage attribute and allows the user
   // to set it to something else than AudioAttributes.USAGE_VOICE_COMMUNICATION.
+  // On pre-Lollipop devices the value will be mapped to AudioManager.STREAM_*
+  // based on https://source.android.com/devices/audio/attributes#compatibility
   // NOTE: calling this method will most likely break existing VoIP tuning.
   public static synchronized void setAudioTrackUsageAttribute(int usage) {
     Logging.w(TAG, "Default usage attribute is changed from: "
@@ -56,17 +58,8 @@ public class WebRtcAudioTrack {
     usageAttribute = usage;
   }
 
-  private static int getDefaultUsageAttribute() {
-    if (WebRtcAudioUtils.runningOnLollipopOrHigher()) {
-      return getDefaultUsageAttributeOnLollipopOrHigher();
-    } else {
-      // Not used on SDKs lower than L.
-      return 0;
-    }
-  }
-
   @TargetApi(21)
-  private static int getDefaultUsageAttributeOnLollipopOrHigher() {
+  private static int getDefaultUsageAttribute() {
     return AudioAttributes.USAGE_VOICE_COMMUNICATION;
   }
 
@@ -257,9 +250,10 @@ public class WebRtcAudioTrack {
         audioTrack = createAudioTrackOnLollipopOrHigher(
             sampleRate, channelConfig, minBufferSizeInBytes);
       } else {
+        int streamType = getStreamTypeFromUsage(usageAttribute);
         // Use default constructor for API levels below 21.
         // Note that, this constructor will be deprecated in API level O (25).
-        audioTrack = new AudioTrack(AudioManager.STREAM_VOICE_CALL, sampleRate, channelConfig,
+        audioTrack = new AudioTrack(streamType, sampleRate, channelConfig,
             AudioFormat.ENCODING_PCM_16BIT, minBufferSizeInBytes, AudioTrack.MODE_STREAM);
       }
     } catch (IllegalArgumentException e) {
@@ -469,4 +463,36 @@ public class WebRtcAudioTrack {
     }
   }
 
+  // Based on https://source.android.com/devices/audio/attributes#compatibility
+  // System implementation is used as a reference:
+  // https://android.googlesource.com/platform/frameworks/base/+/lollipop-release/media/java/android/media/AudioAttributes.java
+  @TargetApi(21)
+  private static int getStreamTypeFromUsage(int usage) {
+    switch (usage) {
+      case AudioAttributes.USAGE_MEDIA:
+      case AudioAttributes.USAGE_GAME:
+      case AudioAttributes.USAGE_ASSISTANCE_ACCESSIBILITY:
+      case AudioAttributes.USAGE_ASSISTANCE_NAVIGATION_GUIDANCE:
+        return AudioManager.STREAM_MUSIC;
+      case AudioAttributes.USAGE_ASSISTANCE_SONIFICATION:
+        return AudioManager.STREAM_SYSTEM;
+      case AudioAttributes.USAGE_VOICE_COMMUNICATION:
+        return AudioManager.STREAM_VOICE_CALL;
+      case AudioAttributes.USAGE_VOICE_COMMUNICATION_SIGNALLING:
+        return AudioManager.STREAM_DTMF;
+      case AudioAttributes.USAGE_ALARM:
+        return AudioManager.STREAM_ALARM;
+      case AudioAttributes.USAGE_NOTIFICATION_RINGTONE:
+        return AudioManager.STREAM_RING;
+      case AudioAttributes.USAGE_NOTIFICATION:
+      case AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_REQUEST:
+      case AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT:
+      case AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_DELAYED:
+      case AudioAttributes.USAGE_NOTIFICATION_EVENT:
+        return AudioManager.STREAM_NOTIFICATION;
+      case AudioAttributes.USAGE_UNKNOWN:
+      default:
+        return AudioManager.STREAM_MUSIC;
+    }
+  }
 }
