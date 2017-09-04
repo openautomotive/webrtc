@@ -187,7 +187,7 @@ LevelController::LevelController()
 
 LevelController::~LevelController() {}
 
-void LevelController::Initialize(int sample_rate_hz) {
+void LevelController::Initialize(int sample_rate_hz, int num_channels) {
   RTC_DCHECK(sample_rate_hz == AudioProcessing::kSampleRate8kHz ||
              sample_rate_hz == AudioProcessing::kSampleRate16kHz ||
              sample_rate_hz == AudioProcessing::kSampleRate32kHz ||
