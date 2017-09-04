@@ -18,10 +18,41 @@ Some older parts of the code violate the style guide in various ways.
 * If making large changes to such code, consider first cleaning it up
   in a separate CL.
 
-### Exceptions
+### Conditional compilation
 
-There are no exceptions yet. If and when exceptions are adopted,
-they’ll be listed here.
+First, think long and hard about whether you really need to add
+another flag that makes the compiler do different things depending on
+whether the flag is set or not. But if you really, really do, the way
+to do it is to introduce a gn variable, and then set a preprocessor
+constant to either 0 or 1 in the build targets that need it:
+
+```
+if (apm_debug_dump) {
+  defines = [ "WEBRTC_APM_DEBUG_DUMP=1" ]
+} else {
+  defines = [ "WEBRTC_APM_DEBUG_DUMP=0" ]
+}
+```
+
+In the C++ files, use `#if` when testing the flag, not `#ifdef` or
+`#if defined()`:
+
+```
+#if WEBRTC_APM_DEBUG_DUMP
+// One way.
+#else
+// Or another.
+#endif
+```
+
+If you do it this way, the compiler will complain if you use
+`WEBRTC_APM_DEBUG_DUMP` in translation units where it isn’t being set
+by the build system. (If you use the old and bad way—setting the
+preprocessor constant to an arbitrary value to enable the feature and
+leaving it unset to disable the feature, and then using `#ifdef` to
+tell the two cases apart—the compiler won’t be able to tell you if you
+use it in translation units where it isn’t being set by the build
+system.)
 
 ## C
 
