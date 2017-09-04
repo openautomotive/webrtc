@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2e97a99_429400cf",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-04T11:57:39Z",
+      "side": 1,
+      "message": "Hmm. OK, but I doubt it\u0027ll make this rule easier to find. Have a look—I must confess I liked the old version better.",
+      "parentUuid": "c3ab3cbf_7ae5b4db",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1273e7d_cf2c4e55",
         "filename": "style-guide.md",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-09-04T11:34:32Z",
       "side": 1,
       "message": "Maybe you can drop the example and shorten the explanation. The important thing is that we use -Wundef to tell the compiler to warn about use of undefined preprocessor symbols in #if directives, which is a context where they are otherwise silently replaced with 0.",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0136afc_138538f0",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-04T11:57:39Z",
+      "side": 1,
+      "message": "I think we should keep the example. Even if it takes up some space, it reduces the time it takes to read and understand the rule.\n\nIs there some part of the explanation you think can be omitted, or said more succinctly?",
+      "parentUuid": "e915e4ca_6d852cc8",
       "range": {
         "startLine": 48,
         "startChar": 10,
