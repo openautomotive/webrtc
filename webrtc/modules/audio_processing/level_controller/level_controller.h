@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "webrtc/modules/audio_processing/include/audio_processing.h"
+#include "webrtc/modules/audio_processing/include/post_processing.h"
 #include "webrtc/modules/audio_processing/level_controller/gain_applier.h"
 #include "webrtc/modules/audio_processing/level_controller/gain_selector.h"
 #include "webrtc/modules/audio_processing/level_controller/noise_level_estimator.h"
@@ -27,15 +28,14 @@
 namespace webrtc {
 
 class ApmDataDumper;
-class AudioBuffer;
 
-class LevelController {
+class LevelController : public PostProcessing {
  public:
   LevelController();
-  ~LevelController();
+  ~LevelController() override;
 
-  void Initialize(int sample_rate_hz);
-  void Process(AudioBuffer* audio);
+  void Initialize(int sample_rate_hz, int num_channels = 1) override;
+  void Process(AudioBuffer* audio) override;
   float GetLastGain() { return last_gain_; }
 
   // TODO(peah): This method is a temporary solution as the the aim is to
