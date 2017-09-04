@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011a574e_48c79739",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-09-04T08:59:57Z",
+      "side": 1,
+      "message": "Missing comma after \"etc.\".",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "1d38f33521978551a47b82e39488c88412e02998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c46d72ca_557e59a8",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1144186
+      },
+      "writtenOn": "2017-09-04T08:59:57Z",
+      "side": 1,
+      "message": "\"is written against\" sounds strange, just write \"violates\" like in the C++ paragraph above.\n\nAnd it should probably be \"which applies\" rather than \"that applies\", since the purpose of this subclause is to help define the \"part\" it refers to. (I\u0027m not 100% sure, do we have any native speaker who is disturbed by one of those alternatives)?\n\nPossibly helpful quote: \"in the name of all that which not suck\" (1 point)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "1d38f33521978551a47b82e39488c88412e02998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
