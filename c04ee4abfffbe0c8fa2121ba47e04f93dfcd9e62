@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4a5d0d97_bf6c2be1",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-04T12:10:02Z",
+      "side": 1,
+      "message": "That\u0027s what I was trying to impress by saying \"first, think long and hard\" and \"if you really, really do\". And for the same reasons, I don\u0027t think there should be examples of when it\u0027s OK—there should be a discussion each and every time...\n\nShould the text be more specific? Along the lines of, \"Avoid using the C preprocessor to conditionally enable or disable pieces of C++ code. But if you can\u0027t avoid it, introduce a gn variable...\"",
+      "parentUuid": "f1273e7d_cf2c4e55",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e915e4ca_6d852cc8",
         "filename": "style-guide.md",
         "patchSetId": 2
