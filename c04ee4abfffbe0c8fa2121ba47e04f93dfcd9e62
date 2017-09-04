@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7afbedb5_5ea8ee46",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-04T12:19:30Z",
+      "side": 1,
+      "message": "A think a wider scope section on build issues makes more sense than a section on the C preprocessor. The advice covers both the use of the preprocessor, and how to set up things in the BUILD files. And it seems more likely that BUILD file advice will need further expansion, than advice particular to the C preprocessor.",
+      "parentUuid": "d2e97a99_429400cf",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1273e7d_cf2c4e55",
         "filename": "style-guide.md",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2017-09-04T12:10:02Z",
       "side": 1,
       "message": "That\u0027s what I was trying to impress by saying \"first, think long and hard\" and \"if you really, really do\". And for the same reasons, I don\u0027t think there should be examples of when it\u0027s OK—there should be a discussion each and every time...\n\nShould the text be more specific? Along the lines of, \"Avoid using the C preprocessor to conditionally enable or disable pieces of C++ code. But if you can\u0027t avoid it, introduce a gn variable...\"",
+      "parentUuid": "f1273e7d_cf2c4e55",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b241f79e_52e58c54",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-04T12:19:30Z",
+      "side": 1,
+      "message": "Among existing flags, maybe WEBRTC_POSIX and WEBRTC_USE_H264 are reasonable examples?",
       "parentUuid": "f1273e7d_cf2c4e55",
       "range": {
         "startLine": 23,
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "I think we should keep the example. Even if it takes up some space, it reduces the time it takes to read and understand the rule.\n\nIs there some part of the explanation you think can be omitted, or said more succinctly?",
       "parentUuid": "e915e4ca_6d852cc8",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf30f57_820e81b1",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-04T12:19:30Z",
+      "side": 1,
+      "message": "\u003e Is there some part of the explanation you think can be omitted, or said more succinctly?\n\nI\u0027ll give it a try:\n\nUse #if when testing the flag, rather than #ifdef or #if defined. In combination with the -Wundef option to the compiler, this provides compile time warnings in case a preprocessor symbol is misspelled, or used without corresponding build rules to set it.\n\nBut if you think more words are needed to make this point clear, I won\u0027t insist.",
+      "parentUuid": "b0136afc_138538f0",
       "range": {
         "startLine": 48,
         "startChar": 10,
