@@ -45,6 +45,52 @@
       "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1aaf332_f4f8a21c",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-09-04T14:44:26Z",
+      "side": 1,
+      "message": "may be better to refer to already existent documentation for ArrayView in the header file:\nSee more examples and motivation in the (webrtc/api/array_view.h)",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a4e2ae_1ced36f6",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-09-04T14:44:26Z",
+      "side": 1,
+      "message": "this is arguable: ArrayView make a good accessor when you do not want to expose storage type,\nor when you want to return subpart of what is stored. (e.g. that how it is used in rtp::Packet::payload())\n\nI would rather see this paragraph removed (to make this block only about \"When passing an array of values to a function\")\nor stress ownership caveat:\nNote that ArrayView doesn\u0027t own the data it refers to and thus must not outlive it.",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
