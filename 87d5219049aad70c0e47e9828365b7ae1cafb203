@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268a0ba2_63910441",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-04T13:26:18Z",
+      "side": 1,
+      "message": "If you strike the \"exceptions\" section header, maybe rephrase intro so you can strike that word here too.",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28806137_cc713f2f",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-04T13:26:18Z",
+      "side": 1,
+      "message": "Text looks ok to me. But I wonder if it\u0027s scalable with this level of details in this place. Might be better to limit the description to one or two sentences, and a link to the documentation in the header file.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
