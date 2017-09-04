@@ -18,10 +18,32 @@ Some older parts of the code violate the style guide in various ways.
 * If making large changes to such code, consider first cleaning it up
   in a separate CL.
 
-### Exceptions
+### ArrayView
 
-There are no exceptions yet. If and when exceptions are adopted,
-they’ll be listed here.
+When passing an array of values to a function, use `rtc::ArrayView`
+whenever possible—that is, whenever the callee may not modify the
+array itself (the number of elements, etc.). This is always the case
+for read-only arguments, but is also true when the callee may modify
+the elements but not add or remove them.
+
+For function arguments:
+
+instead of                          | use
+------------------------------------|---------------------
+`const std::vector<T>&`             | `ArrayView<const T>`
+`const T* ptr, size_t num_elements` | `ArrayView<const T>`
+`T* ptr, size_t num_elements`       | `ArrayView<T>`
+
+(Why? Because it’s *safer* than pointer+size, largely because it’s
+trivial to figure out what the element count is when reading the code;
+and because it’s *more flexible* than e.g. `const std::vector<T>&`,
+since the caller isn’t forced to be storing the elements in a
+`std::vector`.)
+
+Since `ArrayView` can’t be used when you want to transfer ownership of
+the array, it is generally not useful as a return value, except in
+cases where the return value is just a “pointer” into an array that’s
+owned elsewhere.
 
 ## C
 
