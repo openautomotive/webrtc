@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "7c17c229_197ef267",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-09-05T08:00:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure since I do not really understand how bad an extra build flag can be. If the harm of extra build flag is not that big, then this kind of discouragement is enough.",
+      "parentUuid": "3dbe520a_23ecf04b",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e915e4ca_6d852cc8",
         "filename": "style-guide.md",
         "patchSetId": 2
