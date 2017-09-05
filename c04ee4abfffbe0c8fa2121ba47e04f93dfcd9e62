@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "24b68761_d23876bf",
+        "filename": "style-guide.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T08:25:35Z",
+      "side": 1,
+      "message": "In principle, extra build flags cause an exponential growth of the number of configurations that have to be built and tested. In practice, most build flags don\u0027t interact noticeably, so we only need to actually test a small subset of that combinatorial explosion. I\u0027d say that build flags are an irritating inconvenience, but not bad enough to merit an outright ban.",
+      "parentUuid": "7c17c229_197ef267",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "c04ee4abfffbe0c8fa2121ba47e04f93dfcd9e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e915e4ca_6d852cc8",
         "filename": "style-guide.md",
         "patchSetId": 2
