@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "24d62b92_1da477d8",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T07:56:04Z",
+      "side": 1,
+      "message": "This sentence is gone in the latest version.",
+      "parentUuid": "8f62565f_5663f752",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1aaf332_f4f8a21c",
         "filename": "style-guide.md",
         "patchSetId": 3
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "I agree with danil@ that a brief note on ownership would make sense here.",
       "parentUuid": "b450f70d_f1514f05",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8de53c85_8bc42db1",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T07:56:04Z",
+      "side": 1,
+      "message": "This paragraph doesn\u0027t exist in the latest patch set.",
+      "parentUuid": "2ae91b51_ce6c4ff9",
       "range": {
         "startLine": 44,
         "startChar": 27,
