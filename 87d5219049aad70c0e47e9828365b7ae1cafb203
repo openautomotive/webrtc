@@ -306,6 +306,30 @@
       "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35b87df6_543477a6",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1138974
+      },
+      "writtenOn": "2017-09-05T08:03:52Z",
+      "side": 1,
+      "message": "since this advice reduced to most common case \u0027When passing an array of values to a function\u0027, ownership is exactly same as without ArrayView.",
+      "parentUuid": "8a75093f_b187f501",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
