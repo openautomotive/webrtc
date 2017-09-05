@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc7d89d0_30286361",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T00:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268a0ba2_63910441",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28806137_cc713f2f",
         "filename": "style-guide.md",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa94fc6b_cdf7331f",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T00:10:48Z",
+      "side": 1,
+      "message": "Done. I kept the table with examples, but cut the rest of the text heavily. (Slightly too heavily IMO—I like style rules to come with motivations—but if the rest of y’all agree this is what you want, I’m flexible.)",
+      "parentUuid": "28806137_cc713f2f",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c69c2a3f_907c3b54",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T00:10:48Z",
+      "side": 1,
+      "message": "Done (but see above for my take on omitting the motivation for the rule).",
+      "parentUuid": "a1aaf332_f4f8a21c",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a4e2ae_1ced36f6",
         "filename": "style-guide.md",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b450f70d_f1514f05",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-05T00:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a4e2ae_1ced36f6",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
