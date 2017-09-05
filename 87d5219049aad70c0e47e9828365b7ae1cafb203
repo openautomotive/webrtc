@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "8f62565f_5663f752",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-05T06:58:54Z",
+      "side": 1,
+      "message": "The use case where the callee is allowed to modify the elements seems a bit obscure to me. So if it needs be mentioned at all in the intro, maybe it could be rephrased for clarity.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1aaf332_f4f8a21c",
         "filename": "style-guide.md",
         "patchSetId": 3
@@ -178,6 +201,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d7a4e2ae_1ced36f6",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "87d5219049aad70c0e47e9828365b7ae1cafb203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ae91b51_ce6c4ff9",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-05T06:58:54Z",
+      "side": 1,
+      "message": "I agree with danil@ that a brief note on ownership would make sense here.",
+      "parentUuid": "b450f70d_f1514f05",
       "range": {
         "startLine": 44,
         "startChar": 27,
