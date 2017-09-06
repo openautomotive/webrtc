@@ -149,6 +149,9 @@ DEFINE_int(agc_limiter,
 DEFINE_int(agc_compression_gain,
            kParameterNotSpecifiedValue,
            "Specify the AGC compression gain (0-90)");
+DEFINE_int(agc2_gain,
+           kParameterNotSpecifiedValue,
+           "Specify the AGC2 gain (0-90)");
 DEFINE_int(vad_likelihood,
            kParameterNotSpecifiedValue,
            "Specify the VAD likelihood (0-3)");
@@ -235,6 +238,7 @@ SimulationSettings CreateSettings() {
   SetSettingIfSpecified(FLAG_ed_graph, &settings.ed_graph_output_filename);
   SetSettingIfFlagSet(FLAG_agc, &settings.use_agc);
   SetSettingIfFlagSet(FLAG_agc2, &settings.use_agc2);
+  SetSettingIfSpecified(FLAG_agc2_gain, &settings.agc2_gain);
   SetSettingIfFlagSet(FLAG_hpf, &settings.use_hpf);
   SetSettingIfFlagSet(FLAG_ns, &settings.use_ns);
   SetSettingIfFlagSet(FLAG_ts, &settings.use_ts);
@@ -418,6 +422,15 @@ void PerformBasicParameterSanityChecks(const SimulationSettings& settings) {
       settings.artificial_nearend_filename &&
           !valid_wav_name(*settings.artificial_nearend_filename),
       "Error: --artifical_nearend must be a valid .wav file name.\n");
+
+
+  ReportConditionalErrorAndExit(
+      settings.agc2_gain && !settings.use_agc2,
+      "Error: --agc2_gain has to be specified with --agc2=1 \n");
+
+  ReportConditionalErrorAndExit(
+      settings.agc2_gain && !(*settings.use_agc2),
+      "Error: --agc2_gain has to be specified with --agc2=1 \n");
 }
 
 }  // namespace

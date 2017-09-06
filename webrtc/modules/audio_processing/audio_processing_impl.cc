@@ -1682,7 +1682,7 @@ void AudioProcessingImpl::InitializeEchoCanceller3() {
 void AudioProcessingImpl::InitializeGainController2() {
   if (capture_nonlocked_.gain_controller2_enabled) {
     private_submodules_->gain_controller2.reset(
-        new GainController2(proc_sample_rate_hz()));
+        new GainController2(proc_sample_rate_hz(), config_.gain_controller2));
   } else {
     private_submodules_->gain_controller2.reset();
   }

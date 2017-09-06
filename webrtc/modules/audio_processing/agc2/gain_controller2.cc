@@ -25,11 +25,16 @@ constexpr float kGain = 0.5f;
 
 int GainController2::instance_count_ = 0;
 
-GainController2::GainController2(int sample_rate_hz)
+GainController2::GainController2(int sample_rate_hz,
+                                 const AudioProcessing::Config::GainController2& config)
     : sample_rate_hz_(sample_rate_hz),
       data_dumper_(new ApmDataDumper(
         rtc::AtomicOps::Increment(&instance_count_))),
-      digital_gain_applier_(),
+      fixed_gain_controller_(config.gain, //gain to apply
+                             20, // sub frames in frame
+                             0, // attack ms
+                             100, // decay ms
+                             sample_rate_hz), // sample rate hz
       gain_(kGain) {
   RTC_DCHECK(sample_rate_hz_ == AudioProcessing::kSampleRate8kHz ||
              sample_rate_hz_ == AudioProcessing::kSampleRate16kHz ||
@@ -42,11 +47,9 @@ GainController2::GainController2(int sample_rate_hz)
 GainController2::~GainController2() = default;
 
 void GainController2::Process(AudioBuffer* audio) {
-  for (size_t k = 0; k < audio->num_channels(); ++k) {
-    auto channel_view = rtc::ArrayView<float>(
-        audio->channels_f()[k], audio->num_frames());
-    digital_gain_applier_.Process(gain_, channel_view);
-  }
+  fixed_gain_controller_.Process(FloatFrame(audio->channels_f(),
+                                            audio->num_channels(),
+                                            audio->num_frames()));
 }
 
 bool GainController2::Validate(

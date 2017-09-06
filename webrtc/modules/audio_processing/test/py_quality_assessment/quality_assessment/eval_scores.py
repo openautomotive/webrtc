@@ -14,6 +14,13 @@ import logging
 import os
 import re
 import subprocess
+import sys
+
+try:
+  import numpy as np
+except ImportError:
+  logging.critical('Cannot import the third-party Python package numpy')
+  sys.exit(1)
 
 from . import data_access
 from . import exceptions
@@ -27,12 +34,14 @@ class EvaluationScore(object):
 
   def __init__(self, score_filename_prefix):
     self._score_filename_prefix = score_filename_prefix
+    self._input_signal_metadata = None
     self._reference_signal = None
     self._reference_signal_filepath = None
     self._tested_signal = None
     self._tested_signal_filepath = None
     self._output_filepath = None
     self._score = None
+    self._apm_config = None
 
   @classmethod
   def RegisterClass(cls, class_to_register):
@@ -56,8 +65,16 @@ class EvaluationScore(object):
   def score(self):
     return self._score
 
+  def SetInputSignalMetadata(self, metadata):
+    """Sets input signal metadata.
+
+    Args:
+      metadata: dict instance.
+    """
+    self._input_signal_metadata = metadata
+
   def SetReferenceSignalFilepath(self, filepath):
-    """ Sets the path to the audio track used as reference signal.
+    """Sets the path to the audio track used as reference signal.
 
     Args:
       filepath: path to the reference audio track.
@@ -65,12 +82,20 @@ class EvaluationScore(object):
     self._reference_signal_filepath = filepath
 
   def SetTestedSignalFilepath(self, filepath):
-    """ Sets the path to the audio track used as test signal.
+    """Sets the path to the audio track used as test signal.
 
     Args:
       filepath: path to the test audio track.
     """
     self._tested_signal_filepath = filepath
+
+  def SetApmConfig(self, apm_config):
+    """Sets the APM configuration used for the input/output pairs.
+
+    Args:
+      apm_config: parsed JSON object with flags and settings for audioproc_f.
+    """
+    self._apm_config = apm_config
 
   def Run(self, output_path):
     """Extracts the score for the set test data pair.
@@ -242,3 +267,161 @@ class PolqaScore(EvaluationScore):
     # Build and return a dictionary with field names (header) as keys and the
     # corresponding field values as values.
     return {data[0][index]: data[1][index] for index in range(number_of_fields)}
+
+
+@EvaluationScore.RegisterClass
+class TotalHarmonicDistorsionScore(EvaluationScore):
+  """Total harmonic distorsion plus noise score.
+
+  Total harmonic distorsion plus noise score.
+  See "https://en.wikipedia.org/wiki/Total_harmonic_distortion#THD.2BN".
+
+  Unit: -.
+  Ideal: 0.
+  Worst case: +inf
+  """
+
+  NAME = 'thd'
+
+  def __init__(self, score_filename_prefix):
+    EvaluationScore.__init__(self, score_filename_prefix)
+    self._input_frequency = None
+
+  def _Run(self, output_path):
+    self._CheckInputSignal()
+
+    self._LoadTestedSignal()
+    if self._tested_signal.channels != 1:
+      raise exceptions.EvaluationScoreException(
+          'unsupported number of channels')
+
+    (thd, _) = signal_processing.SignalProcessingUtils.THDAndNoise(
+        self._tested_signal, self._input_frequency)
+
+    self._score = thd
+    self._SaveScore()
+
+  def _CheckInputSignal(self):
+    # Check input signal and get properties.
+    try:
+      if self._input_signal_metadata['signal'] != 'pure_tone':
+        raise exceptions.EvaluationScoreException(
+            'The THD score requires a pure tone as input signal')
+      self._input_frequency = self._input_signal_metadata['frequency']
+      if self._input_signal_metadata['test_data_gen_name'] != 'identity' or (
+          self._input_signal_metadata['test_data_gen_config'] != 'default'):
+        raise exceptions.EvaluationScoreException(
+            'The THD score cannot be used with any test data generator other '
+            'than "identity"')
+    except TypeError:
+      raise exceptions.EvaluationScoreException(
+          'The THD score requires an input signal with associated metadata')
+    except KeyError:
+      raise exceptions.EvaluationScoreException(
+          'Invalid input signal metadata to compute the THD score')
+
+
+@EvaluationScore.RegisterClass
+class TotalHarmonicNoiseScore(EvaluationScore):
+  """The noise part in total harmonic distorsion plus noise.
+
+  Total harmonic distorsion plus noise minus the total harmonic distortion.
+  See "https://en.wikipedia.org/wiki/Total_harmonic_distortion#THD.2BN".
+
+  Unit: -.
+  Ideal: 0.
+  Worst case: +inf
+  """
+
+  NAME = 'noise'
+
+  def __init__(self, score_filename_prefix):
+    EvaluationScore.__init__(self, score_filename_prefix)
+    self._input_frequency = None
+
+  def _Run(self, output_path):
+    self._CheckInputSignal()
+
+    self._LoadTestedSignal()
+    if self._tested_signal.channels != 1:
+      raise exceptions.EvaluationScoreException(
+          'unsupported number of channels')
+
+    (_, noise) = signal_processing.SignalProcessingUtils.THDAndNoise(
+        self._tested_signal, self._input_frequency)
+
+    self._score = noise
+    self._SaveScore()
+
+  def _CheckInputSignal(self):
+    # Check input signal and get properties.
+    try:
+      if self._input_signal_metadata['signal'] != 'pure_tone':
+        raise exceptions.EvaluationScoreException(
+            'The THD-noise score requires a pure tone as input signal')
+      self._input_frequency = self._input_signal_metadata['frequency']
+      if self._input_signal_metadata['test_data_gen_name'] != 'identity' or (
+          self._input_signal_metadata['test_data_gen_config'] != 'default'):
+        raise exceptions.EvaluationScoreException(
+            'The THD-noise score cannot be used with any test data generator other '
+            'than "identity"')
+    except TypeError:
+      raise exceptions.EvaluationScoreException(
+          'The THD-noise score requires an input signal with associated metadata')
+    except KeyError:
+      raise exceptions.EvaluationScoreException(
+          'Invalid input signal metadata to compute the THD-noise score')
+
+
+@EvaluationScore.RegisterClass
+class SaturationDistanceScore(EvaluationScore):
+  """DOC!
+
+  Unit: -.
+  Ideal: 0.
+  Worst case: +/-inf
+  """
+  NAME = 'saturation_distance'
+
+  def __init__(self, score_filename_prefix):
+    EvaluationScore.__init__(self, score_filename_prefix)
+    self._input_frequency = None
+
+
+  def _Run(self, output_path):
+    self._CheckInputSignal()
+    self._LoadTestedSignal()
+    self._LoadReferenceSignal()
+
+    gain_db = self._apm_config["-agc2_fd_g"]
+    clipped_signal_with_gain = signal_processing.SignalProcessingUtils.ApplyGainWithClipping(
+        self._reference_signal, gain_db)
+
+    self._score = clipped_signal_with_gain.dBFS - self._tested_signal.dBFS
+    self._SaveScore()
+
+    logging.debug(self._apm_config)
+
+  def _CheckInputSignal(self):
+    # Check input signal and get properties.
+    try:
+      # if self._input_signal_metadata['signal'] != 'pure_tone':
+      #   raise exceptions.EvaluationScoreException(
+      #       'The  score requires a pure tone as input signal')
+      if "-agc2_fd_g" not in self._apm_config:
+        raise exceptions.EvaluationScoreException(
+            'No gain parameter in APM config, can\'t continue'
+        )
+      # self._input_frequency = self._input_signal_metadata['frequency']
+      # if self._input_signal_metadata['test_data_gen_name'] != 'identity' or (
+      #     self._input_signal_metadata['test_data_gen_config'] != 'default'):
+      #   raise exceptions.EvaluationScoreException(
+      #       'The THD-noise score cannot be used with any test data generator other '
+      #       'than "identity"')
+
+    except TypeError:
+      raise exceptions.EvaluationScoreException(
+          'The THD-noise score requires an input signal with associated metadata')
+    except KeyError:
+      raise exceptions.EvaluationScoreException(
+          'Invalid input signal metadata to compute the THD-noise score')

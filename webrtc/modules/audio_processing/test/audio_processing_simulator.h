@@ -52,6 +52,7 @@ struct SimulationSettings {
   rtc::Optional<std::string> ed_graph_output_filename;
   rtc::Optional<bool> use_agc;
   rtc::Optional<bool> use_agc2;
+  rtc::Optional<int> agc2_gain;
   rtc::Optional<bool> use_hpf;
   rtc::Optional<bool> use_ns;
   rtc::Optional<bool> use_ts;

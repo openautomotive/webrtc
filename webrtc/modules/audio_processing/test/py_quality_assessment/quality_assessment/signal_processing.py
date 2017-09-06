@@ -8,9 +8,11 @@
 
 """Signal processing utility module.
 """
+from __future__ import division
 
 import array
 import logging
+import math
 import os
 import sys
 
@@ -103,7 +105,7 @@ class SignalProcessingUtils(object):
     return pydub.AudioSegment.silent(duration, sample_rate)
 
   @classmethod
-  def GeneratePureTone(cls, template, frequency=440.0):
+  def GeneratePureTone(cls, duration, sample_rate, frequency=440.0):
     """Generates a pure tone.
 
     The pure tone is generated with the same duration and in the same format of
@@ -116,17 +118,50 @@ class SignalProcessingUtils(object):
     Return:
       AudioSegment instance.
     """
-    if frequency > template.frame_rate >> 1:
+
+    if frequency > sample_rate >> 1:
       raise exceptions.SignalProcessingException('Invalid frequency')
 
-    generator = pydub.generators.Sine(
-        sample_rate=template.frame_rate,
-        bit_depth=template.sample_width * 8,
-        freq=frequency)
+    template = pydub.AudioSegment.silent(duration, sample_rate)
+    assert len(template) == duration
+    assert template.frame_rate == sample_rate
+    assert template.channels == 1
+    duration_s = duration / 1000
 
-    return generator.to_audio_segment(
-        duration=len(template),
-        volume=0.0)
+    num_samples = duration_s * template.frame_rate
+    max_value = 2 * np.pi * frequency * duration_s
+    print("max value: {}, num_samples: {}".format(max_value, num_samples))
+    sin_args = np.linspace(0, max_value, num_samples)
+
+    sin_args = np.mod(sin_args, 2*np.pi)
+
+    sin_vals = (2**15 - 1) * np.sin(sin_args)
+    sin_vals_in_array = np.array(sin_vals, dtype = 'int16')
+
+    x = pydub.AudioSegment(
+        data = sin_vals_in_array.tobytes(),
+        metadata = {
+            'sample_width': template.sample_width,
+            'frame_rate': template.frame_rate,
+            'frame_width': template.frame_width,
+            'channels': template.channels,
+        }
+    )
+
+    ttt = sin_vals_in_array - x.get_array_of_samples()
+    print(max(ttt))
+    assert(max(ttt) == 0)
+
+    return x
+
+    # generator = pydub.generators.Sine(
+    #     sample_rate=template.frame_rate,
+    #     bit_depth=template.sample_width * 8,
+    #     freq=frequency)
+
+    # return generator.to_audio_segment(
+    #     duration=len(template),
+    #     volume=0.0)
 
   @classmethod
   def GenerateWhiteNoise(cls, template):
@@ -149,6 +184,13 @@ class SignalProcessingUtils(object):
         volume=0.0)
 
   @classmethod
+  def AudioSegmentToRawData(cls, signal):
+    samples = signal.get_array_of_samples()
+    if samples.typecode != 'h':
+      raise exceptions.SignalProcessingException('Unsupported samples type')
+    return np.array(signal.get_array_of_samples(), np.int16)
+
+  @classmethod
   def DetectHardClipping(cls, signal, threshold=2):
     """Detects hard clipping.
 
@@ -169,13 +211,7 @@ class SignalProcessingUtils(object):
     if signal.sample_width != 2:  # Note that signal.sample_width is in bytes.
       raise exceptions.SignalProcessingException(
           'hard-clipping detection only supported for 16 bit samples')
-
-    # Get raw samples, check type, cast.
-    samples = signal.get_array_of_samples()
-    if samples.typecode != 'h':
-      raise exceptions.SignalProcessingException(
-          'hard-clipping detection only supported for 16 bit samples')
-    samples = np.array(signal.get_array_of_samples(), np.int16)
+    samples = cls.AudioSegmentToRawData(signal)
 
     # Detect adjacent clipped samples.
     samples_type_info = np.iinfo(samples.dtype)
@@ -334,3 +370,80 @@ class SignalProcessingUtils(object):
     # Mix signals using the target SNR.
     gain_db = signal_power - noise_power - target_snr
     return cls.Normalize(signal.overlay(noise.apply_gain(gain_db)))
+
+
+  @classmethod
+  def LowLevelTHD(cls, samples, f0_harmonic, rate):
+    #samples = np.array(samples, dtype='float128')
+    num_samples = len(samples)
+    duration_seconds = num_samples / rate
+
+    scaling = 2.0 / num_samples
+    max_freq = rate >> 1
+
+    t = np.linspace(0, duration_seconds, num_samples)
+
+    def scalar_prod(s1, s2):
+      return np.sum(s1 * s2) * scaling
+
+    # Analyze harmonics.
+    n = 1
+    basis_vectors = []
+    while f0_harmonic * n < max_freq:
+      basis_vectors.append((np.array(
+          np.sin(2.0 * math.pi * n * f0_harmonic * t)),
+                            np.array(
+          np.cos(2.0 * math.pi * n * f0_harmonic * t))))
+      n += 1
+
+    # Normalize:
+    for i, (v_sin, v_cos) in enumerate(basis_vectors):
+      v_sin =  v_sin / np.sqrt(scalar_prod(v_sin, v_sin))
+      v_cos =  v_cos / np.sqrt(scalar_prod(v_cos, v_cos))
+      basis_vectors[i] = (v_sin, v_cos)
+
+    xy_terms = [(scalar_prod(samples, v_sin), scalar_prod(samples, v_cos))
+                for (v_sin, v_cos) in basis_vectors
+    ]
+    b_terms = [np.sqrt(x_n**2 + y_n**2) for (x_n, y_n) in xy_terms]
+      # x_n = scalar_prod(samples, np.array(
+      #     np.sin(2.0 * math.pi * n * f0_harmonic * t)))
+      # y_n = scalar_prod(samples, np.array(
+      #     np.cos(2.0 * math.pi * n * f0_harmonic * t) ))
+      # xy_terms.append((x_n, y_n))
+      # b_terms.append(np.sqrt(x_n**2 + y_n**2))
+      # n += 1
+
+    x_1, y_1 = xy_terms[0]
+    v_sin_1, v_cos_1 = basis_vectors[0]
+    output_without_fundamental = samples - x_1 * v_sin_1 - y_1 * v_cos_1
+    #pure_harmonic = v_1 * v_sin_1
+
+    distortion_and_noise = np.sqrt(np.pi * scalar_prod(output_without_fundamental,
+                                                  output_without_fundamental))
+
+    # TODO(alessiob): Fix or remove if not needed.
+    thd = np.sqrt(np.sum([x**2 for x in b_terms[1:]])) / b_terms[0]
+
+    # TODO(alessiob): Check range.
+    thd_plus_noise = distortion_and_noise / b_terms[0]
+
+    noise = thd_plus_noise - thd
+    # print("""
+# THD = {}
+# noise = {}
+# b_terms = {}
+# xy_terms = {}
+# """.format(thd, noise, b_terms, xy_terms))
+    return thd, noise, b_terms, xy_terms, basis_vectors, output_without_fundamental, distortion_and_noise, scaling
+
+
+  @classmethod
+  def THDAndNoise(cls, signal, f0_harmonic):
+    samples = SignalProcessingUtils.AudioSegmentToRawData(
+        signal)
+    return SignalProcessingUtils.LowLevelTHD(samples, f0_harmonic, signal.frame_rate)[:2]
+
+  @classmethod
+  def ApplyGainWithClipping(cls, signal, gain_db):
+    return signal.apply_gain(gain_db)

@@ -80,7 +80,7 @@ void CopyToAudioFrame(const ChannelBuffer<float>& src, AudioFrame* dest) {
 
 AudioProcessingSimulator::AudioProcessingSimulator(
     const SimulationSettings& settings)
-    : settings_(settings), worker_queue_("file_writer_task_queue") {
+    : settings_(settings), proc_time_(), worker_queue_("file_writer_task_queue") {
   if (settings_.ed_graph_output_filename &&
       !settings_.ed_graph_output_filename->empty()) {
     residual_echo_likelihood_graph_writer_.open(
@@ -274,6 +274,12 @@ void AudioProcessingSimulator::CreateAudioProcessor() {
   }
   if (settings_.use_agc2) {
     apm_config.gain_controller2.enabled = *settings_.use_agc2;
+  }
+  if (settings_.use_agc2) {
+    apm_config.gain_controller2.enabled = *settings_.use_agc2;
+  }
+  if (settings_.agc2_gain) {
+    apm_config.gain_controller2.gain = *settings_.agc2_gain;
   }
   if (settings_.use_lc) {
     apm_config.level_controller.enabled = *settings_.use_lc;

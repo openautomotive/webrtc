@@ -14,7 +14,7 @@
 #include <memory>
 #include <string>
 
-#include "webrtc/modules/audio_processing/agc2/digital_gain_applier.h"
+#include "webrtc/modules/audio_processing/agc2/fixed_gain_controller.h"
 #include "webrtc/modules/audio_processing/include/audio_processing.h"
 #include "webrtc/rtc_base/constructormagic.h"
 
@@ -29,7 +29,7 @@ class AudioBuffer;
 // It temporarily implements a hard-coded gain mode only.
 class GainController2 {
  public:
-  explicit GainController2(int sample_rate_hz);
+  explicit GainController2(int sample_rate_hz, const AudioProcessing::Config::GainController2& config);
   ~GainController2();
 
   int sample_rate_hz() { return sample_rate_hz_; }
@@ -43,7 +43,7 @@ class GainController2 {
  private:
   int sample_rate_hz_;
   std::unique_ptr<ApmDataDumper> data_dumper_;
-  DigitalGainApplier digital_gain_applier_;
+  FixedGainController fixed_gain_controller_;
   static int instance_count_;
   // TODO(alessiob): Remove once a meaningful gain controller mode is
   // implemented.
