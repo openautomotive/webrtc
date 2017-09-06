@@ -113,6 +113,9 @@ public class PeerConnection {
     // List of protocols to be used in the TLS ALPN extension.
     public final List<String> tlsAlpnProtocols;
 
+    // List of elliptic curves to be used in the TLS elliptic curves extension.
+    public final List<String> tlsEllipticCurves;
+
     /** Convenience constructor for STUN servers. */
     public IceServer(String uri) {
       this(uri, "", "");
@@ -128,22 +131,23 @@ public class PeerConnection {
 
     public IceServer(String uri, String username, String password, TlsCertPolicy tlsCertPolicy,
         String hostname) {
-      this(uri, username, password, tlsCertPolicy, hostname, null);
+      this(uri, username, password, tlsCertPolicy, hostname, null, null);
     }
 
     private IceServer(String uri, String username, String password, TlsCertPolicy tlsCertPolicy,
-        String hostname, List<String> tlsAlpnProtocols) {
+        String hostname, List<String> tlsAlpnProtocols, List<String> tlsEllipticCurves) {
       this.uri = uri;
       this.username = username;
       this.password = password;
       this.tlsCertPolicy = tlsCertPolicy;
       this.hostname = hostname;
       this.tlsAlpnProtocols = tlsAlpnProtocols;
+      this.tlsEllipticCurves = tlsEllipticCurves;
     }
 
     public String toString() {
       return uri + " [" + username + ":" + password + "] [" + tlsCertPolicy + "] [" + hostname
-          + "] [" + tlsAlpnProtocols + "]";
+          + "] [" + tlsAlpnProtocols + "] [" + tlsEllipticCurves + "]";
     }
 
     public static Builder builder(String uri) {
@@ -157,6 +161,7 @@ public class PeerConnection {
       private TlsCertPolicy tlsCertPolicy = TlsCertPolicy.TLS_CERT_POLICY_SECURE;
       private String hostname = "";
       private List<String> tlsAlpnProtocols;
+      private List<String> tlsEllipticCurves;
 
       private Builder(String uri) {
         this.uri = uri;
@@ -187,8 +192,14 @@ public class PeerConnection {
         return this;
       }
 
+      public Builder setTlsEllipticCurves(List<String> tlsEllipticCurves) {
+        this.tlsEllipticCurves = tlsEllipticCurves;
+        return this;
+      }
+
       public IceServer createIceServer() {
-        return new IceServer(uri, username, password, tlsCertPolicy, hostname, tlsAlpnProtocols);
+        return new IceServer(
+            uri, username, password, tlsCertPolicy, hostname, tlsAlpnProtocols, tlsEllipticCurves);
       }
     }
   }
