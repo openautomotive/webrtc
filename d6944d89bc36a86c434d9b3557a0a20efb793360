@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "795df4de_80c8d262",
+        "filename": "webrtc/rtc_base/stringencode.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1125619
+      },
+      "writtenOn": "2017-09-06T19:50:17Z",
+      "side": 1,
+      "message": "This would be more efficient if you tell the std::string how big it\u0027s going to be, which is pretty easy to calculate.  Is it worth the perf?  Maybe.  But it\u0027s worth considering.",
+      "range": {
+        "startLine": 649,
+        "startChar": 33,
+        "endLine": 649,
+        "endChar": 0
+      },
+      "revId": "d6944d89bc36a86c434d9b3557a0a20efb793360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
