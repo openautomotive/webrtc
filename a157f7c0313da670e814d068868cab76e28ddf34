@@ -22,6 +22,30 @@
       "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92af081_75562319",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-06T12:52:00Z",
+      "side": 1,
+      "message": "HEAD points to master, as it does by default in git.\n\nWhen you visit https://chromium.googlesource.com/chromium/src/, you get the HEAD version of README.md; following links from there to other .md files gives you URLs with HEAD in them. I figured it would be consistent to use such links everywhere.",
+      "parentUuid": "24f1d6be_97992b2d",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
