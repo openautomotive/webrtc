@@ -70,6 +70,29 @@
       "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b740304b_339479b7",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2017-09-06T13:21:56Z",
+      "side": 1,
+      "message": "Let\u0027s leave this out until we have anything WebRTC-specific (if ever).",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
