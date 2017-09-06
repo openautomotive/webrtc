@@ -645,6 +645,17 @@ bool tokenize_first(const std::string& source,
   return true;
 }
 
+std::string join(const std::vector<std::string>& source, char delimiter) {
+  std::string joined_string = "";
+  for (size_t i = 0; i < source.size(); ++i) {
+    if (i != 0) {
+      joined_string += delimiter;
+    }
+    joined_string += source[i];
+  }
+  return joined_string;
+}
+
 size_t split(const std::string& source, char delimiter,
              std::vector<std::string>* fields) {
   RTC_DCHECK(fields);
