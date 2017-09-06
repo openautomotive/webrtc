@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24f1d6be_97992b2d",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-06T12:40:09Z",
+      "side": 1,
+      "message": "What\u0027s the difference between HEAD and master in this repo? Using the branch name \"master\" make sense to me.",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
