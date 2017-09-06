@@ -393,6 +393,21 @@ class WebRtcSession :
     kAnswer,
   };
 
+  // TODO(steveanton): Eventually it'd be nice to store the channels as a single
+  // vector of BaseChannel pointers instead of separate voice and video channel
+  // vectors. At that point, this will become a simple getter.
+  std::vector<cricket::BaseChannel*> channels() {
+    std::vector<cricket::BaseChannel*> channels;
+    channels.insert(channels.end(), voice_channels_.begin(),
+                    voice_channels_.end());
+    channels.insert(channels.end(), video_channels_.begin(),
+                    video_channels_.end());
+    if (rtp_data_channel_) {
+      channels.push_back(rtp_data_channel_.get());
+    }
+    return channels;
+  }
+
   // Non-const versions of local_description()/remote_description(), for use
   // internally.
   SessionDescriptionInterface* mutable_local_description() {

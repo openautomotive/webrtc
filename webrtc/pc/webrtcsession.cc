@@ -953,30 +953,36 @@ bool WebRtcSession::PushdownMediaDescription(
     cricket::ContentAction action,
     cricket::ContentSource source,
     std::string* err) {
-  auto set_content = [this, action, source, err](cricket::BaseChannel* ch) {
-    if (!ch) {
-      return true;
-    } else if (source == cricket::CS_LOCAL) {
-      return ch->PushdownLocalDescription(local_description()->description(),
-                                          action, err);
-    } else {
-      return ch->PushdownRemoteDescription(remote_description()->description(),
-                                           action, err);
+  const SessionDescription* sdesc =
+      (source == cricket::CS_LOCAL ? local_description() : remote_description())
+          ->description();
+  RTC_DCHECK(sdesc);
+  bool all_success = true;
+  for (auto* channel : channels()) {
+    // TODO(steveanton): Add support for multiple channels of the same type.
+    const ContentInfo* content_info =
+        cricket::GetFirstMediaContent(sdesc->contents(), channel->media_type());
+    if (!content_info) {
+      continue;
     }
-  };
-
-  bool ret = (set_content(voice_channel()) && set_content(video_channel()) &&
-              set_content(rtp_data_channel()));
+    const MediaContentDescription* content_desc =
+        static_cast<const MediaContentDescription*>(content_info->description);
+    if (content_desc && !content_info->rejected) {
+      all_success &= (source == cricket::CS_LOCAL)
+                         ? channel->SetLocalContent(content_desc, action, err)
+                         : channel->SetRemoteContent(content_desc, action, err);
+    }
+  }
   // Need complete offer/answer with an SCTP m= section before starting SCTP,
   // according to https://tools.ietf.org/html/draft-ietf-mmusic-sctp-sdp-19
   if (sctp_transport_ && local_description() && remote_description() &&
       cricket::GetFirstDataContent(local_description()->description()) &&
       cricket::GetFirstDataContent(remote_description()->description())) {
-    ret &= network_thread_->Invoke<bool>(
+    all_success &= network_thread_->Invoke<bool>(
         RTC_FROM_HERE,
         rtc::Bind(&WebRtcSession::PushdownSctpParameters_n, this, source));
   }
-  return ret;
+  return all_success;
 }
 
 bool WebRtcSession::PushdownSctpParameters_n(cricket::ContentSource source) {
