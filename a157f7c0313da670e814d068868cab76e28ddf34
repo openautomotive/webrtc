@@ -93,6 +93,30 @@
       "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a3f5c5_0ceb8c3b",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1126902
+      },
+      "writtenOn": "2017-09-06T20:38:00Z",
+      "side": 1,
+      "message": "There is already one such rule below, and I\u0027m pretty sure the rtc_static_library et al. thing also belongs there.",
+      "parentUuid": "b740304b_339479b7",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
