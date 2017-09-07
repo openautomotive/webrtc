@@ -117,6 +117,30 @@
       "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d945c65_0ec311a9",
+        "filename": "style-guide.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2017-09-07T06:48:42Z",
+      "side": 1,
+      "message": "Ah sorry, I didn\u0027t read the next section so I didn\u0027t realize it was a sub-section to \"Build files\". Then this certainly should be here.\nPlease move the section about rtc_* target types here as well.",
+      "parentUuid": "60a3f5c5_0ceb8c3b",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "a157f7c0313da670e814d068868cab76e28ddf34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
