@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de6f5002_73920d1e",
+        "filename": "webrtc/sdk/android/api/org/webrtc/GlShader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1117641
+      },
+      "writtenOn": "2017-09-07T09:55:55Z",
+      "side": 1,
+      "message": "Just call the other setVertexAttribArray function from here with stride\u003d0.",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "9a9ec3747719da8c29b9cfa06fcfa3d5a2d57aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
