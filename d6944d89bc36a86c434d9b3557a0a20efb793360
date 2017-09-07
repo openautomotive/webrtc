@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fcc70425_74d28ebc",
+        "filename": "webrtc/rtc_base/stringencode.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-09-07T20:02:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795df4de_80c8d262",
+      "range": {
+        "startLine": 649,
+        "startChar": 33,
+        "endLine": 649,
+        "endChar": 0
+      },
+      "revId": "d6944d89bc36a86c434d9b3557a0a20efb793360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b262c2fc_eb3f8e19",
         "filename": "webrtc/sdk/objc/Framework/Headers/WebRTC/RTCIceServer.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-06T23:11:39Z",
       "side": 1,
       "message": "nit: might be worth providing examples of valid input",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "d6944d89bc36a86c434d9b3557a0a20efb793360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f90192_9ad75e1c",
+        "filename": "webrtc/sdk/objc/Framework/Headers/WebRTC/RTCIceServer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-09-07T20:02:07Z",
+      "side": 1,
+      "message": "I agree, thanks. Also added to the java API.",
+      "parentUuid": "b262c2fc_eb3f8e19",
       "range": {
         "startLine": 49,
         "startChar": 9,
@@ -68,6 +116,30 @@
       "revId": "d6944d89bc36a86c434d9b3557a0a20efb793360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca011c3e_efaeee0f",
+        "filename": "webrtc/sdk/objc/Framework/Headers/WebRTC/RTCIceServer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1238500
+      },
+      "writtenOn": "2017-09-07T20:02:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "757f6f98_03c50f23",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 34
+      },
+      "revId": "d6944d89bc36a86c434d9b3557a0a20efb793360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
