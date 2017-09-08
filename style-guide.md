@@ -1,5 +1,6 @@
 # WebRTC coding style guide
 
+----------------------------------------------------------------------
 ## C++
 
 WebRTC follows the [Chromium][chr-style] and [Google][goog-style] C++
@@ -34,6 +35,7 @@ instead of                          | use
 
 See [the source](webrtc/api/array_view.h) for more detailed docs.
 
+----------------------------------------------------------------------
 ## C
 
 There’s a substantial chunk of legacy C code in WebRTC, and a lot of
@@ -46,12 +48,14 @@ pre-dates the use of the current C++ style guide for this code base.
 * If making large changes to C code, consider converting the whole
   thing to C++ first.
 
+----------------------------------------------------------------------
 ## Java
 
 WebRTC follows the [Google Java style guide][goog-java-style].
 
 [goog-java-style]: https://google.github.io/styleguide/javaguide.html
 
+----------------------------------------------------------------------
 ## Objective-C and Objective-C++
 
 WebRTC follows the
@@ -59,12 +63,14 @@ WebRTC follows the
 
 [chr-objc-style]: https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/objective-c/objective-c.md
 
+----------------------------------------------------------------------
 ## Python
 
 WebRTC follows [Chromium’s Python style][chr-py-style].
 
 [chr-py-style]: https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/styleguide.md#python
 
+----------------------------------------------------------------------
 ## Build files
 
 The WebRTC build files are written in [GN][gn], and we follow
