@@ -79,7 +79,8 @@ class HtmlExport(object):
 
   def _BuildBody(self):
     """Builds the content of the <body> section."""
-    score_names = self._scores_data_frame.eval_score_name.unique().tolist()
+    score_names = self._scores_data_frame['eval_score_name'].drop_duplicates(
+    ).values.tolist()
 
     html = [
         ('<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header '
