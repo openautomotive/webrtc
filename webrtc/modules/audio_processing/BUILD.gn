@@ -596,6 +596,7 @@ if (rtc_include_tests) {
       deps += [
         ":audioproc_debug_proto",
         ":audioproc_protobuf_utils",
+        ":audioproc_test_utils",
         ":audioproc_unittest_proto",
         "../../rtc_base:rtc_task_queue",
         "aec_dump",
@@ -653,8 +654,6 @@ if (rtc_include_tests) {
         "noise_suppression_unittest.cc",
         "residual_echo_detector_unittest.cc",
         "rms_level_unittest.cc",
-        "test/bitexactness_tools.cc",
-        "test/bitexactness_tools.h",
         "test/debug_dump_replayer.cc",
         "test/debug_dump_replayer.h",
         "test/debug_dump_test.cc",
@@ -782,6 +781,17 @@ if (rtc_include_tests) {
       "../../rtc_base:rtc_base_approved",
       "../../system_wrappers:system_wrappers",
     ]
+
+    if (rtc_enable_protobuf) {
+      sources += [
+        "test/bitexactness_tools.cc",
+        "test/bitexactness_tools.h",
+      ]
+      deps += [
+        ":audioproc_protobuf_utils",
+        "//testing/gtest",
+      ]
+    }
   }
 
   rtc_executable("transient_suppression_test") {
