@@ -115,6 +115,11 @@ BOOL CALLBACK TopWindowVerifier(HWND hwnd, LPARAM param) {
     return FALSE;
   }
 
+  if (GetAncestor(hwnd, GA_ROOTOWNER) == context->selected_window &&
+      context->selected_window_rect.ContainsRect(content_rect)) {
+    return TRUE;
+  }
+
   content_rect.IntersectWith(context->selected_window_rect);
 
   // If intersection is not empty, the selected window is not on top.
