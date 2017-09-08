@@ -18,7 +18,7 @@ Some older parts of the code violate the style guide in various ways.
 * If making large changes to such code, consider first cleaning it up
   in a separate CL.
 
-### ArrayView
+#### ArrayView
 
 When passing an array of values to a function, use `rtc::ArrayView`
 whenever possible—that is, whenever you’re not passing ownership of
@@ -75,7 +75,7 @@ Chromium style guide.
 [gn]: https://chromium.googlesource.com/chromium/src/tools/gn/
 [chr-gn-style]: https://chromium.googlesource.com/chromium/src/tools/gn/+/HEAD/docs/style_guide.md
 
-### WebRTC-specific GN templates
+#### WebRTC-specific GN templates
 
 Use the following [GN templates][gn-templ] to ensure that all
 our [targets][gn-target] are built with the same configuration:
@@ -91,7 +91,7 @@ instead of       | use
 [gn-templ]: https://chromium.googlesource.com/chromium/src/tools/gn/+/HEAD/docs/language.md#Templates
 [gn-target]: https://chromium.googlesource.com/chromium/src/tools/gn/+/HEAD/docs/language.md#Targets
 
-### Conditional compilation with the C preprocessor
+#### Conditional compilation with the C preprocessor
 
 Avoid using the C preprocessor to conditionally enable or disable
 pieces of code. But if you can’t avoid it, introduce a GN variable,
