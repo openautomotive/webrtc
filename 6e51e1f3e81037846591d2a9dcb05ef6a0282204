@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "ac26e133_bd0a5f1d",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c8bdd4_618c9f31",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97ff2687_a6189251",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
         "patchSetId": 3
@@ -190,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "5a93a39c_616f3827",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a4fe7ec_53ea53a4",
+      "range": {
+        "startLine": 39,
+        "startChar": 49,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28189423_5b8d4ee3",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -201,6 +243,24 @@
       "writtenOn": "2017-08-31T14:36:00Z",
       "side": 1,
       "message": "We should always add a file header section, for instance (from apm_quality_assessment_export.py):\n\"\"\"Export the scores computed by the apm_quality_assessment.py script into an\n   HTML file.\n\"\"\"",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3346e56c_374b78dc",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Thanks, done! Fixing this and running the PRESUBMIT in current patch set.",
+      "parentUuid": "28189423_5b8d4ee3",
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -224,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "d38e2653_5515e872",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Yes, thanks, done now.",
+      "parentUuid": "0b5b7dca_089ce9e4",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9619410_52a3dccc",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -238,6 +316,24 @@
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c6a3cf6_a2c704ab",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9619410_52a3dccc",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +360,30 @@
     },
     {
       "key": {
+        "uuid": "1280ad4a_3c5d18de",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0685a4e0_9c222360",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f20354_5812fe07",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -278,6 +398,24 @@
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d5396b_d0cbc3f9",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f20354_5812fe07",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -304,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "0ebf5402_1cb11fb7",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e93c91c7_e75f4cbf",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49056aee_2dccfc59",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -315,6 +477,30 @@
       "writtenOn": "2017-08-31T14:36:00Z",
       "side": 1,
       "message": "result \u003d {\u0027scores\u0027: score, \u0027params\u0027: {\n    param: config_json[param] for param in params}",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c859cb4b_8becee0a",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Changed considerably for more functionality (for not optimizing for non-tunable settings).",
+      "parentUuid": "49056aee_2dccfc59",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -350,6 +536,30 @@
     },
     {
       "key": {
+        "uuid": "5e16fe2b_516625d9",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa477cbf_92f2d723",
+      "range": {
+        "startLine": 94,
+        "startChar": 19,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44ef2b5d_3f1f3c93",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -364,6 +574,24 @@
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d85eb74_9bab7f4f",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44ef2b5d_3f1f3c93",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -390,6 +618,30 @@
     },
     {
       "key": {
+        "uuid": "7c31c558_a3c14ac0",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5dcd614_6f5c030f",
+      "range": {
+        "startLine": 121,
+        "startChar": 51,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80daef52_51b04c29",
         "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
         "patchSetId": 3
@@ -404,6 +656,24 @@
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffced203_6f69dc63",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_optimize.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80daef52_51b04c29",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -441,6 +711,24 @@
       "writtenOn": "2017-08-31T14:36:00Z",
       "side": 1,
       "message": "Sorry, I was slow with replying to your comments to https://chromium-review.googlesource.com/c/external/webrtc/+/609840\n\nAre the changes below present because you made this CL dependent on https://chromium-review.googlesource.com/c/external/webrtc/+/609840?",
+      "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ad2b410_b2e11c7a",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/data_access.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-08T13:07:33Z",
+      "side": 1,
+      "message": "Yes, this change was based on https://chromium-review.googlesource.com/c/external/webrtc/+/609840, but I didn\u0027t make it a dependence (was in a hurry and didn\u0027t remember how). I don\u0027t think that\u0027s needed anyway. I have removed the extra files.",
+      "parentUuid": "f7b635c7_e5c41078",
       "revId": "6e51e1f3e81037846591d2a9dcb05ef6a0282204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
