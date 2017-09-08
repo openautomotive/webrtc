@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "171a777b_d8c30cce",
+        "filename": "style-guide.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1154069
+      },
+      "writtenOn": "2017-09-08T13:02:26Z",
+      "side": 0,
+      "message": "I think it would make sense to move this general advice above the C++ heading, into the intro.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "91d0ab71ef330d8f1f0f40962791ab8f97f96a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
