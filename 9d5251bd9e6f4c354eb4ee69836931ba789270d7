@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "adf079f7_c9f4344f",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4061,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-09-11T22:30:52Z",
+      "side": 1,
+      "message": "Yeah, I think in this case the inline comments are the most clear.",
+      "parentUuid": "3601ef41_16991b0b",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5812a6e1_746dd253",
         "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
         "patchSetId": 1
@@ -70,6 +88,24 @@
       "writtenOn": "2017-09-11T22:01:20Z",
       "side": 1,
       "message": "nit: It\u0027s generally preferable to put the assertions in the test itself, where possible. This is the closest unit testing guideline I could find (though there are others that are related): https://engdoc.corp.google.com/eng/doc/devguide/coding/testing/unit-testing-best-practices.shtml?cl\u003dhead#control-structures\n\nFor example, this test could look like this instead:\n\nASSERT_TRUE(SdpHasContents(offer));\nEXPECT_TRUE(SdpHasFingerprint(offer));\nEXPECT_FALSE(SdpHasSdesCryptos(offer));\nEXPECT_TRUE(SdpHasProtocol(offer, cricket::kMediaProtocolDtlsSavpf));\n\nIt takes about the same amount of code, and makes it easy to see that the test is correct on quick inspection. The helper methods are simple enough that you don\u0027t need to look at their implementation to figure out what they do, which can\u0027t be said of VerifySessionDescriptionCrypto. I realize we have a *lot* of code that follows the \"VerifyFoo\" pattern, but it\u0027s somewhat of an anti-pattern I\u0027d like to avoid where feasible.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae1425a2_e57b9fd5",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4064,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-09-11T22:30:52Z",
+      "side": 1,
+      "message": "Makes sense. Unfortunately, there would need to be |SdpAllHaveFingerprint| and |SdpNoneHaveFingerprint| instead of just negating the expectation. But I think that can be addressed via a functional style, e.g. |SdpAllContents(HaveFingerprint())|",
+      "parentUuid": "5812a6e1_746dd253",
       "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +129,24 @@
     },
     {
       "key": {
+        "uuid": "5a996d1e_59206b64",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-09-11T22:30:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "321cd3ae_05b756ba",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ac96d1_5fae5de7",
         "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
         "patchSetId": 1
@@ -104,6 +158,24 @@
       "writtenOn": "2017-09-11T22:01:20Z",
       "side": 1,
       "message": "I don\u0027t think this test works anymore, because it\u0027s trying to apply an answer to one offer as an answer to a different offer, which is never guaranteed to work.\n\nThese tests may work better (and be more realistic) if structured like this:\n\n1. Create PeerConnection A (PC under test)\n2. Create PeerConnection B (just used as another SDP-generating entity)\n3. Create offer from PC A\n4. Set as local description on PC A\n5. Set as remote description on PC B\n6. Create answer from PC B\n7. Remove the relevant parts of the answer to make it invalid (in this case, it would be the SDES cryptos)\n8. Try setting as answer on PC B, expect a failure.\n\nIt would be good if we could cut down on uses of \"CreateOfferAndSetRemoteDescription\", too. That\u0027s something that happens to work right now, but makes me nervous because there\u0027s nothing to guarantee it will keep working. It would be more robust to create an offer from a separate PeerConnection.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc2b308_77a09207",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4218,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-09-11T22:30:52Z",
+      "side": 1,
+      "message": "OK, I was kind of uneasy about this style of testing anyhow. The infrastructure doesn\u0027t really support having more than one PeerConnection at a time, but I can change that (since having an SDP-generating entity is going to be relevant for most of the WebRtcSession tests).\n\nAs a side note, is there a good place to put SDP-manipulating functions?",
+      "parentUuid": "48ac96d1_5fae5de7",
       "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
