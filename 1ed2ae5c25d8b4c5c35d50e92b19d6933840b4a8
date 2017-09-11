@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54966207_0dab73c7",
+        "filename": "webrtc/pc/channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T16:22:46Z",
+      "side": 1,
+      "message": "I think the purpose of this test is \"SetXContent fails if underlying media channel fails to process codecs\", which is being simulated with \"set_fail_set_recv_codecs\". If so, the test should pass in a normally-constructed Content instead of an empty one, to ensure the failure isn\u0027t just due to the Content being empty.",
+      "revId": "1ed2ae5c25d8b4c5c35d50e92b19d6933840b4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c7d7d2_dbc7f363",
+        "filename": "webrtc/pc/webrtcsession.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T16:22:46Z",
+      "side": 1,
+      "message": "Previously this would do an early return (due to the \u0026\u0026s on the \"bool ret \u003d \" line) if any SetXContent fails; can you make sure that behavior is retained to reduce the chance of new bugs being stirred up?",
+      "revId": "1ed2ae5c25d8b4c5c35d50e92b19d6933840b4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6e050b_33e7ff57",
+        "filename": "webrtc/pc/webrtcsession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T16:22:46Z",
+      "side": 1,
+      "message": "nit: Since this method isn\u0027t trivial, it may be more in keeping with our style guide if it used a capitalized name and was defined in the CC file.",
+      "range": {
+        "startLine": 399,
+        "startChar": 37,
+        "endLine": 399,
+        "endChar": 45
+      },
+      "revId": "1ed2ae5c25d8b4c5c35d50e92b19d6933840b4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
