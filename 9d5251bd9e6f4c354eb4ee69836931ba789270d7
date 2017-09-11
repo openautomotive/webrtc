@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d49c395_f419837f",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3988,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "nit: I\u0027d say \"SetAsRemoteDescription\" to make it clear that it\u0027s the created offer that\u0027s being set as the remote description.",
+      "range": {
+        "startLine": 3988,
+        "startChar": 7,
+        "endLine": 3988,
+        "endChar": 41
+      },
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5dc2ac3_13a08cf5",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4015,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "nit: I think it may be a bit overkill to add this level of detail to the error messages; it\u0027s usually easy enough to look at the test code to see why a particular assertion failed. I\u0027d probably have just done \"EXPECT_EQ(expect_dtls, has_dtls)\".\n\nThough this is largely a matter of personal preference, so feel free to leave as-is.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3601ef41_16991b0b",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4061,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "nit: I realize what you\u0027re going for here, but my first thought was \"don\u0027t expect no SDES?\" I think it would be more readable as \"expect_sdes \u003d false\", or:\n\nVerifySessionDescriptionCrypto(offer-\u003edescription(), /*expect_sdes\u003d*/false, ...);",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5812a6e1_746dd253",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4064,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "nit: It\u0027s generally preferable to put the assertions in the test itself, where possible. This is the closest unit testing guideline I could find (though there are others that are related): https://engdoc.corp.google.com/eng/doc/devguide/coding/testing/unit-testing-best-practices.shtml?cl\u003dhead#control-structures\n\nFor example, this test could look like this instead:\n\nASSERT_TRUE(SdpHasContents(offer));\nEXPECT_TRUE(SdpHasFingerprint(offer));\nEXPECT_FALSE(SdpHasSdesCryptos(offer));\nEXPECT_TRUE(SdpHasProtocol(offer, cricket::kMediaProtocolDtlsSavpf));\n\nIt takes about the same amount of code, and makes it easy to see that the test is correct on quick inspection. The helper methods are simple enough that you don\u0027t need to look at their implementation to figure out what they do, which can\u0027t be said of VerifySessionDescriptionCrypto. I realize we have a *lot* of code that follows the \"VerifyFoo\" pattern, but it\u0027s somewhat of an anti-pattern I\u0027d like to avoid where feasible.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321cd3ae_05b756ba",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "If VerifySessionDescriptionCrypto is removed as suggested in the other comment, then this test could focus *only* on the GCM-related assertions. It wouldn\u0027t need to verify \"there\u0027s no fingerprint, protocol string is correct, etc.\" because other SDES tests would have that covered.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ac96d1_5fae5de7",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4218,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "I don\u0027t think this test works anymore, because it\u0027s trying to apply an answer to one offer as an answer to a different offer, which is never guaranteed to work.\n\nThese tests may work better (and be more realistic) if structured like this:\n\n1. Create PeerConnection A (PC under test)\n2. Create PeerConnection B (just used as another SDP-generating entity)\n3. Create offer from PC A\n4. Set as local description on PC A\n5. Set as remote description on PC B\n6. Create answer from PC B\n7. Remove the relevant parts of the answer to make it invalid (in this case, it would be the SDES cryptos)\n8. Try setting as answer on PC B, expect a failure.\n\nIt would be good if we could cut down on uses of \"CreateOfferAndSetRemoteDescription\", too. That\u0027s something that happens to work right now, but makes me nervous because there\u0027s nothing to guarantee it will keep working. It would be more robust to create an offer from a separate PeerConnection.",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc909ef6_fd1f8132",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4270,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-11T22:01:20Z",
+      "side": 1,
+      "message": "Test is called TestReceiveNonDtlsOffer, but this calls DoCreateAnswer?",
+      "revId": "9d5251bd9e6f4c354eb4ee69836931ba789270d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
