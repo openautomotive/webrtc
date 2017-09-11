@@ -22,8 +22,10 @@ copy("scripts") {
     "README.md",
     "apm_quality_assessment.py",
     "apm_quality_assessment.sh",
+    "apm_quality_assessment_collect_data.py",
     "apm_quality_assessment_export.py",
     "apm_quality_assessment_gencfgs.py",
+    "apm_quality_assessment_optimize.py",
   ]
   outputs = [
     "$root_build_dir/py_quality_assessment/{{source_file_part}}",
