@@ -41,6 +41,7 @@ class AudioProcessingImpl : public AudioProcessing {
   explicit AudioProcessingImpl(const webrtc::Config& config);
   // AudioProcessingImpl takes ownership of beamformer.
   AudioProcessingImpl(const webrtc::Config& config,
+                      std::unique_ptr<PostProcessing> post_processor,
                       NonlinearBeamformer* beamformer);
   ~AudioProcessingImpl() override;
   int Initialize() override;
@@ -156,7 +157,8 @@ class AudioProcessingImpl : public AudioProcessing {
                 bool echo_canceller3_enabled,
                 bool voice_activity_detector_enabled,
                 bool level_estimator_enabled,
-                bool transient_suppressor_enabled);
+                bool transient_suppressor_enabled,
+                bool post_processor_enabled);
     bool CaptureMultiBandSubModulesActive() const;
     bool CaptureMultiBandProcessingActive() const;
     bool CaptureFullBandProcessingActive() const;
@@ -178,6 +180,7 @@ class AudioProcessingImpl : public AudioProcessing {
     bool level_estimator_enabled_ = false;
     bool voice_activity_detector_enabled_ = false;
     bool transient_suppressor_enabled_ = false;
+    bool post_processor_enabled_ = false;
     bool first_update_ = true;
   };
 
@@ -218,7 +221,8 @@ class AudioProcessingImpl : public AudioProcessing {
       RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_render_, crit_capture_);
   void InitializeLowCutFilter() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_capture_);
   void InitializeEchoCanceller3() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_capture_);
-  void InitializeGainController2();
+  void InitializeGainController2() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_capture_);
+  void InitializePostProcessor() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_capture_);
 
   void EmptyQueuedRenderAudio();
   void AllocateRenderQueue()
@@ -367,6 +371,7 @@ class AudioProcessingImpl : public AudioProcessing {
     bool level_controller_enabled = false;
     bool echo_canceller3_enabled = false;
     bool gain_controller2_enabled = false;
+    bool post_processor_enabled = false;
   } capture_nonlocked_;
 
   struct ApmRenderState {
