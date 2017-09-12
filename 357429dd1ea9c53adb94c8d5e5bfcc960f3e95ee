@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe32cf29_95af3220",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_export.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 0,
+      "message": "good catch!",
+      "revId": "357429dd1ea9c53adb94c8d5e5bfcc960f3e95ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d362170_6c798915",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/quality_assessment/collect_data.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 0,
+      "message": "Thanks! This only applies to the export script indeed.",
+      "revId": "357429dd1ea9c53adb94c8d5e5bfcc960f3e95ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

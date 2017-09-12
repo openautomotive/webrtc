@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a00d9e6_7a75750e",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "If you have time, could you also update README.md and add a simple example to use this script? You could add a section named \"Usage (boxplots)\" before the troubleshooting section. You can reuse the first paragraph of this CL description (it\u0027s really clear).",
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfaba6c_07d9117d",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "flag.\n    ^",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee05d64b_b08f6b1e",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "Missing docstring for this arg",
+      "range": {
+        "startLine": 54,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 62
+      },
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7be271a_84f6e361",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "Remove duplicate empty line",
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4665c49f_58f070aa",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "quotes consistency",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497b9d8e_3c5c1c37",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "Is \u0027var_name\u0027 also accepted? IIRC, var names should appear between ||",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc9e4e5_885ab254",
+        "filename": "webrtc/modules/audio_processing/test/py_quality_assessment/apm_quality_assessment_boxplot.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1184474
+      },
+      "writtenOn": "2017-09-12T08:19:18Z",
+      "side": 1,
+      "message": "align to scores_data_frame (lines 130-132)",
+      "range": {
+        "startLine": 130,
+        "startChar": 41,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "3d7bfd98facccda2bd49bac23a15c0c5192dd2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
