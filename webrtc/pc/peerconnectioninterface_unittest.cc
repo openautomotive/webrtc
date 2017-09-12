@@ -3938,3 +3938,405 @@ TEST(RTCConfigurationTest, ComparisonOperators) {
       PeerConnectionInterface::RTCConfigurationType::kAggressive);
   EXPECT_NE(a, h);
 }
+
+class PeerConnectionInterfaceCryptoTest : public PeerConnectionInterfaceTest {
+ public:
+  void CreatePeerConnectionWithOnlySdes() {
+    PeerConnectionInterface::RTCConfiguration config;
+    config.enable_dtls_srtp.emplace(false);
+    CreatePeerConnection(config, nullptr);
+    AddAudioVideoStream("s", "a", "v");
+  }
+
+  void CreatePeerConnectionWithSdesAndGcm() {
+    webrtc::PeerConnectionFactoryInterface::Options options;
+    // Need to overwrite the factory options to enable gcm cipher suites.
+    // Note that this option needs to be set when calling CreateOffer/
+    // CreateAnswer because the PeerConnection does not copy the options when
+    // created.
+    options.crypto_options.enable_gcm_crypto_suites = true;
+    pc_factory_->SetOptions(options);
+
+    PeerConnectionInterface::RTCConfiguration config;
+    config.enable_dtls_srtp.emplace(false);
+    CreatePeerConnection(config, nullptr);
+    AddAudioVideoStream("s", "a", "v");
+  }
+
+  void CreatePeerConnectionWithOnlyDtls() {
+    PeerConnectionInterface::RTCConfiguration config;
+    config.enable_dtls_srtp.emplace(true);
+    CreatePeerConnection(config, nullptr);
+    AddAudioVideoStream("s", "a", "v");
+  }
+
+  void CreatePeerConnectionWithNoEncryption() {
+    webrtc::PeerConnectionFactoryInterface::Options options;
+    // Need to overwrite the factory options to disable all encryption.
+    options.disable_encryption = true;
+    pc_factory_->SetOptions(options);
+
+    CreatePeerConnection();
+    AddAudioVideoStream("s", "a", "v");
+
+    // Set factory options back to default so as to not interfere with future
+    // PeerConnections.
+    options.disable_encryption = false;
+    pc_factory_->SetOptions(options);
+  }
+
+  void CreateOfferAndSetAsRemoteDescription() {
+    std::unique_ptr<SessionDescriptionInterface> offer;
+    ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+    ASSERT_TRUE(DoSetRemoteDescription(offer.release()));
+  }
+
+  typedef std::function<bool(const cricket::ContentInfo*,
+                             const cricket::TransportInfo*)>
+      SdpContentPredicate;
+
+  bool SdpContentsAll(SdpContentPredicate pred,
+                      const cricket::SessionDescription* desc) {
+    for (const auto& content : desc->contents()) {
+      const auto* transport_info = desc->GetTransportInfoByName(content.name);
+      if (!pred(&content, transport_info)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  bool SdpContentsNone(SdpContentPredicate pred,
+                       const cricket::SessionDescription* desc) {
+    return SdpContentsAll(std::not2(pred), desc);
+  }
+
+  SdpContentPredicate HaveDtlsFingerprint() {
+    return [](const cricket::ContentInfo* content,
+              const cricket::TransportInfo* transport) {
+      return transport->description.identity_fingerprint != nullptr;
+    };
+  }
+
+  SdpContentPredicate HaveSdesCryptos() {
+    return [](const cricket::ContentInfo* content,
+              const cricket::TransportInfo* transport) {
+      const auto* media_desc =
+          static_cast<const cricket::MediaContentDescription*>(
+              content->description);
+      return !media_desc->cryptos().empty();
+    };
+  }
+
+  SdpContentPredicate HaveProtocol(const std::string& protocol) {
+    return [protocol](const cricket::ContentInfo* content,
+                      const cricket::TransportInfo* transport) {
+      const auto* media_desc =
+          static_cast<const cricket::MediaContentDescription*>(
+              content->description);
+      return media_desc->protocol() == protocol;
+    };
+  }
+
+  SdpContentPredicate HaveSdesGcmCryptos(size_t num_crypto_suites) {
+    return [num_crypto_suites](const cricket::ContentInfo* content,
+                               const cricket::TransportInfo* transport) {
+      const auto* media_desc =
+          static_cast<const cricket::MediaContentDescription*>(
+              content->description);
+      if (media_desc->cryptos().size() != num_crypto_suites) {
+        return false;
+      }
+      const cricket::CryptoParams first_params = media_desc->cryptos()[0];
+      return first_params.key_params.size() == 67U &&
+             first_params.cipher_suite == "AEAD_AES_256_GCM";
+    };
+  }
+};
+
+// When DTLS is enabled, the SDP offer/answer should have a DTLS fingerprint and
+// no SDES cryptos.
+TEST_F(PeerConnectionInterfaceCryptoTest, CorrectCryptoInOfferWhenDtlsEnabled) {
+  CreatePeerConnectionWithOnlyDtls();
+  std::unique_ptr<SessionDescriptionInterface> offer;
+  ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+
+  ASSERT_FALSE(offer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsAll(HaveDtlsFingerprint(), offer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveSdesCryptos(), offer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolDtlsSavpf),
+                             offer->description()));
+}
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CorrectCryptoInAnswerWhenDtlsEnabled) {
+  CreatePeerConnectionWithOnlyDtls();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer;
+  ASSERT_TRUE(DoCreateAnswer(&answer, nullptr));
+
+  ASSERT_FALSE(answer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsAll(HaveDtlsFingerprint(), answer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveSdesCryptos(), answer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolDtlsSavpf),
+                             answer->description()));
+}
+
+// When DTLS is disabled, the SDP offer/answer should not have a DTLS
+// fingerprint and include SDES crypto options.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CorrectCryptoInOfferWhenDtlsDisabled) {
+  CreatePeerConnectionWithOnlySdes();
+  std::unique_ptr<SessionDescriptionInterface> offer;
+  ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+
+  ASSERT_FALSE(offer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsAll(HaveSdesCryptos(), offer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveDtlsFingerprint(), offer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolSavpf),
+                             offer->description()));
+}
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CorrectCryptoInAnswerWhenDtlsDisabled) {
+  CreatePeerConnectionWithOnlySdes();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer;
+  ASSERT_TRUE(DoCreateAnswer(&answer, nullptr));
+
+  ASSERT_FALSE(answer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsAll(HaveSdesCryptos(), answer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveDtlsFingerprint(), answer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolSavpf),
+                             answer->description()));
+}
+
+// When DTLS is disabled and GCM cipher suites are enabled, the SDP offer/answer
+// should have the correct ciphers in the SDES crypto options.
+TEST_F(PeerConnectionInterfaceCryptoTest, CorrectCryptoInOfferWhenSdesAndGcm) {
+  CreatePeerConnectionWithSdesAndGcm();
+  std::unique_ptr<SessionDescriptionInterface> offer;
+  ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+
+  EXPECT_TRUE(SdpContentsAll(HaveSdesGcmCryptos(3), offer->description()));
+}
+TEST_F(PeerConnectionInterfaceCryptoTest, CorrectCryptoInAnswerWhenSdesAndGcm) {
+  CreatePeerConnectionWithSdesAndGcm();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer;
+  ASSERT_TRUE(DoCreateAnswer(&answer, nullptr));
+
+  EXPECT_TRUE(SdpContentsAll(HaveSdesGcmCryptos(1), answer->description()));
+}
+
+// When encryption is disabled, the SDP offer/answer should have neither a DTLS
+// fingerprint nor any SDES crypto options.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CorrectCryptoInOfferWhenEncryptionDisabled) {
+  CreatePeerConnectionWithNoEncryption();
+  std::unique_ptr<SessionDescriptionInterface> offer;
+  ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+
+  ASSERT_FALSE(offer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsNone(HaveSdesCryptos(), offer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveDtlsFingerprint(), offer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolAvpf),
+                             offer->description()));
+}
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CorrectCryptoInAnswerWhenEncryptionDisabled) {
+  CreatePeerConnectionWithNoEncryption();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer;
+  ASSERT_TRUE(DoCreateAnswer(&answer, nullptr));
+
+  ASSERT_FALSE(answer->description()->contents().empty());
+  EXPECT_TRUE(SdpContentsNone(HaveSdesCryptos(), answer->description()));
+  EXPECT_TRUE(SdpContentsNone(HaveDtlsFingerprint(), answer->description()));
+  EXPECT_TRUE(SdpContentsAll(HaveProtocol(cricket::kMediaProtocolAvpf),
+                             answer->description()));
+}
+
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       CanSetSdesGcmRemoteOfferAndLocalAnswer) {
+  CreatePeerConnectionWithSdesAndGcm();
+
+  std::unique_ptr<SessionDescriptionInterface> offer, answer;
+  ASSERT_TRUE(DoCreateOffer(&offer, nullptr));
+  ASSERT_TRUE(DoSetRemoteDescription(offer.release()));
+  ASSERT_TRUE(DoCreateAnswer(&answer, nullptr));
+  EXPECT_TRUE(DoSetLocalDescription(answer.release()));
+}
+
+//
+// Tests for creating/setting SDP under different SDES/DTLS polices:
+//
+// --DTLS off and SDES on
+// TestCreateSdesOfferReceiveSdesAnswer/TestReceiveSdesOfferCreateSdesAnswer:
+//     set local/remote offer/answer with crypto --> success
+// TestSetNonSdesOfferWhenSdesOn: set local/remote offer without crypto --->
+//     failure
+// TestSetLocalNonSdesAnswerWhenSdesOn: set local answer without crypto -->
+//     failure
+// TestSetRemoteNonSdesAnswerWhenSdesOn: set remote answer without crypto -->
+//     failure
+//
+// --DTLS on and SDES off
+// TestCreateDtlsOfferReceiveDtlsAnswer/TestReceiveDtlsOfferCreateDtlsAnswer:
+//     set local/remote offer/answer with DTLS fingerprint --> success
+// TestReceiveNonDtlsOfferWhenDtlsOn: set local/remote offer without DTLS
+//     fingerprint --> failure
+// TestSetLocalNonDtlsAnswerWhenDtlsOn: set local answer without fingerprint
+//     --> failure
+// TestSetRemoteNonDtlsAnswerWhenDtlsOn: set remote answer without fingerprint
+//     --> failure
+//
+// --Encryption disabled: DTLS off and SDES off
+// TestCreateOfferReceiveAnswerWithoutEncryption: set local offer and remote
+//     answer without SDES or DTLS --> success
+// TestCreateAnswerReceiveOfferWithoutEncryption: set remote offer and local
+//     answer without SDES or DTLS --> success
+//
+
+// Test that we return a failure when applying a remote/local offer that doesn't
+// have cryptos enabled when DTLS is off.
+TEST_F(PeerConnectionInterfaceCryptoTest, TestSetNonSdesOfferWhenSdesOn) {
+  CreatePeerConnectionWithOnlyDtls();
+  std::unique_ptr<SessionDescriptionInterface> offer_dtls, offer_dtls_copy;
+  ASSERT_TRUE(DoCreateOffer(&offer_dtls, nullptr));
+  ASSERT_TRUE(DoCreateOffer(&offer_dtls_copy, nullptr));
+
+  CreatePeerConnectionWithOnlySdes();
+
+  EXPECT_FALSE(DoSetLocalDescription(offer_dtls.release()));
+  EXPECT_FALSE(DoSetRemoteDescription(offer_dtls_copy.release()));
+}
+
+// Test that we return a failure when applying a local answer that doesn't have
+// cryptos enabled when DTLS is off.
+TEST_F(PeerConnectionInterfaceCryptoTest, TestSetNonSdesAnswerWhenSdesOn) {
+  CreatePeerConnectionWithOnlyDtls();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_dtls;
+  ASSERT_TRUE(DoCreateAnswer(&answer_dtls, nullptr));
+
+  CreatePeerConnectionWithOnlySdes();
+  std::unique_ptr<SessionDescriptionInterface> offer_sdes;
+  ASSERT_TRUE(DoCreateOffer(&offer_sdes, nullptr));
+
+  EXPECT_TRUE(DoSetRemoteDescription(offer_sdes.release()));
+  EXPECT_FALSE(DoSetLocalDescription(answer_dtls.release()));
+}
+
+// Test we will return fail when apply an remote answer that doesn't have
+// crypto enabled when DTLS is off.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       TestSetRemoteNonSdesAnswerWhenSdesOn) {
+  CreatePeerConnectionWithOnlyDtls();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_dtls;
+  ASSERT_TRUE(DoCreateAnswer(&answer_dtls, nullptr));
+
+  CreatePeerConnectionWithOnlySdes();
+  std::unique_ptr<SessionDescriptionInterface> offer_sdes;
+  ASSERT_TRUE(DoCreateOffer(&offer_sdes, nullptr));
+
+  EXPECT_TRUE(DoSetLocalDescription(offer_sdes.release()));
+  EXPECT_FALSE(DoSetRemoteDescription(answer_dtls.release()));
+}
+
+// Test that we set a local offer with a DTLS fingerprint when DTLS is on
+// and then we accept a remote answer with a DTLS fingerprint successfully.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       TestReceiveDtlsOfferReceiveDtlsAnswer) {
+  CreatePeerConnectionWithOnlyDtls();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_dtls;
+  ASSERT_TRUE(DoCreateAnswer(&answer_dtls, nullptr));
+
+  CreatePeerConnectionWithOnlyDtls();
+
+  std::unique_ptr<SessionDescriptionInterface> offer_dtls;
+  ASSERT_TRUE(DoCreateOffer(&offer_dtls, nullptr));
+  ASSERT_TRUE(DoSetLocalDescription(offer_dtls.release()));
+
+  EXPECT_TRUE(DoSetRemoteDescription(answer_dtls.release()));
+}
+
+// Test that if we support DTLS and the other side didn't offer a fingerprint,
+// we will fail to set the remote description.
+TEST_F(PeerConnectionInterfaceCryptoTest, TestReceiveNonDtlsOfferWhenDtlsOn) {
+  CreatePeerConnectionWithOnlySdes();
+  std::unique_ptr<SessionDescriptionInterface> offer_sdes, offer_sdes_copy;
+  ASSERT_TRUE(DoCreateOffer(&offer_sdes, nullptr));
+  ASSERT_TRUE(DoCreateOffer(&offer_sdes_copy, nullptr));
+
+  CreatePeerConnectionWithOnlyDtls();
+
+  EXPECT_FALSE(DoSetLocalDescription(offer_sdes.release()));
+  EXPECT_FALSE(DoSetRemoteDescription(offer_sdes_copy.release()));
+}
+
+// Test that we return a failure when applying a local answer that doesn't have
+// a DTLS fingerprint when DTLS is required.
+TEST_F(PeerConnectionInterfaceCryptoTest, TestSetLocalNonDtlsAnswerWhenDtlsOn) {
+  CreatePeerConnectionWithOnlySdes();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_sdes;
+  ASSERT_TRUE(DoCreateAnswer(&answer_sdes, nullptr));
+
+  CreatePeerConnectionWithOnlyDtls();
+
+  std::unique_ptr<SessionDescriptionInterface> offer_dtls;
+  ASSERT_TRUE(DoCreateOffer(&offer_dtls, nullptr));
+  ASSERT_TRUE(DoSetRemoteDescription(offer_dtls.release()));
+
+  EXPECT_FALSE(DoSetLocalDescription(answer_sdes.release()));
+}
+
+// Test that we return a failure when applying a remote answer that doesn't have
+// a DTLS fingerprint when DTLS is required.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       TestSetRemoteNonDtlsAnswerWhenDtlsOn) {
+  CreatePeerConnectionWithOnlySdes();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_sdes;
+  ASSERT_TRUE(DoCreateAnswer(&answer_sdes, nullptr));
+
+  CreatePeerConnectionWithOnlyDtls();
+
+  std::unique_ptr<SessionDescriptionInterface> offer_dtls;
+  ASSERT_TRUE(DoCreateOffer(&offer_dtls, nullptr));
+  ASSERT_TRUE(DoSetLocalDescription(offer_dtls.release()));
+
+  EXPECT_FALSE(DoSetRemoteDescription(answer_sdes.release()));
+}
+
+// Test that we create a local offer without SDES or DTLS and accept a remote
+// answer without SDES or DTLS when encryption is disabled.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       TestCreateOfferReceiveAnswerWithoutEncryption) {
+  CreatePeerConnectionWithNoEncryption();
+  CreateOfferAndSetAsRemoteDescription();
+  std::unique_ptr<SessionDescriptionInterface> answer_no_encryption;
+  ASSERT_TRUE(DoCreateAnswer(&answer_no_encryption, nullptr));
+
+  CreatePeerConnectionWithNoEncryption();
+  std::unique_ptr<SessionDescriptionInterface> offer_no_encryption;
+  ASSERT_TRUE(DoCreateOffer(&offer_no_encryption, nullptr));
+  EXPECT_TRUE(DoSetLocalDescription(offer_no_encryption.release()));
+  EXPECT_TRUE(DoSetRemoteDescription(answer_no_encryption.release()));
+}
+
+// Test that we create a local answer without SDES or DTLS and accept a remote
+// offer without SDES or DTLS when encryption is disabled.
+TEST_F(PeerConnectionInterfaceCryptoTest,
+       TestCreateAnswerReceiveOfferWithoutEncryption) {
+  CreatePeerConnectionWithNoEncryption();
+  std::unique_ptr<SessionDescriptionInterface> offer_no_encryption;
+  ASSERT_TRUE(DoCreateOffer(&offer_no_encryption, nullptr));
+
+  CreatePeerConnectionWithNoEncryption();
+  ASSERT_TRUE(DoSetRemoteDescription(offer_no_encryption.release()));
+  std::unique_ptr<SessionDescriptionInterface> answer_no_encryption;
+  ASSERT_TRUE(DoCreateAnswer(&answer_no_encryption, nullptr));
+  EXPECT_TRUE(DoSetLocalDescription(answer_no_encryption.release()));
+}
