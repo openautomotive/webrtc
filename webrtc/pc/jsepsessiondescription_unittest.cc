@@ -95,12 +95,6 @@ class JsepSessionDescriptionTest : public testing::Test {
     return sdp;
   }
 
-  SessionDescriptionInterface* DeSerialize(const std::string& sdp) {
-    JsepSessionDescription* desc(new JsepSessionDescription("dummy"));
-    EXPECT_TRUE(desc->Initialize(sdp, NULL));
-    return desc;
-  }
-
   cricket::Candidate candidate_;
   std::unique_ptr<JsepSessionDescription> jsep_desc_;
 };
@@ -207,7 +201,8 @@ TEST_F(JsepSessionDescriptionTest, SerializeDeserialize) {
   std::string sdp = Serialize(jsep_desc_.get());
 
   std::unique_ptr<SessionDescriptionInterface> parsed_jsep_desc(
-      DeSerialize(sdp));
+      webrtc::CreateSessionDescription(SessionDescriptionInterface::kOffer, sdp,
+                                       nullptr));
   EXPECT_EQ(2u, parsed_jsep_desc->number_of_mediasections());
 
   std::string parsed_sdp = Serialize(parsed_jsep_desc.get());
@@ -226,7 +221,8 @@ TEST_F(JsepSessionDescriptionTest, SerializeDeserializeWithCandidates) {
   EXPECT_NE(sdp, sdp_with_candidate);
 
   std::unique_ptr<SessionDescriptionInterface> parsed_jsep_desc(
-      DeSerialize(sdp_with_candidate));
+      webrtc::CreateSessionDescription(SessionDescriptionInterface::kOffer, sdp,
+                                       nullptr));
   std::string parsed_sdp_with_candidate = Serialize(parsed_jsep_desc.get());
 
   EXPECT_EQ(sdp_with_candidate, parsed_sdp_with_candidate);
