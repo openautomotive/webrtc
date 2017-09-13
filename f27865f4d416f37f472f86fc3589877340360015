@@ -16,6 +16,24 @@
       "revId": "f27865f4d416f37f472f86fc3589877340360015",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4d4023_6d54f3f9",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1228509
+      },
+      "writtenOn": "2017-09-13T01:19:49Z",
+      "side": 1,
+      "message": "Yep, I\u0027ve been working on a new test fixture for this class (and related PeerConnection unit tests) with something close to that interface. I\u0027ll have that in a CL soon :)",
+      "parentUuid": "cfd6abaf_0ee19208",
+      "revId": "f27865f4d416f37f472f86fc3589877340360015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
