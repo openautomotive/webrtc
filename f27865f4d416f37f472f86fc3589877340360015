@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd6abaf_0ee19208",
+        "filename": "webrtc/pc/peerconnectioninterface_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1132136
+      },
+      "writtenOn": "2017-09-13T01:15:08Z",
+      "side": 1,
+      "message": "A related improvement would be changing this method to:\n\nstd::unique_ptr\u003cSessionDescriptionInterface\u003e DoCreateOffer(\n    MediaConstraintsInterface* constraints);\n\nPassing unique_ptrs by reference or by pointer is discouraged. And the bool return here is redundant, since it will be true if and only if |desc| is populated. The calling code can just do this instead:\n\nauto offer \u003d DoCreateOffer(constraints);\nASSERT_NE(nullptr, offer.get());\n\nSo, seems like a win-win.",
+      "revId": "f27865f4d416f37f472f86fc3589877340360015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
