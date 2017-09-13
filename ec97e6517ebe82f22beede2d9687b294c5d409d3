@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dbf2cde_92c670bd",
+        "filename": "webrtc/modules/audio_processing/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1153539
+      },
+      "writtenOn": "2017-09-13T11:38:23Z",
+      "side": 1,
+      "message": "Ah I see, the bit exactness tools use something from Neteq. Ideally, I think the test file stuff from neteq tools should be moved to some higher up test folder. Maybe \u0027webrtc/test\u0027 or \u0027webrtc/modules/utility\u0027. Because if something is in \u0027audio_coding\u0027 and is not \"audio_coding:audio_coding\", it\u0027s probably internal.",
+      "range": {
+        "startLine": 790,
+        "startChar": 10,
+        "endLine": 790,
+        "endChar": 34
+      },
+      "revId": "ec97e6517ebe82f22beede2d9687b294c5d409d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
