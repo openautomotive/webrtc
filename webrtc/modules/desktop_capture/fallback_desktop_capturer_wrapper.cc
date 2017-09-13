@@ -130,8 +130,11 @@ bool FallbackDesktopCapturerWrapper::SelectSource(SourceId id) {
   if (main_capturer_permanent_error_) {
     return secondary_capturer_->SelectSource(id);
   }
-  return main_capturer_->SelectSource(id) &&
-         secondary_capturer_->SelectSource(id);
+  if (!main_capturer_->SelectSource(id)) {
+    main_capturer_permanent_error_ = true;
+  }
+
+  return secondary_capturer_->SelectSource(id);
 }
 
 bool FallbackDesktopCapturerWrapper::FocusOnSelectedSource() {
