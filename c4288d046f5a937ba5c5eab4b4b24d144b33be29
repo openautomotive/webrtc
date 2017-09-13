@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f52790f8_6cfe2ac0",
+        "filename": "webrtc/modules/desktop_capture/fallback_desktop_capturer_wrapper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000528
+      },
+      "writtenOn": "2017-09-13T18:20:42Z",
+      "side": 1,
+      "message": "How frequently is this called? You\u0027re logging this histogram every time, so if it\u0027s called a lot you might want to log it only on error to avoid being too spammy.\n\nAlso, please add something to the CL description explaining that you\u0027ve added a histogram to track errors in this CL.",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "c4288d046f5a937ba5c5eab4b4b24d144b33be29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
