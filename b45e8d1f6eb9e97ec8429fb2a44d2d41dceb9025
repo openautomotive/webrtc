@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d17ffd0_bcca55ca",
+        "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1232429
+      },
+      "writtenOn": "2017-09-15T12:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763f4cf8_85dd1623",
+      "range": {
+        "startLine": 543,
+        "startChar": 6,
+        "endLine": 543,
+        "endChar": 24
+      },
+      "revId": "b45e8d1f6eb9e97ec8429fb2a44d2d41dceb9025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64bf3c09_2f101e52",
         "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-14T21:50:44Z",
       "side": 1,
       "message": "I\u0027m not really clear on how this should be done. Should the capturepostprocessor be active by default if it is inserted into APM?",
+      "range": {
+        "startLine": 716,
+        "startChar": 13,
+        "endLine": 716,
+        "endChar": 35
+      },
+      "revId": "b45e8d1f6eb9e97ec8429fb2a44d2d41dceb9025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4b6734_46f12250",
+        "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1232429
+      },
+      "writtenOn": "2017-09-15T12:31:01Z",
+      "side": 1,
+      "message": "Yes. I misunderstood our offline discussion. Removing all of the toggling.",
+      "parentUuid": "64bf3c09_2f101e52",
       "range": {
         "startLine": 716,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ab447947_4ed549e7",
+        "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1232429
+      },
+      "writtenOn": "2017-09-15T12:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd290fd1_1798901f",
+      "range": {
+        "startLine": 1314,
+        "startChar": 25,
+        "endLine": 1314,
+        "endChar": 55
+      },
+      "revId": "b45e8d1f6eb9e97ec8429fb2a44d2d41dceb9025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eadba511_dcbb7a60",
         "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a4a3202f_a2c8e83b",
+        "filename": "webrtc/modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1232429
+      },
+      "writtenOn": "2017-09-15T12:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eadba511_dcbb7a60",
+      "range": {
+        "startLine": 1739,
+        "startChar": 2,
+        "endLine": 1739,
+        "endChar": 21
+      },
+      "revId": "b45e8d1f6eb9e97ec8429fb2a44d2d41dceb9025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c39190b3_afb03f20",
         "filename": "webrtc/modules/audio_processing/audio_processing_impl.h",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2017-09-14T21:50:44Z",
       "side": 1,
       "message": "I\u0027m not sure this is really needed. I know we discussed this offline, but I may have gotten that wrong as I that you meant the ApmSubmoduleStates struct.\n\nSince the capture_post processor is only set at construction, think it is sufficient to check whether it is null or not to see whether it is enabled, in particular since looking at the code it seems that the capture_post_processor is activated by default when it is inserted into APM.\n\nWDYT",
+      "range": {
+        "startLine": 377,
+        "startChar": 9,
+        "endLine": 377,
+        "endChar": 39
+      },
+      "revId": "b45e8d1f6eb9e97ec8429fb2a44d2d41dceb9025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7f03a9_984687e4",
+        "filename": "webrtc/modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1232429
+      },
+      "writtenOn": "2017-09-15T12:31:01Z",
+      "side": 1,
+      "message": "I finally understand the bool situation. Yes, I\u0027ll gladly remove this bool.",
+      "parentUuid": "c39190b3_afb03f20",
       "range": {
         "startLine": 377,
         "startChar": 9,
