@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "f52790f8_6cfe2ac0",
         "filename": "webrtc/modules/desktop_capture/fallback_desktop_capturer_wrapper.cc",
@@ -20,8 +21,31 @@
         "endChar": 0
       },
       "revId": "c4288d046f5a937ba5c5eab4b4b24d144b33be29",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c933cf5b_ab150c28",
+        "filename": "webrtc/modules/desktop_capture/fallback_desktop_capturer_wrapper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1196069
+      },
+      "writtenOn": "2024-01-02T21:48:02Z",
+      "side": 1,
+      "message": "No idea, I think that\u0027s the reason of a histogram: instead of spammy, it should help us to aggregate the result.\n\nCL description has been updated.",
+      "parentUuid": "f52790f8_6cfe2ac0",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "c4288d046f5a937ba5c5eab4b4b24d144b33be29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
