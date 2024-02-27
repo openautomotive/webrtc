@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "092bd1c2_d4f2276d",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -20,10 +21,10 @@
         "endChar": 24
       },
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "af7f6a5b_b69c47c7",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -43,10 +44,10 @@
         "endChar": 39
       },
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f0e67986_4398c4a4",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -66,10 +67,10 @@
         "endChar": 71
       },
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8b5c50cc_be7b688a",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -83,10 +84,10 @@
       "side": 1,
       "message": "You hold this lock until the end of the block, so there\u0027s no need to introduce a new {} block.",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c8aec38f_bb7a6ff2",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -100,10 +101,10 @@
       "side": 1,
       "message": "This sequence of calls to neteq_ seems like it may fail if someone else is concurrently accessing the same NetEq instance (such as a concurrent call to the present method). Didn\u0027t the lock annotations catch this?",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8cea18f3_8d0b30e1",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -118,10 +119,10 @@
       "message": "Hmm, there are no lock annotations on that member:\n\n  NetEq* neteq_;\n\nIt should probably be\n\n  NetEq* neteq_ GUARDED_BY(crit_sect_) PT_GUARDED_BY(crit_sect_);\n\nor (even better, if it works)\n\n  NetEq* const neteq_ PT_GUARDED_BY(crit_sect_);\n\n(Also, I find it puzzling that we have a raw pointer to the NetEq and don\u0027t own it. But that may be a deeper rabbit hole than appropriate for this CL.)",
       "parentUuid": "c8aec38f_bb7a6ff2",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f74589af_f0debe11",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -136,10 +137,10 @@
       "message": "NetEq is thread-safe in itself. So, the potential problem as I see it is that someone changes the pointer for us.\n\nWe should preferably make it a const unique_ptr, but let\u0027s do that in a follow-up.",
       "parentUuid": "8cea18f3_8d0b30e1",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9f4aa712_9af03b26",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -154,10 +155,10 @@
       "message": "No. No matter how threadsafe NetEq is, it can only protect itself against concurrent access for the duration of a method call. Here, we call two NetEq methods in sequence (RemovePayloadType and LastError) and expect that no one else has called the NetEq instance in between.",
       "parentUuid": "f74589af_f0debe11",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b166aabc_88e14e40",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -172,10 +173,10 @@
       "message": "That\u0027s another story. But lock annotation won\u0027t help you there either (in theory).\n\nNevertheless, I created a CL to clean up the ownership of the NetEq object: https://chromium-review.googlesource.com/c/533073/",
       "parentUuid": "9f4aa712_9af03b26",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "587b25e8_72ca9b3f",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -190,10 +191,10 @@
       "message": "Well, it would help as much as it ever does. For any lock-annotated variable x_, you can always replace the correct\n\n  rtc::CritScope lock(\u0026crit_sect_);\n  x_ \u003d ComputeNewValue(x_);\n\nwith the incorrect\n\n  int new_x;\n  {\n    rtc::CritScope lock(\u0026crit_sect_);\n    new_x \u003d ComputeNewValue(x_);\n  }\n  {\n    rtc::CritScope lock(\u0026crit_sect_);\n    x_ \u003d new_x;\n  }\n\nand the compiler won\u0027t complain. The lock annotations are useful because they remind you that you need to take the lock at all; it\u0027s up to you to not release it in the middle of what needs to be an atomic sequence of actions.\n\nIn contrast, if you have a supposedly thread-safe object that uses locks internally, any sequence of method calls\n\n  x_-\u003eMeth();\n  x_-\u003eCoke();\n\nhad better not need to be an atomic sequence. But this is exactly the situation we have with NetEq\u0027s LastError() method.",
       "parentUuid": "b166aabc_88e14e40",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9887f628_2f2891a9",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -208,10 +209,10 @@
       "message": "As I wrote in my follow-up CL, I propose we scrap LastError().",
       "parentUuid": "587b25e8_72ca9b3f",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0498d1c7_8002f5a4",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -226,10 +227,10 @@
       "message": "Uploaded https://chromium-review.googlesource.com/c/535533/ where Last{Decoder}Error() is deleted. It affects these lines in acm_receiver.cc, so we could consider landing that CL before this one.",
       "parentUuid": "9887f628_2f2891a9",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "32d6058b_96eb9950",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -244,10 +245,10 @@
       "message": "Please land 535533 first.",
       "parentUuid": "0498d1c7_8002f5a4",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1714dba0_e2633a1d",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -262,10 +263,10 @@
       "message": "Ack",
       "parentUuid": "32d6058b_96eb9950",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fbfd012b_a5d4d4b2",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -280,10 +281,10 @@
       "message": "https://chromium-review.googlesource.com/c/535533 has landed.",
       "parentUuid": "1714dba0_e2633a1d",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "294e5e02_b6b65066",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -297,10 +298,10 @@
       "side": 1,
       "message": "You don\u0027t release the lock until the block ends anyway, so don\u0027t introduce a new block.",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "99ad7fef_56d44058",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -314,10 +315,10 @@
       "side": 1,
       "message": "Here\u0027s another neteq_ call sequence that looks racy.",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "942600ec_d08a287d",
         "filename": "webrtc/modules/audio_coding/acm2/acm_receiver.cc",
@@ -331,8 +332,137 @@
       "side": 1,
       "message": "No new block needed here either.",
       "revId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Owners",
+        "description": {
+          "value": "User with the code owner override approved the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:enabled_code-owners"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "has:approval_code-owners"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Owners-Override\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:enabled_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:enabled_code-owners"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:approval_code-owners"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["has:approval_code-owners"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Owners-Override=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Owners-Override=+1"]}
+      },
+      "patchSetCommitId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "At least one maximum vote for label \u0027Code-Review\u0027 is required"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader AND -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader"],"failingAtoms":["label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforced_gerrit"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {},
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:false"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:true"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:false"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:false"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:true"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "4e8bd409ed38247dbcf691e9fb80f04f2797a01c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
